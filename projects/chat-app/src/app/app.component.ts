@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'kaa-root',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  @Input('dd') public testd!: string;
   title = 'chat-app';
 }
