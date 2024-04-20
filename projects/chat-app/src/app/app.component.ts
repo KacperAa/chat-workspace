@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-
-import { tap } from 'rxjs';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'kaa-root',
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrl: './app.component.scss'
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'chat-app';
+}
