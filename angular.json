@@ -63,6 +63,7 @@
               "projects/chat-app/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/purple-green.css",
               "projects/chat-app/src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +124,7 @@
               "projects/chat-app/src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/purple-green.css",
               "projects/chat-app/src/styles.scss"
             ],
             "scripts": []
