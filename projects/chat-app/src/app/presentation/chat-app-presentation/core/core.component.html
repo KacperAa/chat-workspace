@@ -9,7 +9,7 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-toolbar color="primary">
+  <mat-toolbar color="secondary">
     <button mat-icon-button (click)="sidenav.open()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -17,4 +17,5 @@
 
   <!-- NgContent element for displaying pages within the application. -->
   <ng-content />
+  <mat-toolbar class="bottom-toolbar" color="secondary"> </mat-toolbar>
 </mat-sidenav-container>
