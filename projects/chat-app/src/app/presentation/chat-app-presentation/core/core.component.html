@@ -1,18 +1,11 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav>
     <mat-nav-list (click)="sidenav.close()">
-      <a mat-list-item>
-        <mat-icon>home</mat-icon>
-      </a>
-      <a mat-list-item>
-        <mat-icon>home</mat-icon>
-      </a>
-      <a mat-list-item>
-        <mat-icon>home</mat-icon>
-      </a>
-      <a mat-list-item>
-        <mat-icon>home</mat-icon>
-      </a>
+      @for (navEl of navigationElements; track navEl.matIconName) {
+        <a mat-list-item>
+          <mat-icon>{{ navEl.matIconName }}</mat-icon>
+        </a>
+      }
     </mat-nav-list>
   </mat-sidenav>
 
@@ -22,5 +15,6 @@
     </button>
   </mat-toolbar>
 
+  <!-- NgContent placeholder for displaying pages within the application. -->
   <ng-content />
 </mat-sidenav-container>

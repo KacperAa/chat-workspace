@@ -12,7 +12,7 @@ export const APP_ROUTES: Routes = [
     path: 'chat',
     loadComponent: () =>
       import(
-        './presentation/chat-app-presentation/pages/feature/chat/chat.component'
+        './presentation/chat-app-presentation/pages/chat/main/chat.component'
       ).then(c => c.ChatComponent),
   },
 ];
