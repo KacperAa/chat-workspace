@@ -1,8 +1,18 @@
-import { AuthComponent } from './presentation/access/auth/auth.component';
-import { CoreComponent } from './presentation/chat-app-presentation/core/core.component';
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [
-  { path: 'login', component: AuthComponent },
-  { path: 'chat', component: CoreComponent },
+export const APP_ROUTES: Routes = [
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./presentation/access/auth/auth.component').then(
+        c => c.AuthComponent
+      ),
+  },
+  {
+    path: 'chat',
+    loadComponent: () =>
+      import(
+        './presentation/chat-app-presentation/pages/feature/chat/chat.component'
+      ).then(c => c.ChatComponent),
+  },
 ];
