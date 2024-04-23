@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
   imports: [AvatarComponent],
   templateUrl: './avatar-with-content.component.html',
   styleUrl: './avatar-with-content.component.scss',
-  exportAs: 'AvatarWithContent',
+  exportAs: 'avatar-with-content-molecule',
 })
 export class AvatarWithContentComponent {}

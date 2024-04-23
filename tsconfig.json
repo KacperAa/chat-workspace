@@ -19,7 +19,7 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
-      "ui": ["./dist/ui", "./dist/ui"]
+      "@ui/*": ["./projects/ui/src/public-api.ts"]
     },
     "lib": ["ES2022", "dom"]
   },

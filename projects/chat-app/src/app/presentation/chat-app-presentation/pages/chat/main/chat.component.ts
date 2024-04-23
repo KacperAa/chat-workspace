@@ -1,7 +1,7 @@
-import { AvatarWithContentComponent } from '../../../../../../../../ui/src/public-api';
 import { CoreComponent } from '../../../core/core.component';
 import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
 import { Component } from '@angular/core';
+import { AvatarWithContentComponent } from '@ui/avatar-with-content-molecule';
 
 @Component({
   selector: 'kaa-chat',
