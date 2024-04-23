@@ -10,12 +10,21 @@
   </mat-sidenav>
 
   <mat-toolbar color="secondary">
-    <button mat-icon-button (click)="sidenav.open()">
+    <button color="accent" mat-icon-button (click)="sidenav.open()">
       <mat-icon>menu</mat-icon>
     </button>
   </mat-toolbar>
 
   <!-- NgContent element for displaying pages within the application. -->
   <ng-content />
-  <mat-toolbar class="bottom-toolbar" color="secondary"> </mat-toolbar>
+
+  <mat-toolbar class="bottom-toolbar" color="secondary">
+    <mat-nav-list class="bottom-toolbar__nav-list" (click)="sidenav.close()">
+      @for (navEl of navigationElements; track navEl.matIconName) {
+        <a mat-list-item>
+          <mat-icon>{{ navEl.matIconName }}</mat-icon>
+        </a>
+      }
+    </mat-nav-list></mat-toolbar
+  >
 </mat-sidenav-container>
