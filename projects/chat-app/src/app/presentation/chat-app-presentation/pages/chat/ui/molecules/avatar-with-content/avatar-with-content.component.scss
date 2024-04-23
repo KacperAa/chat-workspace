@@ -1,0 +1,15 @@
+.avatar-with-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+
+  &__right-content {
+    grid-column: 2;
+  }
+
+  &__bottom-content {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    text-align: center;
+  }
+}
