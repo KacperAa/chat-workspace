@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'kaa-avatar',
+  selector: 'ui-avatar',
   standalone: true,
   imports: [],
   templateUrl: './avatar.component.html',
