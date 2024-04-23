@@ -1,5 +1,6 @@
-import { USERS_MOCKUP } from './mockup-data/user.mockup';
 import { Injectable } from '@angular/core';
+
+import { USERS_MOCKUP } from './mockup-data/user.mockup';
 
 import { delay, of } from 'rxjs';
 
