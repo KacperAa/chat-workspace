@@ -5,12 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-const MATERIAL_IMPORTS = [
-  MatButtonModule,
-  MatIconModule,
-  MatFormFieldModule,
-  MatInputModule,
-];
+const MATERIAL_IMPORTS = [MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule];
 
 @Component({
   selector: 'kaa-filter-users',

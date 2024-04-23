@@ -1,5 +1,6 @@
-import { AvatarComponent } from '../../atoms/avatar/avatar.component';
 import { Component } from '@angular/core';
+
+import { AvatarComponent } from '../../atoms/avatar/avatar.component';
 
 @Component({
   selector: 'ui-avatar-with-content',
