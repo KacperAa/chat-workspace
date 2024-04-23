@@ -19,7 +19,8 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
-      "ui": ["./dist/ui", "./dist/ui"]
+      "@ui/*": ["./projects/ui/src/public-api.ts"],
+      "@api/*": ["./projects/chat-app/src/app/business"]
     },
     "lib": ["ES2022", "dom"]
   },

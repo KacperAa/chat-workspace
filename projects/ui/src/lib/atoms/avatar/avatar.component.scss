@@ -1,0 +1,10 @@
+$circle-size: 4rem;
+
+.user-circle {
+  display: block;
+  width: $circle-size;
+  height: $circle-size;
+  background-color: lightgray;
+  border-radius: 50%;
+  cursor: pointer;
+}

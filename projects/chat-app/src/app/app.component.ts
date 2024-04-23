@@ -1,12 +1,13 @@
+import { CoreComponent } from './presentation/chat-app-presentation/core/core.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'kaa-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CoreComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'chat-app';
