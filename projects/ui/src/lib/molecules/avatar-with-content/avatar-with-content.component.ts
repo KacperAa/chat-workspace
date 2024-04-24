@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AvatarComponent } from '../../atoms/avatar/avatar.component';
 
@@ -8,6 +8,6 @@ import { AvatarComponent } from '../../atoms/avatar/avatar.component';
   imports: [AvatarComponent],
   templateUrl: './avatar-with-content.component.html',
   styleUrl: './avatar-with-content.component.scss',
-  exportAs: 'avatar-with-content-molecule',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarWithContentComponent {}

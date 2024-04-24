@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
-import { AvatarWithContentComponent } from '@ui/avatar-with-content-molecule';
 
 import { CoreComponent } from '../../../core/core.component';
 import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
@@ -19,6 +19,5 @@ import { UserCarouselComponent } from '../ui/molecules/user-carousel/user-carous
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
-  schemas: [],
 })
 export class ChatComponent {}

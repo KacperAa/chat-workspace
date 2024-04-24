@@ -1,4 +1,12 @@
-import { Component, ElementRef, OnInit, ViewEncapsulation, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewEncapsulation,
+  inject,
+  input,
+} from '@angular/core';
 
 @Component({
   selector: 'a[ui-nav-bar-element]',
@@ -6,6 +14,7 @@ import { Component, ElementRef, OnInit, ViewEncapsulation, inject, input } from 
   imports: [],
   templateUrl: './navigation-bar-element.component.html',
   styleUrl: './navigation-bar-element.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class NavigationBarElementComponent implements OnInit {

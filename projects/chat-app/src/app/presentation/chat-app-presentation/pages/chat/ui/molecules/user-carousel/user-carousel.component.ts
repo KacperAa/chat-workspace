@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { HorizontalScrollComponent } from '@ui/HorizontalScrollComponent';
@@ -9,5 +9,6 @@ import { HorizontalScrollComponent } from '@ui/HorizontalScrollComponent';
   imports: [AvatarWithContentComponent, HorizontalScrollComponent],
   templateUrl: './user-carousel.component.html',
   styleUrl: './user-carousel.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserCarouselComponent {}

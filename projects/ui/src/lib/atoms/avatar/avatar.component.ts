@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'ui-avatar',
@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './avatar.component.html',
   styleUrl: './avatar.component.scss',
-  exportAs: 'avatar-atom',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {}

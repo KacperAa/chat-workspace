@@ -4,7 +4,14 @@
     <section class="chat-page__users">
       <kaa-user-carousel></kaa-user-carousel>
     </section>
-    <a ui-nav-bar-element href="" [isActivated]="true">Main folder</a>
-    <a ui-nav-bar-element href="">Groups</a>
+
+    <ul class="navigation-bars-list" role="navigation">
+      <li role="listitem">
+        <a ui-nav-bar-element href="" [isActivated]="true">Main folder</a>
+      </li>
+      <li role="listitem">
+        <a ui-nav-bar-element href="">Groups</a>
+      </li>
+    </ul>
   </main>
 </kaa-core>
