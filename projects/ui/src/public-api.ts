@@ -2,7 +2,6 @@
  * Public API Surface of ui
  */
 
-export { AvatarComponent } from './lib/atoms';
-export { NavigationBarElementComponent } from './lib/atoms';
-export { AvatarWithContentComponent } from './lib/molecules';
+export { AvatarComponent, NavigationBarElementComponent } from './lib/atoms';
+export { AvatarWithContentComponent, NavigationBarsListComponent } from './lib/molecules';
 export { HorizontalScrollComponent } from './lib/organisms';
