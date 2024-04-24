@@ -1,0 +1,19 @@
+// active status
+$active-status-bg: gray;
+$active-status-color: white;
+
+// disactive status
+$disactive-status-color: gray;
+
+.nav-bar-element {
+  text-decoration: none;
+  font-weight: 700;
+  color: $disactive-status-color;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+}
+
+.active {
+  background-color: $active-status-bg;
+  color: $active-status-color;
+}

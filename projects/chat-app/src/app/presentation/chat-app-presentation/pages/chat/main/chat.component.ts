@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
 import { AvatarWithContentComponent } from '@ui/avatar-with-content-molecule';
 
 import { CoreComponent } from '../../../core/core.component';
@@ -9,7 +10,13 @@ import { UserCarouselComponent } from '../ui/molecules/user-carousel/user-carous
 @Component({
   selector: 'kaa-chat',
   standalone: true,
-  imports: [CoreComponent, FilterUsersComponent, AvatarWithContentComponent, UserCarouselComponent],
+  imports: [
+    CoreComponent,
+    FilterUsersComponent,
+    AvatarWithContentComponent,
+    UserCarouselComponent,
+    NavigationBarElementComponent,
+  ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
   schemas: [],

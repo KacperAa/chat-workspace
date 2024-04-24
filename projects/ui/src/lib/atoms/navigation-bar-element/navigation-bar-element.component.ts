@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'ui-navigation-bar-element',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './navigation-bar-element.component.html',
   styleUrl: './navigation-bar-element.component.scss',
 })
-export class NavigationBarElementComponent {}
+export class NavigationBarElementComponent {
+  public isActivated = input<boolean>(false);
+  public href = input.required<string>();
+}
