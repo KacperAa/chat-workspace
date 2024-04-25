@@ -3,7 +3,8 @@ import { User } from '../models/user.model';
 export const USERS_MOCKUP: User[] = [
   {
     id: '1',
-    fullName: 'Judasz Barabasz',
+    firstName: 'Kacper',
+    lastName: 'Augustyn',
     email: 'Judasz@Barabasz',
     phoneNum: '123456',
     createdAt: new Date(),
@@ -12,7 +13,8 @@ export const USERS_MOCKUP: User[] = [
   },
   {
     id: '2',
-    fullName: 'Judasz Barabasz',
+    firstName: 'Kacper',
+    lastName: 'Augustyn',
     email: 'Judasz@Barabasz',
     phoneNum: '123456',
     createdAt: new Date(),
@@ -21,7 +23,8 @@ export const USERS_MOCKUP: User[] = [
   },
   {
     id: '3',
-    fullName: 'Judasz Barabasz',
+    firstName: 'Kacper',
+    lastName: 'Augustyn',
     email: 'Judasz@Barabasz',
     phoneNum: '123456',
     createdAt: new Date(),
@@ -30,7 +33,8 @@ export const USERS_MOCKUP: User[] = [
   },
   {
     id: '4',
-    fullName: 'Judasz Barabasz',
+    firstName: 'Kacper',
+    lastName: 'Augustyn',
     email: 'Judasz@Barabasz',
     phoneNum: '123456',
     createdAt: new Date(),
@@ -39,7 +43,8 @@ export const USERS_MOCKUP: User[] = [
   },
   {
     id: '5',
-    fullName: 'Judasz Barabasz',
+    firstName: 'Kacper',
+    lastName: 'Augustyn',
     email: 'Judasz@Barabasz',
     phoneNum: '123456',
     createdAt: new Date(),

@@ -14,7 +14,7 @@ export class UserHttpService {
 
   public getUsers(): Observable<User[]> {
     return of(USERS_MOCKUP).pipe(
-      delay(500),
+      delay(2000),
       tap((users: User[]) => {
         this._usersStore.setUsers(users);
       })
