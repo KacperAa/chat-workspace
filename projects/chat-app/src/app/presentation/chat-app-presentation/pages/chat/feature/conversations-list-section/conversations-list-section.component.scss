@@ -14,4 +14,9 @@
       }
     }
   }
+
+  &:last-child {
+    /* Added margin-bottom for the last child to avoid being obscured by the bottom toolbar */
+    margin-bottom: 5rem;
+  }
 }
