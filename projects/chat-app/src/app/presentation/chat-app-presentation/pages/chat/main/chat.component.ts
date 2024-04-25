@@ -6,6 +6,7 @@ import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent
 import { CoreComponent } from '../../../core/core.component';
 import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
 import { UserCarouselComponent } from '../ui/molecules/user-carousel/user-carousel.component';
+import { ConversationsListSectionComponent } from '../feature/conversations-list-section/conversations-list-section.component';
 
 @Component({
   selector: 'kaa-chat',
@@ -16,6 +17,7 @@ import { UserCarouselComponent } from '../ui/molecules/user-carousel/user-carous
     AvatarWithContentComponent,
     UserCarouselComponent,
     NavigationBarElementComponent,
+    ConversationsListSectionComponent
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',

@@ -1,0 +1,17 @@
+.conversation-list {
+  list-style-type: none;
+  padding-inline: 1rem;
+
+  &__conversation-presentation {
+    margin-bottom: 0.75rem;
+    .text-wrapper {
+      color: gray;
+
+      &__last-message-and-delivary-time {
+        display: flex;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
