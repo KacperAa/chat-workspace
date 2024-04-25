@@ -9,10 +9,16 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-toolbar color="secondary">
+  <mat-toolbar color="secondary" class="top-toolbar">
     <button color="accent" mat-icon-button (click)="sidenav.open()">
       <mat-icon>menu</mat-icon>
     </button>
+    <img
+      ui-avatar
+      size="small"
+      matTooltip="Profile"
+      src="../../../../../../assets/images/profile-img.png"
+      alt="user presentation" />
   </mat-toolbar>
 
   <!-- NgContent element for displaying pages within the application. -->

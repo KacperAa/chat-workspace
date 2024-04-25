@@ -4,10 +4,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { AvatarComponent } from '@ui/AvatarComponent';
 
 import { AppNavigationElement } from './models/app-navigation.model';
 
-const MATERIAL_IMPORTS = [MatSidenavModule, MatButtonModule, MatToolbarModule, MatListModule, MatIconModule];
+const MATERIAL_IMPORTS = [
+  MatSidenavModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatListModule,
+  MatIconModule,
+  AvatarComponent,
+  MatTooltipModule,
+];
 
 @Component({
   selector: 'kaa-core',
