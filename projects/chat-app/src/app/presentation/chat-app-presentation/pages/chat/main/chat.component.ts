@@ -4,9 +4,9 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
 
 import { CoreComponent } from '../../../core/core.component';
-import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
-import { UserCarouselComponent } from '../ui/molecules/user-carousel/user-carousel.component';
 import { ConversationsListSectionComponent } from '../feature/conversations-list-section/conversations-list-section.component';
+import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
+import { UsersHorizontalScrollerComponent } from '../ui/molecules/user-carousel/users-horizontal-scroller.component';
 
 @Component({
   selector: 'kaa-chat',
@@ -15,9 +15,9 @@ import { ConversationsListSectionComponent } from '../feature/conversations-list
     CoreComponent,
     FilterUsersComponent,
     AvatarWithContentComponent,
-    UserCarouselComponent,
+    UsersHorizontalScrollerComponent,
     NavigationBarElementComponent,
-    ConversationsListSectionComponent
+    ConversationsListSectionComponent,
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',

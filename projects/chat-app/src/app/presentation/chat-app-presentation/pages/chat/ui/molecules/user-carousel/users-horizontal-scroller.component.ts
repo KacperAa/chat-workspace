@@ -4,11 +4,11 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { HorizontalScrollComponent } from '@ui/HorizontalScrollComponent';
 
 @Component({
-  selector: 'kaa-user-carousel',
+  selector: 'kaa-users-horizontal-scroller',
   standalone: true,
   imports: [AvatarWithContentComponent, HorizontalScrollComponent],
-  templateUrl: './user-carousel.component.html',
-  styleUrl: './user-carousel.component.scss',
+  templateUrl: './users-horizontal-scroller.component.html',
+  styleUrl: './users-horizontal-scroller.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserCarouselComponent {}
+export class UsersHorizontalScrollerComponent {}
