@@ -16,14 +16,13 @@ const MATERIAL_IMPORTS = [
   MatToolbarModule,
   MatListModule,
   MatIconModule,
-  AvatarComponent,
   MatTooltipModule,
 ];
 
 @Component({
   selector: 'kaa-core',
   standalone: true,
-  imports: [MATERIAL_IMPORTS],
+  imports: [MATERIAL_IMPORTS, AvatarComponent],
   templateUrl: './core.component.html',
   styleUrl: './core.component.scss',
 })
