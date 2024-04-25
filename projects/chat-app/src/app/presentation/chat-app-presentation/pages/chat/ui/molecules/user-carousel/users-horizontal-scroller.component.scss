@@ -1,0 +1,12 @@
+.scroll-container {
+  display: flex;
+  overflow: hidden;
+
+  &.hide-scrollbar {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

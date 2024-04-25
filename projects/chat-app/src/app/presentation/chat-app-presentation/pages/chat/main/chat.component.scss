@@ -3,6 +3,14 @@
 
   &__users {
     display: flex;
+    justify-content: center;
+  }
+
+  .navigation-bars-list {
+    display: flex;
+    justify-content: center;
     gap: 0.5rem;
+    margin-top: 1.5rem;
+    list-style-type: none;
   }
 }

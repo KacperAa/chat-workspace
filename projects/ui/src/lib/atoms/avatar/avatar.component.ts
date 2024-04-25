@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewEncapsulation, inject } from '@angular/core';
 
 @Component({
-  selector: 'ui-avatar',
+  selector: 'img[ui-avatar]',
   standalone: true,
   imports: [],
   templateUrl: './avatar.component.html',
   styleUrl: './avatar.component.scss',
-  exportAs: 'avatar-atom',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvatarComponent {}
+export class AvatarComponent {
+  public elementRef = inject(ElementRef);
+
+  constructor() {
+    const element = this.elementRef.nativeElement as HTMLElement;
+    const classList = element.classList;
+
+    classList.add('user-circle', 'mat-elevation-z10');
+  }
+}
