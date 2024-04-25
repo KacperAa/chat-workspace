@@ -1,10 +1,25 @@
-$circle-size: 4rem;
+$circle-size-sm: 2rem;
+$circle-size-md: 4rem;
+$circle-size-lg: 6rem;
 
 .user-circle {
   display: block;
-  width: $circle-size;
-  height: $circle-size;
   background-color: lightgray;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.user-circle-sm {
+  width: $circle-size-sm;
+  height: $circle-size-sm;
+}
+
+.user-circle-md {
+  width: $circle-size-md;
+  height: $circle-size-md;
+}
+
+.user-circle-lg {
+  width: $circle-size-lg;
+  height: $circle-size-lg;
 }
