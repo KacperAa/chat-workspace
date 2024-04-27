@@ -8,19 +8,25 @@ import {
   input,
 } from '@angular/core';
 
-import { AvatarSize } from './models/avatar-size.model';
+import { CircleSizeService } from '../circle-size/circle-size.service';
+import { CirclePresentationSize } from '../circle-size/models/circle-presentation-size.model';
 
 @Component({
   selector: 'img[ui-avatar]',
   standalone: true,
   imports: [],
+  providers: [CircleSizeService],
+  host: {
+    '[class]': 'setAvatarSize()',
+  },
   templateUrl: './avatar.component.html',
   styleUrl: './avatar.component.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent implements OnInit {
-  public readonly size = input<AvatarSize>('normal');
+  private _circleSize = inject(CircleSizeService);
+  public readonly size = input<CirclePresentationSize>('normal');
 
   public elementRef = inject(ElementRef);
 
@@ -31,29 +37,9 @@ export class AvatarComponent implements OnInit {
     classList.add('user-circle', 'mat-elevation-z10');
   }
 
-  public ngOnInit(): void {
-    this._setAvatarSize();
-  }
+  public ngOnInit(): void {}
 
-  private _setAvatarSize(): void {
-    const element = this.elementRef.nativeElement as HTMLElement;
-    const classList = element.classList;
-    switch (this.size()) {
-      case 'small': {
-        classList.add('user-circle-sm');
-        break;
-      }
-      case 'normal': {
-        classList.add('user-circle-md');
-        break;
-      }
-      case 'large': {
-        classList.add('user-circle-lg');
-        break;
-      }
-      default: {
-        let n: never;
-      }
-    }
+  public setAvatarSize(): string {
+    return this._circleSize.setCircleSizeClass(this.size());
   }
 }
