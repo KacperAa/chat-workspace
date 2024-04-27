@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
-import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
+import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 
 import { AuthService } from '../../../../../business/api/auth/auth.service';
 import { UserHttpService } from '../../../../../business/api/user/user-http.service';
@@ -22,7 +22,7 @@ import { ChatFacade } from './chat-facade';
     UsersHorizontalScrollerComponent,
     NavigationBarElementComponent,
     ConversationsListSectionComponent,
-    SkeletonCircleLoaderComponent,
+    SkeletonBarComponent,
   ],
   providers: [ChatFacade],
   templateUrl: './chat.component.html',

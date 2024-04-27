@@ -1,6 +1,10 @@
 <kaa-core>
   <main class="chat-page">
     <kaa-filter-users></kaa-filter-users>
+
+    <!-- Mockup ................................. -->
+
+    <ui-skeleton-bar />
     <section class="chat-page__users">
       <kaa-users-horizontal-scroller [users]="chatFacade.users()" />
     </section>
