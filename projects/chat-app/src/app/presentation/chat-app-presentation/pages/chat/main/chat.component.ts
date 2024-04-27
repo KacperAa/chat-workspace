@@ -4,6 +4,7 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
+import { AuthService } from '../../../../../business/api/auth/auth.service';
 import { UserHttpService } from '../../../../../business/api/user/user-http.service';
 import { CoreComponent } from '../../../core/core.component';
 import { ConversationsListSectionComponent } from '../feature/conversations-list-section/conversations-list-section.component';
@@ -28,11 +29,13 @@ import { ChatFacade } from './chat-facade';
   styleUrl: './chat.component.scss',
 })
 export class ChatComponent implements OnInit {
-  chatFacade = inject(ChatFacade);
+  public chatFacade = inject(ChatFacade);
 
   private _usersHttp = inject(UserHttpService);
+  private _auth = inject(AuthService);
 
   public ngOnInit(): void {
     this._usersHttp.getUsers().subscribe();
+    this._auth.login().subscribe();
   }
 }

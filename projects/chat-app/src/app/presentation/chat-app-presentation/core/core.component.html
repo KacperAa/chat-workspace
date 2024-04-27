@@ -13,12 +13,16 @@
     <button color="accent" mat-icon-button (click)="sidenav.open()">
       <mat-icon>menu</mat-icon>
     </button>
-    <img
-      ui-avatar
-      size="small"
-      matTooltip="Profile"
-      src="../../../../../../assets/images/profile-img.png"
-      alt="user presentation" />
+    @if (!isFetching()) {
+      <img
+        ui-avatar
+        size="small"
+        matTooltip="Profile"
+        [src]="coreFacade.loggedUser()?.profilePicture"
+        [alt]="coreFacade.loggedUser()?.firstName + ' profile image'" />
+    } @else {
+      <ui-skeleton-circle-loader size="small" />
+    }
   </mat-toolbar>
 
   <!-- NgContent element for displaying pages within the application. -->

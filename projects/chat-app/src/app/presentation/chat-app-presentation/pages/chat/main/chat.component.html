@@ -2,7 +2,7 @@
   <main class="chat-page">
     <kaa-filter-users></kaa-filter-users>
     <section class="chat-page__users">
-      <kaa-users-horizontal-scroller [users]="chatFacade.users()"></kaa-users-horizontal-scroller>
+      <kaa-users-horizontal-scroller [users]="chatFacade.users()" />
     </section>
 
     <ul class="navigation-bars-list" role="navigation">
@@ -14,6 +14,6 @@
       </li>
     </ul>
 
-    <kaa-conversations-list-section></kaa-conversations-list-section>
+    <kaa-conversations-list-section />
   </main>
 </kaa-core>
