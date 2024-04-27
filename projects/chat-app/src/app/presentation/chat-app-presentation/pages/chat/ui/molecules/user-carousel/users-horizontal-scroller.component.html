@@ -1,76 +1,14 @@
 <ui-horizontal-scroll>
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
-
-  <ui-avatar-with-content>
-    <img ui-avatar src="../../../../../../assets/images/profile-img.png" alt="user presentation" />
-    <span bottom-content>Kacper</span>
-  </ui-avatar-with-content>
+  @if (!isFetching()) {
+    @for (user of users(); track user.firstName) {
+      <ui-avatar-with-content>
+        <img ui-avatar [src]="user.profilePicture" alt="{{ user.firstName + ' profile image' }}" />
+        <span bottom-content>{{ user.firstName }}</span>
+      </ui-avatar-with-content>
+    }
+  } @else {
+    @for (_ of [].constructor(10); track _) {
+      <ui-skeleton-circle-loader />
+    }
+  }
 </ui-horizontal-scroll>

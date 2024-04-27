@@ -1,0 +1,24 @@
+$circle-size-sm: 2rem;
+$circle-size-md: 4rem;
+$circle-size-lg: 6rem;
+
+.circle {
+  display: block;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.circle-sm {
+  width: $circle-size-sm;
+  height: $circle-size-sm;
+}
+
+.circle-md {
+  width: $circle-size-md;
+  height: $circle-size-md;
+}
+
+.circle-lg {
+  width: $circle-size-lg;
+  height: $circle-size-lg;
+}

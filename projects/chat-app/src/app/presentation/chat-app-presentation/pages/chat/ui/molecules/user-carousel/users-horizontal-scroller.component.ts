@@ -1,15 +1,24 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Signal, computed, input } from '@angular/core';
 
 import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { HorizontalScrollComponent } from '@ui/HorizontalScrollComponent';
+import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
+
+import { User } from '../../../../../../../business/api/user/models/user.model';
 
 @Component({
   selector: 'kaa-users-horizontal-scroller',
   standalone: true,
-  imports: [AvatarWithContentComponent, HorizontalScrollComponent, AvatarComponent],
+  imports: [AvatarWithContentComponent, HorizontalScrollComponent, AvatarComponent, SkeletonCircleLoaderComponent],
   templateUrl: './users-horizontal-scroller.component.html',
   styleUrl: './users-horizontal-scroller.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UsersHorizontalScrollerComponent {}
+export class UsersHorizontalScrollerComponent {
+  readonly users = input.required<User[]>();
+
+  readonly isFetching: Signal<boolean> = computed(() => {
+    return this.users().length < 1;
+  });
+}
