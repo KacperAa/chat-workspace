@@ -3,13 +3,14 @@ import { ChangeDetectionStrategy, Component, Signal, computed, input } from '@an
 import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { HorizontalScrollComponent } from '@ui/HorizontalScrollComponent';
+import { SkeletonLoaderComponent } from '@ui/SkeletonLoaderComponent';
 
 import { User } from '../../../../../../../business/api/user/models/user.model';
 
 @Component({
   selector: 'kaa-users-horizontal-scroller',
   standalone: true,
-  imports: [AvatarWithContentComponent, HorizontalScrollComponent, AvatarComponent],
+  imports: [AvatarWithContentComponent, HorizontalScrollComponent, AvatarComponent, SkeletonLoaderComponent],
   templateUrl: './users-horizontal-scroller.component.html',
   styleUrl: './users-horizontal-scroller.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
