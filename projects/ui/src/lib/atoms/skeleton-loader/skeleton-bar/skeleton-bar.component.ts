@@ -10,11 +10,20 @@ import { Component, input } from '@angular/core';
 export class SkeletonBarComponent {
   public readonly width = input('20rem', {
     transform: (value: string | number) => {
-      if (typeof value === 'number' || !value.endsWith('rem')) {
-        return `${value}rem`;
-      }
-      return value;
+      return this._transformToRem(value);
     },
   });
-  public readonly height = input('1.5rem');
+
+  public readonly height = input('1.5rem', {
+    transform: (value: string | number) => {
+      return this._transformToRem(value);
+    },
+  });
+
+  private _transformToRem(value: string | number): string {
+    if (typeof value === 'number' || !value.endsWith('rem')) {
+      return `${value}rem`;
+    }
+    return value;
+  }
 }
