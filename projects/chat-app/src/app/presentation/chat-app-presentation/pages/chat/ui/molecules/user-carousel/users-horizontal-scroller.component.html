@@ -7,7 +7,8 @@
       </ui-avatar-with-content>
     }
   } @else {
-    grupa baba loading ... !
+    @for (_ of [].constructor(10); track _) {
+      <ui-skeleton-circle-loader />
+    }
   }
 </ui-horizontal-scroll>
-<ui-skeleton-loader />
