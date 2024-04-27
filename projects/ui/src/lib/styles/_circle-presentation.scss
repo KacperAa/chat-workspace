@@ -2,9 +2,8 @@ $circle-size-sm: 2rem;
 $circle-size-md: 4rem;
 $circle-size-lg: 6rem;
 
-.user-circle {
+.circle {
   display: block;
-  background-color: lightgray;
   border-radius: 50%;
   cursor: pointer;
 }

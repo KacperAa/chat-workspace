@@ -9,7 +9,7 @@ import { CirclePresentationSize } from '../../circle-size/models/circle-presenta
   imports: [],
   providers: [CircleSizeService],
   templateUrl: './skeleton-loader.component.html',
-  styleUrl: './skeleton-loader.component.scss',
+  styleUrls: ['../styles/_skeleton-base.scss', '../../../styles/_circle-presentation.scss'],
 })
 export class SkeletonLoaderComponent {
   private _circleSize = inject(CircleSizeService);

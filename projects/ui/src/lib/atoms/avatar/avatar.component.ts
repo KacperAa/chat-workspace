@@ -20,7 +20,7 @@ import { CirclePresentationSize } from '../circle-size/models/circle-presentatio
     '[class]': 'setAvatarSize()',
   },
   templateUrl: './avatar.component.html',
-  styleUrl: './avatar.component.scss',
+  styleUrls: ['../../styles/_circle-presentation.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,7 +34,7 @@ export class AvatarComponent implements OnInit {
     const element = this.elementRef.nativeElement as HTMLElement;
     const classList = element.classList;
 
-    classList.add('user-circle', 'mat-elevation-z10');
+    classList.add('circle', 'mat-elevation-z10');
   }
 
   public ngOnInit(): void {}
