@@ -1,0 +1,9 @@
+.skeleton-circle-and-bars {
+  display: flex;
+  gap: 0.5rem;
+
+  &__skeleton-bars {
+    display: grid;
+    gap: 0.1rem;
+  }
+}
