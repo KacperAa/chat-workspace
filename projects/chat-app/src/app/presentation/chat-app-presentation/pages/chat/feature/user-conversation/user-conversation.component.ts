@@ -5,11 +5,19 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
+import { FormFieldComponent } from '@ui/FormFieldComponent';
 
 @Component({
   selector: 'kaa-user-conversation',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, AvatarWithContentComponent, MatIcon, AvatarComponent],
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    AvatarWithContentComponent,
+    MatIcon,
+    AvatarComponent,
+    FormFieldComponent,
+  ],
   templateUrl: './user-conversation.component.html',
   styleUrl: './user-conversation.component.scss',
 })

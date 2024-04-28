@@ -1,0 +1,16 @@
+.form-field {
+  position: relative;
+  display: inline-block;
+
+  &__preffix {
+    position: absolute;
+    left: 5%;
+    top: 0;
+  }
+
+  &__suffix {
+    position: absolute;
+    left: 80%;
+    top: 0;
+  }
+}
