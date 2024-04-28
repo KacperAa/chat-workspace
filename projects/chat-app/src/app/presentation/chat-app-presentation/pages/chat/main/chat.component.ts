@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
@@ -23,6 +24,7 @@ import { ChatFacade } from './chat-facade';
     NavigationBarElementComponent,
     ConversationsListSectionComponent,
     SkeletonCircleAndBarsComponent,
+    RouterOutlet,
   ],
   providers: [ChatFacade],
   templateUrl: './chat.component.html',
