@@ -1,12 +1,24 @@
 <section class="user-conversation-presentation">
-  <mat-toolbar>
+  <mat-toolbar class="user-conversation-presentation__toolbar">
     <button mat-icon-button color="accent">
       <mat-icon>arrow_back</mat-icon>
     </button>
 
-    <ui-avatar-with-content>
+    <ui-avatar-with-content class="user-conversation-presentation__avatar-with-content">
       <img ui-avatar size="small" src="../../../../../../../assets/images/profile-img.png" />
-      <span right-content>Kacper</span>
+      <span class="right-content">Kacper</span>
     </ui-avatar-with-content>
+
+    <div class="user-conversation-presentation__actions-wrapper">
+      <button mat-icon-button color="accent">
+        <mat-icon>phone</mat-icon>
+      </button>
+      <button mat-icon-button color="accent">
+        <mat-icon>videocam</mat-icon>
+      </button>
+      <button mat-icon-button color="accent">
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
   </mat-toolbar>
 </section>
