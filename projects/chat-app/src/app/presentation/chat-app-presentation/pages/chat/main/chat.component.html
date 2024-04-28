@@ -1,5 +1,6 @@
 <kaa-core>
   <main class="chat-page">
+    <router-outlet />
     <kaa-filter-users />
 
     <section class="chat-page__users">
@@ -14,8 +15,6 @@
         <a ui-nav-bar-element href="">Groups</a>
       </li>
     </ul>
-
-    <router-outlet></router-outlet>
 
     <kaa-conversations-list-section />
   </main>
