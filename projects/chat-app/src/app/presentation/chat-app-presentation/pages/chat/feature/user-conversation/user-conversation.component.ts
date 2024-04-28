@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { FormFieldComponent } from '@ui/FormFieldComponent';
+import { InputComponent } from '@ui/InputComponent';
 
 @Component({
   selector: 'kaa-user-conversation',
@@ -17,6 +18,7 @@ import { FormFieldComponent } from '@ui/FormFieldComponent';
     MatIcon,
     AvatarComponent,
     FormFieldComponent,
+    InputComponent,
   ],
   templateUrl: './user-conversation.component.html',
   styleUrl: './user-conversation.component.scss',
