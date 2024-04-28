@@ -1,0 +1,31 @@
+.user-conversation-presentation {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--mat-sidenav-content-background-color);
+
+  &__toolbar-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+  }
+
+  &__avatar-with-content {
+    .right-content {
+      font-size: 0.75rem;
+      color: white;
+    }
+  }
+
+  &__actions-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.1rem;
+  }
+
+  &__toolbar-bottom {
+    position: fixed;
+    bottom: 0;
+  }
+}
