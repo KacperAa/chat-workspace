@@ -4,7 +4,7 @@
 
   &__preffix {
     position: absolute;
-    left: 5%;
+    left: 0;
     top: -15%;
   }
 
@@ -12,5 +12,9 @@
     position: absolute;
     left: 85%;
     top: -15%;
+  }
+
+  .padding-left-when-preffix {
+    padding-left: 2.5rem;
   }
 }
