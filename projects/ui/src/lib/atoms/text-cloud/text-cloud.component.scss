@@ -1,0 +1,14 @@
+.text-cloud {
+  border-radius: 10px;
+  padding: 0.7rem;
+  max-width: 60vw;
+  margin: 0.5rem;
+
+  &--green {
+    background-color: green;
+  }
+
+  &--darkgray {
+    background-color: rgb(40, 39, 39);
+  }
+}

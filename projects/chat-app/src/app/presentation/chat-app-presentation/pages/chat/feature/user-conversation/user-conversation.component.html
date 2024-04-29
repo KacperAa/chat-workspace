@@ -22,6 +22,12 @@
     </div>
   </mat-toolbar>
 
+  <section class="vertical-scroller">
+    @for (_ of [].constructor(20); track _) {
+      <ui-text-cloud></ui-text-cloud>
+    }
+  </section>
+
   <mat-toolbar class="user-conversation-presentation__toolbar-bottom">
     <div class="user-conversation-presentation__actions-wrapper">
       <button mat-icon-button color="accent">

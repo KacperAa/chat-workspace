@@ -3,8 +3,20 @@
   z-index: 2;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: var(--mat-sidenav-content-background-color);
+
+  .vertical-scroller {
+    overflow: auto;
+    height: 100vh;
+
+    ui-text-cloud {
+      &:last-of-type {
+        display: block;
+        margin-bottom: 9rem;
+      }
+    }
+  }
 
   &__toolbar-top {
     display: grid;
