@@ -8,6 +8,7 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { FormFieldComponent } from '@ui/FormFieldComponent';
 import { InputComponent } from '@ui/InputComponent';
 import { TextCloudComponent } from '@ui/TextCloudComponent';
+import { VerticalScrollComponent } from '@ui/VerticalScrollComponent';
 
 @Component({
   selector: 'kaa-user-conversation',
@@ -21,6 +22,7 @@ import { TextCloudComponent } from '@ui/TextCloudComponent';
     FormFieldComponent,
     InputComponent,
     TextCloudComponent,
+    VerticalScrollComponent,
   ],
   templateUrl: './user-conversation.component.html',
   styleUrl: './user-conversation.component.scss',

@@ -11,4 +11,4 @@ export {
   TextCloudComponent,
 } from './lib/atoms';
 export { AvatarWithContentComponent, SkeletonCircleAndBarsComponent, FormFieldComponent } from './lib/molecules';
-export { HorizontalScrollComponent } from './lib/organisms';
+export { HorizontalScrollComponent, VerticalScrollComponent } from './lib/organisms';
