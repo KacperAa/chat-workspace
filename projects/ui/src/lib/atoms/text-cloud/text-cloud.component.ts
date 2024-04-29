@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { TextCloudColor } from './models/text-cloud-color.model';
+
 @Component({
   selector: 'ui-text-cloud',
   standalone: true,
@@ -9,5 +11,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TextCloudComponent {
-  public color = input('accent');
+  public color = input<TextCloudColor>('darkgray');
 }

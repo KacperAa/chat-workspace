@@ -1,8 +1,9 @@
 .text-cloud {
-  border-radius: 10px;
+  max-width: 60%;
+  width: fit-content;
   padding: 0.7rem;
-  max-width: 60vw;
   margin: 0.5rem;
+  border-radius: 10px;
 
   &--green {
     background-color: green;
