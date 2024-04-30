@@ -1,0 +1,15 @@
+.text-cloud {
+  max-width: 60%;
+  width: fit-content;
+  padding: 0.7rem;
+  margin: 0.5rem;
+  border-radius: 10px;
+
+  &--green {
+    background-color: green;
+  }
+
+  &--darkgray {
+    background-color: rgb(40, 39, 39);
+  }
+}
