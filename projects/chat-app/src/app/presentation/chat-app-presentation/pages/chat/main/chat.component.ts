@@ -38,6 +38,6 @@ export class ChatComponent implements OnInit {
 
   public ngOnInit(): void {
     this._usersHttp.getUsers().subscribe();
-    this._auth.login().subscribe();
+    this._auth.signIn().subscribe();
   }
 }
