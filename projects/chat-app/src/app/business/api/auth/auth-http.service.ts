@@ -19,7 +19,7 @@ const MOCKUP_LOGGED_USER: User = {
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthHttpService {
   private _authStore = inject(AuthStore);
 
   public login(): Observable<User> {
