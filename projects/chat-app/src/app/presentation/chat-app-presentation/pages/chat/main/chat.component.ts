@@ -10,7 +10,7 @@ import { UserHttpService } from '../../../../../business/api/user/user-http.serv
 import { CoreComponent } from '../../../core/core.component';
 import { ConversationsListSectionComponent } from '../feature/conversations-list-section/conversations-list-section.component';
 import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
-import { UsersHorizontalScrollerComponent } from '../ui/molecules/user-carousel/users-horizontal-scroller.component';
+import { UsersHorizontalScrollerComponent } from '../ui/organisms/user-carousel/users-horizontal-scroller.component';
 import { ChatFacade } from './chat-facade';
 
 @Component({
@@ -31,7 +31,7 @@ import { ChatFacade } from './chat-facade';
   styleUrl: './chat.component.scss',
 })
 export class ChatComponent implements OnInit {
-  readonly chatFacade = inject(ChatFacade);
+  public chatFacade = inject(ChatFacade);
 
   private _usersHttp = inject(UserHttpService);
   private _auth = inject(AuthService);
