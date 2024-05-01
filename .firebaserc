@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kaa-chat-app": {
+      "hosting": {
+        "chat-app": [
+          "kaa-chat-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kaa-chat-app"
+  }
+}
