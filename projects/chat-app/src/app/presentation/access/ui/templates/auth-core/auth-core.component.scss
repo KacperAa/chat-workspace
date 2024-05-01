@@ -1,7 +1,12 @@
+// Gradient
+$color-accent-400: rgba(150, 235, 194, 0.8);
+$color-accent-500: rgba(105, 240, 174, 0.8);
+
 .auth-core {
   width: 100%;
   height: 100%;
-  background-image: url('../../../../../../assets/images/cyberpunk_pc.png');
+  background-image: linear-gradient(to bottom, $color-accent-400, $color-accent-500),
+    url('../../../../../../assets/images/cyberpunk_pc.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
