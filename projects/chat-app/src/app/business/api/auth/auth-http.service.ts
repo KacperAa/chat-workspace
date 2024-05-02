@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 
 import { User } from '../user/models/user.model';
 import { AuthStore } from './auth.store';
@@ -21,8 +22,18 @@ const MOCKUP_LOGGED_USER: User = {
 })
 export class AuthHttpService {
   private _authStore = inject(AuthStore);
+  private _firebaseAuth = inject(Auth);
 
-  public login(): Observable<User> {
+  public signIn(credentials = {}): Observable<User> {
+    return of(MOCKUP_LOGGED_USER).pipe(
+      delay(2000),
+      tap((user: User) => {
+        this._authStore.setLoggedUser(user);
+      })
+    );
+  }
+
+  public signUp(): Observable<User> {
     return of(MOCKUP_LOGGED_USER).pipe(
       delay(2000),
       tap((user: User) => {
