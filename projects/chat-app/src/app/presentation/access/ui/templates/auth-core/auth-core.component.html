@@ -1,6 +1,6 @@
 <main class="auth-core">
   <section class="auth-core__auth-form-container | mat-elevation-z4">
     <h2 class="auth-core__header">{{ headerText() }}</h2>
-    <ng-content />
+    <ng-content select=".auth-form, [auth-form]" />
   </section>
 </main>

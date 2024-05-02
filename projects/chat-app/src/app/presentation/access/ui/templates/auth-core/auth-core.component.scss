@@ -2,11 +2,17 @@
 $color-accent-400: rgba(147, 63, 182, 0.8);
 $color-accent-500: rgba(123, 31, 162, 0.8);
 
+// Scss placeholders
 %center-element {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+::ng-deep [auth-form],
+.auth-form {
+  display: grid;
 }
 
 .auth-core {
