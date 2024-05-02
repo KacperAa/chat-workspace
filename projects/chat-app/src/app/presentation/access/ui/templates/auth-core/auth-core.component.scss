@@ -23,7 +23,12 @@ $color-accent-500: rgba(123, 31, 162, 0.8);
     padding: 1rem;
     background-color: #212121;
     border-radius: 5px;
-
+    display: grid;
     @extend %center-element;
+  }
+
+  &__header {
+    color: white;
+    text-align: center;
   }
 }
