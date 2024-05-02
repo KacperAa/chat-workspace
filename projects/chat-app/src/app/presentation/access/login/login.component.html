@@ -1,13 +1,13 @@
 <kaa-auth-core headerText="Sign In">
-  <form auth-form>
+  <form auth-form [formGroup]="loginFormGroup">
     <mat-form-field color="accent">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Email..." />
+      <input matInput formControlName="email" placeholder="Email..." />
     </mat-form-field>
 
     <mat-form-field color="accent">
       <mat-label>Password</mat-label>
-      <input matInput placeholder="password..." />
+      <input matInput formControlName="password" placeholder="password..." />
     </mat-form-field>
 
     <button mat-raised-button color="accent">Login</button>
