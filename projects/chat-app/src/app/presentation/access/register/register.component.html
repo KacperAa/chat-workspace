@@ -2,26 +2,11 @@
   <form auth-form [formGroup]="registerFormGroup">
     <kaa-form-part controlKey="fullName" label="Full Name" [controlProperties]="fullNameControlProperties" />
 
-    <fieldset class="form-fieldset">
-      <legend>Additional</legend>
-      <mat-form-field color="accent">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email..." />
-      </mat-form-field>
-    </fieldset>
-
-    <fieldset class="form-fieldset">
-      <legend>Password</legend>
-      <mat-form-field color="accent">
-        <mat-label>Password</mat-label>
-        <input matInput placeholder="Password..." />
-      </mat-form-field>
-
-      <mat-form-field color="accent">
-        <mat-label>Repeat Password</mat-label>
-        <input matInput placeholder="Password..." />
-      </mat-form-field>
-    </fieldset>
+    <kaa-form-part
+      controlKey="contactInformation"
+      label="Contact Information"
+      [controlProperties]="contactInformationControlProperties" />
+    <kaa-form-part controlKey="passwords" label="Password" [controlProperties]="passwordsControlProperties" />
 
     <button mat-raised-button color="accent">Register</button>
     <button mat-button color="primary">Login</button>

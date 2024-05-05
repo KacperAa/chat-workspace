@@ -43,4 +43,14 @@ export class RegisterComponent {
       placeholder: 'Last name...',
     },
   ];
+
+  public contactInformationControlProperties: FormPartProperties[] = [{ label: 'Email', placeholder: 'Email...' }];
+
+  public passwordsControlProperties: FormPartProperties[] = [
+    { label: 'Password', placeholder: 'Password...' },
+    {
+      label: 'Repeat password',
+      placeholder: 'Repeat password...',
+    },
+  ];
 }
