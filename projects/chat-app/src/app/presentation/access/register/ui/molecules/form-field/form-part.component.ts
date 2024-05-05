@@ -2,19 +2,20 @@ import { Component, OnInit, inject, input } from '@angular/core';
 import { ControlContainer, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { FormPartProperties } from './models/form-part-properties.model';
 
 @Component({
-  selector: 'kaa-form-field',
+  selector: 'kaa-form-part',
   standalone: true,
   imports: [MatLabel, MatFormField, MatInput, ReactiveFormsModule],
   viewProviders: [{ provide: ControlContainer, useFactory: () => inject(ControlContainer, { skipSelf: true }) }],
-  templateUrl: './form-field.component.html',
-  styleUrl: './form-field.component.scss',
+  templateUrl: './form-part.component.html',
+  styleUrl: './form-part.component.scss',
 })
-export class FormFieldComponent implements OnInit {
+export class FormPartComponent implements OnInit {
   public label = input.required<string>();
   public controlKey = input.required<string>();
-  public controlProperties = input.required<any[]>();
+  public controlProperties = input.required<FormPartProperties[]>();
   public parentContainer = inject(ControlContainer);
 
   public get parentFormGroup(): FormGroup {
