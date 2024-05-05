@@ -1,0 +1,10 @@
+<fieldset [formGroup]="fieldFormGroup" class="form-fieldset">
+  <legend>{{ label() }}</legend>
+
+  @for (controlName of fieldFormControlKeys(); track controlName; let i = $index) {
+    <mat-form-field color="accent">
+      <mat-label>{{ controlProperties()[i].label }}</mat-label>
+      <input formControlName="{{ controlName }}" matInput [placeholder]="controlProperties()[i].placeholder" />
+    </mat-form-field>
+  }
+</fieldset>

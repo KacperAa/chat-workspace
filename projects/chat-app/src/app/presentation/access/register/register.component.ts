@@ -7,13 +7,14 @@ import { MatInput } from '@angular/material/input';
 
 import { AuthCoreComponent } from '../ui/templates/auth-core/auth-core.component';
 import { RegisterFormGroup } from './models/register-form-group.model';
+import { FormFieldComponent } from './ui/molecules/form-field/form-field.component';
 
 const MATERIAL_IMPORTS = [MatButton, MatLabel, MatFormField, MatInput];
 
 @Component({
   selector: 'kaa-register',
   standalone: true,
-  imports: [MATERIAL_IMPORTS, AuthCoreComponent, ReactiveFormsModule],
+  imports: [MATERIAL_IMPORTS, AuthCoreComponent, ReactiveFormsModule, FormFieldComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
@@ -33,4 +34,12 @@ export class RegisterComponent {
       repeatPassword: ['', Validators.required],
     }),
   });
+
+  public fullNameControlProperties = [
+    { label: 'Full Name', placeholder: 'Full name...' },
+    {
+      label: 'Last Name',
+      placeholder: 'Last name...',
+    },
+  ];
 }

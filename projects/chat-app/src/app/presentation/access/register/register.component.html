@@ -1,17 +1,6 @@
 <kaa-auth-core headerText="Register">
   <form auth-form [formGroup]="registerFormGroup">
-    <fieldset class="form-fieldset">
-      <legend>Full name</legend>
-      <mat-form-field color="accent">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="First Name..." />
-      </mat-form-field>
-
-      <mat-form-field color="accent">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name..." />
-      </mat-form-field>
-    </fieldset>
+    <kaa-form-field controlKey="fullName" label="Full Name" [controlProperties]="fullNameControlProperties" />
 
     <fieldset class="form-fieldset">
       <legend>Additional</legend>
