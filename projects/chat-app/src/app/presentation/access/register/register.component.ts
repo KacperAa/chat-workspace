@@ -19,11 +19,17 @@ const MATERIAL_IMPORTS = [MatButton, MatLabel, MatFormField, MatInput];
 })
 export class RegisterComponent {
   private _fb = inject(FormBuilder);
-  public registerFormGroup: FormGroup<RegisterFormGroup> = this._fb.group({
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
-    email: ['', [Validators.required]],
-    password: ['', [Validators.required]],
-    repeatPassword: ['', Validators.required],
+  public registerFormGroup = this._fb.group({
+    fullName: this._fb.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+    }),
+    additional: this._fb.group({
+      email: ['', [Validators.required]],
+    }),
+    passwords: this._fb.group({
+      password: ['', [Validators.required]],
+      repeatPassword: ['', Validators.required],
+    }),
   });
 }
