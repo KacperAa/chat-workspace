@@ -36,7 +36,7 @@ export class RegisterComponent {
         password: ['', [Validators.required]],
         repeatPassword: ['', Validators.required],
       },
-      { validators: [matchValidator('password', 'repeatPassword')] }
+      { validators: [matchValidator('password', 'repeatPassword')], updateOn: 'submit' }
     ),
   });
 
@@ -57,4 +57,8 @@ export class RegisterComponent {
       placeholder: 'Repeat password...',
     },
   ];
+
+  public register(): void {
+    this.registerFormGroup.markAllAsTouched();
+  }
 }

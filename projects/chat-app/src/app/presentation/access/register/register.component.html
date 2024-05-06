@@ -1,5 +1,5 @@
 <kaa-auth-core headerText="Register">
-  <form auth-form [formGroup]="registerFormGroup">
+  <form auth-form [formGroup]="registerFormGroup" (ngSubmit)="register()">
     <kaa-form-part controlKey="fullName" label="Full Name" [formPartProperties]="fullNameControlProperties" />
 
     <kaa-form-part
@@ -8,7 +8,9 @@
       [formPartProperties]="contactInformationControlProperties" />
     <kaa-form-part controlKey="passwords" label="Password" [formPartProperties]="passwordsControlProperties" />
 
-    <button mat-raised-button color="accent">Register</button>
+    <button mat-raised-button color="accent" type="submit">Register</button>
     <button mat-button color="primary">Login</button>
   </form>
 </kaa-auth-core>
+
+{{ registerFormGroup.get('passwords')?.errors }}
