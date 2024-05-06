@@ -3,8 +3,8 @@
 
   @for (controlName of formPartControlKeys(); track controlName; let i = $index) {
     <mat-form-field color="accent">
-      <mat-label>{{ controlProperties()[i].label }}</mat-label>
-      <input formControlName="{{ controlName }}" matInput [placeholder]="controlProperties()[i].placeholder" />
+      <mat-label>{{ formPartProperties()[i].label }}</mat-label>
+      <input formControlName="{{ controlName }}" matInput [placeholder]="formPartProperties()[i].placeholder" />
     </mat-form-field>
   }
 </fieldset>

@@ -1,12 +1,12 @@
 <kaa-auth-core headerText="Register">
   <form auth-form [formGroup]="registerFormGroup">
-    <kaa-form-part controlKey="fullName" label="Full Name" [controlProperties]="fullNameControlProperties" />
+    <kaa-form-part controlKey="fullName" label="Full Name" [formPartProperties]="fullNameControlProperties" />
 
     <kaa-form-part
       controlKey="contactInformation"
       label="Contact Information"
-      [controlProperties]="contactInformationControlProperties" />
-    <kaa-form-part controlKey="passwords" label="Password" [controlProperties]="passwordsControlProperties" />
+      [formPartProperties]="contactInformationControlProperties" />
+    <kaa-form-part controlKey="passwords" label="Password" [formPartProperties]="passwordsControlProperties" />
 
     <button mat-raised-button color="accent">Register</button>
     <button mat-button color="primary">Login</button>

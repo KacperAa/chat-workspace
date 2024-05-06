@@ -18,7 +18,7 @@ export class FormPartComponent {
 
   public label = input.required<string>();
   public controlKey = input.required<string>();
-  public controlProperties = input.required<FormPartProperties[]>();
+  public formPartProperties = input.required<FormPartProperties[]>();
 
   private get _parentFormGroup(): FormGroup {
     return this.parentContainer.control as FormGroup;
