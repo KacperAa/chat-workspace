@@ -1,0 +1,10 @@
+<fieldset [formGroup]="formPartGroup" class="form-fieldset">
+  <legend>{{ label() }}</legend>
+
+  @for (controlName of formPartControlKeys(); track controlName; let i = $index) {
+    <mat-form-field color="accent">
+      <mat-label>{{ formPartProperties()[i].label }}</mat-label>
+      <input formControlName="{{ controlName }}" matInput [placeholder]="formPartProperties()[i].placeholder" />
+    </mat-form-field>
+  }
+</fieldset>
