@@ -1,8 +1,10 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-export function repeatPasswordValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    console.log(control);
-    return null;
+export function matchValidator(controlName: string, matchControlName: string): ValidatorFn {
+  return (group: AbstractControl): ValidationErrors | null => {
+    const control = group.get(controlName)!.value;
+    const matchControl = group.get(matchControlName)!.value;
+
+    return control === matchControl ? null : { notSame: true };
   };
 }
