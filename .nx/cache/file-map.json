@@ -3,10 +3,13 @@
   "nxVersion": "18.2.4",
   "deps": {
     "@angular/animations": "^17.3.0",
+    "@angular/cdk": "^17.3.5",
     "@angular/common": "^17.3.0",
     "@angular/compiler": "^17.3.0",
     "@angular/core": "^17.3.0",
+    "@angular/fire": "^17.0.1",
     "@angular/forms": "^17.3.0",
+    "@angular/material": "^17.3.5",
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
@@ -43,9 +46,11 @@
     "typescript-eslint": "^7.7.0"
   },
   "pathMappings": {
-    "ui": [
-      "./dist/ui",
-      "./dist/ui"
+    "@ui/*": [
+      "./projects/ui/src/public-api.ts"
+    ],
+    "@api/*": [
+      "./projects/chat-app/src/app/business"
     ]
   },
   "nxJsonPlugins": [],
@@ -61,12 +66,16 @@
         "hash": "7432678287971132460"
       },
       {
+        "file": ".firebaserc",
+        "hash": "648529954398149576"
+      },
+      {
         "file": ".gitignore",
-        "hash": "4689145951703824387"
+        "hash": "1814254339261842833"
       },
       {
         "file": ".prettierrc.json",
-        "hash": "18085527370074884340"
+        "hash": "16838992808875902338"
       },
       {
         "file": ".vscode/extensions.json",
@@ -86,15 +95,275 @@
       },
       {
         "file": "angular.json",
-        "hash": "2895711324237713225"
+        "hash": "10734497339732469360"
+      },
+      {
+        "file": "firebase.json",
+        "hash": "9572564696411723111"
       },
       {
         "file": "package-lock.json",
-        "hash": "6558824231344559440"
+        "hash": "16483118316808508733"
       },
       {
         "file": "package.json",
-        "hash": "12285111430202753361"
+        "hash": "17777068628314075264"
+      },
+      {
+        "file": "projects/chat-app/.eslintrc.json",
+        "hash": "6171515244080192811"
+      },
+      {
+        "file": "projects/chat-app/src/app/app.component.html",
+        "hash": "11958735616642380711"
+      },
+      {
+        "file": "projects/chat-app/src/app/app.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/chat-app/src/app/app.component.ts",
+        "hash": "14729535394473049594"
+      },
+      {
+        "file": "projects/chat-app/src/app/app.config.ts",
+        "hash": "16275636637455360306"
+      },
+      {
+        "file": "projects/chat-app/src/app/app.routes.ts",
+        "hash": "9109804212659810269"
+      },
+      {
+        "file": "projects/chat-app/src/app/business/api/auth/auth-http.service.ts",
+        "hash": "7394323686777820593"
+      },
+      {
+        "file": "projects/chat-app/src/app/business/api/auth/auth.store.ts",
+        "hash": "14943306096224013883"
+      },
+      {
+        "file": "projects/chat-app/src/app/business/api/user/mockup-data/user.mockup.ts",
+        "hash": "11286308443991764428"
+      },
+      {
+        "file": "projects/chat-app/src/app/business/api/user/models/user.model.ts",
+        "hash": "17902965826407346463"
+      },
+      {
+        "file": "projects/chat-app/src/app/business/api/user/user-http.service.ts",
+        "hash": "7694048678193417840"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/login/login.component.html",
+        "hash": "6419944782015644995"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/login/login.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/login/login.component.ts",
+        "hash": "2185079248690475428"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/login/models/login-form-group.model.ts",
+        "hash": "18383209529426810122"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/models/register-form-group.model.ts",
+        "hash": "5759222380547929336"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/register.component.html",
+        "hash": "11001305823011695206"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/register.component.scss",
+        "hash": "17329721218626444087"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/register.component.ts",
+        "hash": "11792420541368494324"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/ui/molecules/form-field/form-part.component.html",
+        "hash": "17781318798564685771"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/ui/molecules/form-field/form-part.component.scss",
+        "hash": "17329721218626444087"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/ui/molecules/form-field/form-part.component.ts",
+        "hash": "11473686051355729852"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/register/ui/molecules/form-field/models/form-part-properties.model.ts",
+        "hash": "4688555413095698553"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/ui/templates/auth-core/auth-core.component.html",
+        "hash": "12510532896692682520"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/ui/templates/auth-core/auth-core.component.scss",
+        "hash": "4557573318607294499"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/access/ui/templates/auth-core/auth-core.component.ts",
+        "hash": "9874389115396903952"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/core/core-facade.ts",
+        "hash": "11359685654848685883"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/core/core.component.html",
+        "hash": "10162223541611164189"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/core/core.component.scss",
+        "hash": "10055884690288842829"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/core/core.component.ts",
+        "hash": "8793181414904070911"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/core/models/app-navigation.model.ts",
+        "hash": "11096300755327939209"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/conversations-list-section/conversations-list-section.component.html",
+        "hash": "17036824577603615313"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/conversations-list-section/conversations-list-section.component.scss",
+        "hash": "14553225001436036432"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/conversations-list-section/conversations-list-section.component.ts",
+        "hash": "11975945423685537405"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/filter-users/filter-users.component.html",
+        "hash": "2737839414351823198"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/filter-users/filter-users.component.scss",
+        "hash": "12784220050430937364"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/filter-users/filter-users.component.ts",
+        "hash": "6461740820062974319"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/user-conversation/user-conversation.component.html",
+        "hash": "6499189440325534660"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/user-conversation/user-conversation.component.scss",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/user-conversation/user-conversation.component.ts",
+        "hash": "7073169722031971382"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/main/chat-facade.ts",
+        "hash": "3684866859463189705"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/main/chat.component.html",
+        "hash": "10705259330130965043"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/main/chat.component.scss",
+        "hash": "2651897490312174562"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/main/chat.component.ts",
+        "hash": "15492745677443654655"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/main/chat.routes.ts",
+        "hash": "3367765620914690131"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/organisms/messages-collection/messages-collection.component.html",
+        "hash": "4189477573693427038"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/organisms/messages-collection/messages-collection.component.scss",
+        "hash": "4974204974578334174"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/organisms/messages-collection/messages-collection.component.ts",
+        "hash": "331742464768363670"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/organisms/user-carousel/users-horizontal-scroller.component.html",
+        "hash": "16886820911977998166"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/organisms/user-carousel/users-horizontal-scroller.component.scss",
+        "hash": "7832767383610397407"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/organisms/user-carousel/users-horizontal-scroller.component.ts",
+        "hash": "12703048409486701093"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/templates/conversation-core/conversation-core.component.html",
+        "hash": "6546979052697634259"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/templates/conversation-core/conversation-core.component.scss",
+        "hash": "2812302798893863860"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/ui/templates/conversation-core/conversation-core.component.ts",
+        "hash": "14018367721637783336"
+      },
+      {
+        "file": "projects/chat-app/src/app/presentation/chat-app-presentation/pages/chat/users-data/users.store.ts",
+        "hash": "9688718574141771737"
+      },
+      {
+        "file": "projects/chat-app/src/assets/.gitkeep",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "projects/chat-app/src/assets/images/cyberpunk_pc.png",
+        "hash": "6743184062372744719"
+      },
+      {
+        "file": "projects/chat-app/src/assets/images/profile-img.png",
+        "hash": "2268008556949600064"
+      },
+      {
+        "file": "projects/chat-app/src/favicon.ico",
+        "hash": "3988961587069885523"
+      },
+      {
+        "file": "projects/chat-app/src/index.html",
+        "hash": "3375610577823126362"
+      },
+      {
+        "file": "projects/chat-app/src/main.ts",
+        "hash": "4169901790405087765"
+      },
+      {
+        "file": "projects/chat-app/src/styles.scss",
+        "hash": "14032706286487182274"
+      },
+      {
+        "file": "projects/chat-app/tsconfig.app.json",
+        "hash": "5927361027902362554"
+      },
+      {
+        "file": "projects/chat-app/tsconfig.spec.json",
+        "hash": "13338856497352866793"
       },
       {
         "file": "projects/ui/README.md",
@@ -109,8 +378,168 @@
         "hash": "8694482479086823194"
       },
       {
+        "file": "projects/ui/src/lib/atoms/avatar/avatar.component.html",
+        "hash": "15036214574332298676"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/avatar/avatar.component.ts",
+        "hash": "13148089422496634660"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/circle-size/circle-size.service.ts",
+        "hash": "12412373222128766247"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/circle-size/models/circle-presentation-size.model.ts",
+        "hash": "11534371755359298906"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/index.ts",
+        "hash": "10031880948219147225"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/input/input.component.html",
+        "hash": "15036214574332298676"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/input/input.component.scss",
+        "hash": "15146919542299871928"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/input/input.component.ts",
+        "hash": "14018213699723905523"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/navigation-bar-element/navigation-bar-element.component.html",
+        "hash": "9064666852551740009"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/navigation-bar-element/navigation-bar-element.component.scss",
+        "hash": "4417554834018641071"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/navigation-bar-element/navigation-bar-element.component.ts",
+        "hash": "10068482816842320201"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/skeleton-loader/skeleton-bar/skeleton-bar.component.html",
+        "hash": "15406796992354349602"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/skeleton-loader/skeleton-bar/skeleton-bar.component.scss",
+        "hash": "12409531115440589791"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/skeleton-loader/skeleton-bar/skeleton-bar.component.ts",
+        "hash": "7470459963195594847"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/skeleton-loader/skeleton-circle/skeleton-circle-loader.component.html",
+        "hash": "3003920991289082240"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/skeleton-loader/skeleton-circle/skeleton-circle-loader.component.ts",
+        "hash": "7288021114849628682"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/skeleton-loader/styles/_shine-animation.scss",
+        "hash": "5770377200217137856"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/skeleton-loader/styles/_skeleton-base.scss",
+        "hash": "14907841414468699269"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/text-cloud/models/text-cloud-color.model.ts",
+        "hash": "10566972110479764974"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/text-cloud/text-cloud.component.html",
+        "hash": "15047025272208839604"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/text-cloud/text-cloud.component.scss",
+        "hash": "16685714579796724887"
+      },
+      {
+        "file": "projects/ui/src/lib/atoms/text-cloud/text-cloud.component.ts",
+        "hash": "16088192917314023598"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/avatar-with-content/avatar-with-content.component.html",
+        "hash": "11061756849323618494"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/avatar-with-content/avatar-with-content.component.scss",
+        "hash": "17421881045205772161"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/avatar-with-content/avatar-with-content.component.ts",
+        "hash": "15996775667109024676"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/form-field/form-field.component.html",
+        "hash": "7844625884019644453"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/form-field/form-field.component.scss",
+        "hash": "11456403025438317807"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/form-field/form-field.component.ts",
+        "hash": "5794372707562619539"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/index.ts",
+        "hash": "5714835879582256708"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component.html",
+        "hash": "11314208682858202088"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component.scss",
+        "hash": "640427343043587206"
+      },
+      {
+        "file": "projects/ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component.ts",
+        "hash": "1644230665477124301"
+      },
+      {
+        "file": "projects/ui/src/lib/organisms/horizontal-scroll/horizontal-scroll.component.html",
+        "hash": "4643560855026965445"
+      },
+      {
+        "file": "projects/ui/src/lib/organisms/horizontal-scroll/horizontal-scroll.component.scss",
+        "hash": "16715768984603461180"
+      },
+      {
+        "file": "projects/ui/src/lib/organisms/horizontal-scroll/horizontal-scroll.component.ts",
+        "hash": "720975185997220444"
+      },
+      {
+        "file": "projects/ui/src/lib/organisms/index.ts",
+        "hash": "9214276667269395991"
+      },
+      {
+        "file": "projects/ui/src/lib/organisms/vertical-scroll/vertical-scroll.component.html",
+        "hash": "12855448740421958480"
+      },
+      {
+        "file": "projects/ui/src/lib/organisms/vertical-scroll/vertical-scroll.component.scss",
+        "hash": "6721722941063072445"
+      },
+      {
+        "file": "projects/ui/src/lib/organisms/vertical-scroll/vertical-scroll.component.ts",
+        "hash": "11139013935932399324"
+      },
+      {
+        "file": "projects/ui/src/lib/styles/_circle-presentation.scss",
+        "hash": "8882874355619763399"
+      },
+      {
         "file": "projects/ui/src/public-api.ts",
-        "hash": "7749434756928797541"
+        "hash": "9738117541936538616"
       },
       {
         "file": "projects/ui/tsconfig.lib.json",
@@ -126,7 +555,7 @@
       },
       {
         "file": "tsconfig.json",
-        "hash": "11113981277895743571"
+        "hash": "640098023547854540"
       }
     ]
   }

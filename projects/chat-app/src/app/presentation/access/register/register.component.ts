@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { matchValidator } from '@validators/matchValidator';
 
 import { AuthCoreComponent } from '../ui/templates/auth-core/auth-core.component';
 import { RegisterFormGroup } from './models/register-form-group.model';
@@ -30,10 +31,13 @@ export class RegisterComponent {
     contactInformation: this._fb.group({
       email: ['', [Validators.required]],
     }),
-    passwords: this._fb.group({
-      password: ['', [Validators.required]],
-      repeatPassword: ['', Validators.required],
-    }),
+    passwords: this._fb.group(
+      {
+        password: ['', [Validators.required]],
+        repeatPassword: ['', Validators.required],
+      },
+      { validators: [matchValidator('password', 'repeatPassword')], updateOn: 'submit' }
+    ),
   });
 
   public fullNameControlProperties: FormPartProperties[] = [
@@ -53,4 +57,8 @@ export class RegisterComponent {
       placeholder: 'Repeat password...',
     },
   ];
+
+  public register(): void {
+    this.registerFormGroup.markAllAsTouched();
+  }
 }

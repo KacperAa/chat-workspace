@@ -20,7 +20,12 @@
     "useDefineForClassFields": false,
     "paths": {
       "@ui/*": ["./projects/ui/src/public-api.ts"],
-      "@api/*": ["./projects/chat-app/src/app/business"]
+      "@api/*": [
+        "./projects/chat-app/src/app/business"
+      ],
+      "@validators/*": [
+        "./projects/validators/src/public-api.ts"
+      ],
     },
     "lib": ["ES2022", "dom"]
   },
