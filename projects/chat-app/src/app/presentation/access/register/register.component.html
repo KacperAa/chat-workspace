@@ -1,5 +1,7 @@
 <kaa-auth-core headerText="Register">
   <form auth-form [formGroup]="registerFormGroup" (ngSubmit)="register()">
+    <kaa-form-part controlKey="fullName" label="Full Name" [formPartProperties]="fullNameControlProperties" />
+
     <kaa-form-part
       controlKey="contactInformation"
       label="Contact Information"

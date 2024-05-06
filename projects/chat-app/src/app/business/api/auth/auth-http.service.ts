@@ -3,6 +3,7 @@ import { Auth, createUserWithEmailAndPassword, updateProfile } from '@angular/fi
 
 import { User } from '../user/models/user.model';
 import { AuthStore } from './auth.store';
+import { SignupCredentials } from './models/signup-credentials';
 
 import { Observable, delay, from, of, switchMap, tap } from 'rxjs';
 
@@ -33,7 +34,7 @@ export class AuthHttpService {
     );
   }
 
-  public signUp({ email, password, displayName }: any): void {
+  public signUp({ email, password, displayName }: SignupCredentials): void {
     from(createUserWithEmailAndPassword(this._firebaseAuth, email, password)).pipe(
       switchMap(({ user }) => updateProfile(user, { displayName }))
     );
