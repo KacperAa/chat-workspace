@@ -24,7 +24,7 @@
         "./projects/chat-app/src/app/business"
       ],
       "@validators/*": [
-        "./projects/validators/src"
+        "./projects/validators/src/public-api.ts"
       ],
     },
     "lib": ["ES2022", "dom"]
