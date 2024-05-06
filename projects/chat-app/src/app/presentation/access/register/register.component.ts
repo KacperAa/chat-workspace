@@ -24,10 +24,6 @@ export class RegisterComponent {
   private _fb = inject(FormBuilder);
 
   public registerFormGroup: FormGroup<RegisterFormGroup> = this._fb.group({
-    fullName: this._fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-    }),
     contactInformation: this._fb.group({
       email: ['', [Validators.required]],
     }),
@@ -39,14 +35,6 @@ export class RegisterComponent {
       { validators: [matchValidator('password', 'repeatPassword')], updateOn: 'submit' }
     ),
   });
-
-  public fullNameControlProperties: FormPartProperties[] = [
-    { label: 'Full Name', placeholder: 'Full name...' },
-    {
-      label: 'Last Name',
-      placeholder: 'Last name...',
-    },
-  ];
 
   public contactInformationControlProperties: FormPartProperties[] = [{ label: 'Email', placeholder: 'Email...' }];
 
