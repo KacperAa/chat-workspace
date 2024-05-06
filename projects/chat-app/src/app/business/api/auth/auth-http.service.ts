@@ -1,10 +1,10 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 
 import { User } from '../user/models/user.model';
 import { AuthStore } from './auth.store';
 
-import { Observable, delay, of, tap } from 'rxjs';
+import { Observable, delay, from, of, switchMap, tap } from 'rxjs';
 
 const MOCKUP_LOGGED_USER: User = {
   id: '1',
@@ -33,12 +33,15 @@ export class AuthHttpService {
     );
   }
 
-  public signUp(): Observable<User> {
-    return of(MOCKUP_LOGGED_USER).pipe(
-      delay(2000),
-      tap((user: User) => {
-        this._authStore.setLoggedUser(user);
-      })
+  public signUp({ email, password, displayName }: any): void {
+    from(createUserWithEmailAndPassword(this._firebaseAuth, email, password)).pipe(
+      switchMap(({ user }) => updateProfile(user, { displayName }))
     );
+    // return of(MOCKUP_LOGGED_USER).pipe(
+    //   delay(2000),
+    //   tap((user: User) => {
+    //     this._authStore.setLoggedUser(user);
+    //   })
+    // );
   }
 }
