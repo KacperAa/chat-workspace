@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { AuthHttpService } from '../../../business/api/auth/auth-http.service';
 import { SigninCredentials } from '../../../business/api/auth/models/signin-credentials';
@@ -8,7 +10,9 @@ import { LoginFormGroup } from './models/login-form-group.model';
 @Injectable()
 export class LoginFacade {
   private _fb = inject(FormBuilder);
+  private _router = inject(Router);
   private _httpAuth = inject(AuthHttpService);
+  private _snackBar = inject(MatSnackBar);
 
   public loginFormGroup: FormGroup<LoginFormGroup> = this._fb.group({
     email: ['', [Validators.required]],
@@ -16,7 +20,13 @@ export class LoginFacade {
   });
 
   public signIn(): void {
-    this._httpAuth.signIn(this._transformFormValueToSend()).subscribe();
+    this._httpAuth.signIn(this._transformFormValueToSend()).subscribe({
+      next: () => this._router.navigate(['chat']),
+      error: error =>
+        this._snackBar.open(error.message, 'close', {
+          duration: 5000,
+        }),
+    });
   }
 
   private _transformFormValueToSend(): SigninCredentials {
