@@ -27,4 +27,8 @@ export class AuthHttpService {
       switchMap(({ user }) => updateProfile(user, { displayName }))
     );
   }
+
+  public signOut(): Observable<void> {
+    return from(this._firebaseAuth.signOut());
+  }
 }
