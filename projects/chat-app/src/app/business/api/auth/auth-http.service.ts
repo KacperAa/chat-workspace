@@ -2,7 +2,6 @@ import { Injectable, inject } from '@angular/core';
 import {
   Auth,
   UserCredential,
-  authState,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
