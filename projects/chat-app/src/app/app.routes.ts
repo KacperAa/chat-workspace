@@ -2,6 +2,7 @@ import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angula
 import { Routes } from '@angular/router';
 
 export const APP_ROUTES: Routes = [
+  { path: '', redirectTo: 'chat', pathMatch: 'full' },
   {
     path: 'login',
     loadComponent: () => import('./presentation/access/login/login.component').then(c => c.LoginComponent),
