@@ -4,6 +4,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { matchValidator } from '@validators/matchValidator';
 
 import { AuthHttpService } from '../../../business/api/auth/auth-http.service';
@@ -13,7 +15,7 @@ import { RegisterFormGroup } from './models/register-form-group.model';
 import { FormPartComponent } from './ui/molecules/form-field/form-part.component';
 import { FormPartProperties } from './ui/molecules/form-field/models/form-part-properties.model';
 
-const MATERIAL_IMPORTS = [MatButton, MatLabel, MatFormField, MatInput];
+const MATERIAL_IMPORTS = [MatButton, MatLabel, MatFormField, MatInput, MatSnackBarModule];
 
 @Component({
   selector: 'kaa-register',
@@ -24,6 +26,8 @@ const MATERIAL_IMPORTS = [MatButton, MatLabel, MatFormField, MatInput];
 })
 export class RegisterComponent {
   private _fb = inject(FormBuilder);
+  private _router = inject(Router);
+  private _snackBar = inject(MatSnackBar);
   private _authHttp = inject(AuthHttpService);
 
   public registerFormGroup: FormGroup<RegisterFormGroup> = this._fb.group({
@@ -63,7 +67,13 @@ export class RegisterComponent {
 
   public register(): void {
     if (this.registerFormGroup.valid) {
-      this._authHttp.signUp(this._transformFormValueToSend());
+      this._authHttp.signUp(this._transformFormValueToSend()).subscribe({
+        next: () => this._router.navigate(['chat']),
+        error: error =>
+          this._snackBar.open(error.message, 'close', {
+            duration: 5000,
+          }),
+      });
     }
     this.registerFormGroup.markAllAsTouched();
   }

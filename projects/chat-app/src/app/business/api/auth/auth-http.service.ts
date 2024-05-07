@@ -34,8 +34,8 @@ export class AuthHttpService {
     );
   }
 
-  public signUp({ email, password, displayName }: SignupCredentials): void {
-    from(createUserWithEmailAndPassword(this._firebaseAuth, email, password)).pipe(
+  public signUp({ email, password, displayName }: SignupCredentials): Observable<void> {
+    return from(createUserWithEmailAndPassword(this._firebaseAuth, email, password)).pipe(
       switchMap(({ user }) => updateProfile(user, { displayName }))
     );
   }
