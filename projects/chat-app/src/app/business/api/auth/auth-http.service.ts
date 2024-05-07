@@ -19,8 +19,6 @@ import { Observable, from, switchMap } from 'rxjs';
 export class AuthHttpService {
   private _firebaseAuth = inject(Auth);
 
-  readonly loggedUser$ = authState(this._firebaseAuth);
-
   public signIn({ email, password }: SigninCredentials): Observable<UserCredential> {
     return from(signInWithEmailAndPassword(this._firebaseAuth, email, password));
   }
