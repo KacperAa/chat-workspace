@@ -1,11 +1,11 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
+import { Auth, authState, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 
 import { User } from '../user/models/user.model';
 import { AuthStore } from './auth.store';
 import { SignupCredentials } from './models/signup-credentials';
 
-import { Observable, delay, from, of, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, Observable, delay, from, of, switchMap, tap } from 'rxjs';
 
 const MOCKUP_LOGGED_USER: User = {
   id: '1',
@@ -22,16 +22,12 @@ const MOCKUP_LOGGED_USER: User = {
   providedIn: 'root',
 })
 export class AuthHttpService {
-  private _authStore = inject(AuthStore);
   private _firebaseAuth = inject(Auth);
 
+  readonly loggedUser$ = authState(this._firebaseAuth);
+
   public signIn(credentials = {}): Observable<User> {
-    return of(MOCKUP_LOGGED_USER).pipe(
-      delay(2000),
-      tap((user: User) => {
-        this._authStore.setLoggedUser(user);
-      })
-    );
+    return of(MOCKUP_LOGGED_USER).pipe(delay(2000));
   }
 
   public signUp({ email, password, displayName }: SignupCredentials): Observable<void> {
