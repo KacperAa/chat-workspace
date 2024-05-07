@@ -6,6 +6,8 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { matchValidator } from '@validators/matchValidator';
 
+import { AuthHttpService } from '../../../business/api/auth/auth-http.service';
+import { SignupCredentials } from '../../../business/api/auth/models/signup-credentials';
 import { AuthCoreComponent } from '../ui/templates/auth-core/auth-core.component';
 import { RegisterFormGroup } from './models/register-form-group.model';
 import { FormPartComponent } from './ui/molecules/form-field/form-part.component';
@@ -22,6 +24,7 @@ const MATERIAL_IMPORTS = [MatButton, MatLabel, MatFormField, MatInput];
 })
 export class RegisterComponent {
   private _fb = inject(FormBuilder);
+  private _authHttp = inject(AuthHttpService);
 
   public registerFormGroup: FormGroup<RegisterFormGroup> = this._fb.group({
     fullName: this._fb.group({
@@ -59,6 +62,21 @@ export class RegisterComponent {
   ];
 
   public register(): void {
+    if (this.registerFormGroup.valid) {
+      this._authHttp.signUp(this._transformFormValueToSend());
+    }
     this.registerFormGroup.markAllAsTouched();
+  }
+
+  private _transformFormValueToSend(): SignupCredentials {
+    const emailControl = this.registerFormGroup.get('contactInformation')!;
+    const passwordsControl = this.registerFormGroup.get('passwords')!;
+    const fullNameControl = this.registerFormGroup.get('fullName')!;
+
+    return {
+      email: emailControl.value.email!,
+      password: passwordsControl.value.password!,
+      displayName: `${fullNameControl.value.firstName!} ${fullNameControl.value.lastName!}`,
+    };
   }
 }

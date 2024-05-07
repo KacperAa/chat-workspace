@@ -38,11 +38,5 @@ export class AuthHttpService {
     from(createUserWithEmailAndPassword(this._firebaseAuth, email, password)).pipe(
       switchMap(({ user }) => updateProfile(user, { displayName }))
     );
-    // return of(MOCKUP_LOGGED_USER).pipe(
-    //   delay(2000),
-    //   tap((user: User) => {
-    //     this._authStore.setLoggedUser(user);
-    //   })
-    // );
   }
 }
