@@ -2,10 +2,9 @@ import { Injectable, inject } from '@angular/core';
 import { Auth, authState, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 
 import { User } from '../user/models/user.model';
-import { AuthStore } from './auth.store';
 import { SignupCredentials } from './models/signup-credentials';
 
-import { BehaviorSubject, Observable, delay, from, of, switchMap, tap } from 'rxjs';
+import { Observable, delay, from, of, switchMap } from 'rxjs';
 
 const MOCKUP_LOGGED_USER: User = {
   id: '1',
