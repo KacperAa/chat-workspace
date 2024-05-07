@@ -1,44 +1,34 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import {
+  Auth,
+  UserCredential,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from '@angular/fire/auth';
 
-import { User } from '../user/models/user.model';
-import { AuthStore } from './auth.store';
+import { SigninCredentials } from './models/signin-credentials';
+import { SignupCredentials } from './models/signup-credentials';
 
-import { Observable, delay, of, tap } from 'rxjs';
-
-const MOCKUP_LOGGED_USER: User = {
-  id: '1',
-  firstName: 'Kacper',
-  lastName: 'Augustyn',
-  email: 'Kacper@Augustyn',
-  phoneNum: '123456',
-  createdAt: new Date(),
-  profilePicture: '../../../../assets/images/profile-img.png',
-  activationStatus: true,
-};
+import { Observable, from, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthHttpService {
-  private _authStore = inject(AuthStore);
   private _firebaseAuth = inject(Auth);
 
-  public signIn(credentials = {}): Observable<User> {
-    return of(MOCKUP_LOGGED_USER).pipe(
-      delay(2000),
-      tap((user: User) => {
-        this._authStore.setLoggedUser(user);
-      })
+  public signIn({ email, password }: SigninCredentials): Observable<UserCredential> {
+    return from(signInWithEmailAndPassword(this._firebaseAuth, email, password));
+  }
+
+  public signUp({ email, password, displayName }: SignupCredentials): Observable<void> {
+    return from(createUserWithEmailAndPassword(this._firebaseAuth, email, password)).pipe(
+      switchMap(({ user }) => updateProfile(user, { displayName }))
     );
   }
 
-  public signUp(): Observable<User> {
-    return of(MOCKUP_LOGGED_USER).pipe(
-      delay(2000),
-      tap((user: User) => {
-        this._authStore.setLoggedUser(user);
-      })
-    );
+  public signOut(): Observable<void> {
+    return from(this._firebaseAuth.signOut());
   }
 }
