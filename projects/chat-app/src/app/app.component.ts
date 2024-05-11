@@ -1,6 +1,7 @@
-import { CoreComponent } from './presentation/chat-app-presentation/core/core.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { CoreComponent } from './presentation/chat-app-presentation/core/core.component';
 
 @Component({
   selector: 'kaa-root',
@@ -9,6 +10,4 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'chat-app';
-}
+export class AppComponent {}
