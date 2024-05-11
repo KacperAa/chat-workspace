@@ -1,23 +1,29 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
 import * as admin from 'firebase-admin';
-import * as logger from 'firebase-functions/logger';
-import { onRequest } from 'firebase-functions/v2/https';
-
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+import * as functions from 'firebase-functions';
 
 const cors = require('cors')({ origin: true });
+const StreamChat = require('stream-chat').StreamChat;
+
+const serverStreamClient = StreamChat.getInstance(functions.config().stream.key, functions.config().stream.secret);
+
 admin.initializeApp();
 
-export const createStreamUser = onRequest((request, response) => {
+export const createStreamUser = functions.https.onRequest((request, response) => {
   cors(request, response, async () => {
     const { user } = request.body;
+    if (!user) {
+      throw new functions.https.HttpsError('failed-precondition', 'Bad request');
+    } else {
+      try {
+        await serverStreamClient.upsertUser({
+          id: user.uid,
+          name: user.displayName,
+          email: user.email,
+        });
+        response.status(200).send({ message: 'User created' });
+      } catch (error) {
+        throw new functions.https.HttpsError('aborted', 'Could not create Stream user');
+      }
+    }
   });
 });
