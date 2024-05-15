@@ -1,12 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
 
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
 import { SkeletonCircleAndBarsComponent } from '@ui/SkeletonCircleAndBarsComponent';
 
-import { environment } from '../../../../../../environments/environment';
 import { UserHttpService } from '../../../../../business/api/user/user-http.service';
 import { CoreComponent } from '../../../core/core.component';
 import { ConversationsListSectionComponent } from '../feature/conversations-list-section/conversations-list-section.component';
