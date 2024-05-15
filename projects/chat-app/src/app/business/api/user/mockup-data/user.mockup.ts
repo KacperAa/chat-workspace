@@ -1,6 +1,6 @@
-import { User } from '../models/user.model';
+import { UserMockup } from '../models/user.model';
 
-export const USERS_MOCKUP: User[] = [
+export const USERS_MOCKUP: UserMockup[] = [
   {
     id: '1',
     firstName: 'Kacper',

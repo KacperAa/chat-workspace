@@ -7,7 +7,6 @@ import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent
 import { SkeletonCircleAndBarsComponent } from '@ui/SkeletonCircleAndBarsComponent';
 
 import { environment } from '../../../../../../environments/environment';
-import { AuthStore } from '../../../../../business/api/auth/auth.store';
 import { UserHttpService } from '../../../../../business/api/user/user-http.service';
 import { CoreComponent } from '../../../core/core.component';
 import { ConversationsListSectionComponent } from '../feature/conversations-list-section/conversations-list-section.component';
@@ -34,17 +33,11 @@ import { ChatFacade } from './chat-facade';
 })
 export class ChatComponent implements OnInit {
   protected chatFacade = inject(ChatFacade);
-  private _auth = inject(AuthStore);
 
   private _usersHttp = inject(UserHttpService);
-  private _chatService: ChatClientService = inject(ChatClientService);
-  private _channelService: ChannelService = inject(ChannelService);
-  private _streamI18nService: StreamI18nService = inject(StreamI18nService);
 
   public ngOnInit(): void {
+    this.chatFacade.initChat();
     this._usersHttp.getUsers().subscribe();
-
-    this._chatService.init(environment.stream.key, this._auth.loggedUser()?.uid, this._auth.loggedUser()?.getIdToken);
-    this._streamI18nService.setTranslation();
   }
 }
