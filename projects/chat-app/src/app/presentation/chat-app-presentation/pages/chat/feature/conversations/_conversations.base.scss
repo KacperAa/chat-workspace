@@ -4,6 +4,7 @@
 
   &__conversation-presentation {
     margin-bottom: 0.75rem;
+
     .text-wrapper {
       color: gray;
 
@@ -13,6 +14,10 @@
         font-size: 0.75rem;
       }
     }
+  }
+
+  &__conversation-loader {
+    margin-bottom: 0.75rem;
   }
 
   &:last-child {
