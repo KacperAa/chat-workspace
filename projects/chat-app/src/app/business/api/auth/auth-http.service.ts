@@ -8,10 +8,11 @@ import {
   updateProfile,
 } from '@angular/fire/auth';
 
+import { environment } from '../../../../environments/environment';
 import { SigninCredentials } from './models/signin-credentials';
 import { SignupCredentials } from './models/signup-credentials';
 
-import { Observable, forkJoin, from, switchMap } from 'rxjs';
+import { Observable, forkJoin, from, pluck, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,14 @@ import { Observable, forkJoin, from, switchMap } from 'rxjs';
 export class AuthHttpService {
   private _firebaseAuth = inject(Auth);
   private _http = inject(HttpClient);
+
+  public getStreamToken() {
+    return this._http
+      .post<{ token: string }>(`${environment.firebase.apiUrl}/createStreamToken`, {
+        user: this._firebaseAuth.currentUser,
+      })
+      .pipe(pluck('token'));
+  }
 
   public signIn({ email, password }: SigninCredentials): Observable<UserCredential> {
     return from(signInWithEmailAndPassword(this._firebaseAuth, email, password));
@@ -29,7 +38,7 @@ export class AuthHttpService {
       switchMap(({ user }) =>
         forkJoin([
           updateProfile(user, { displayName }),
-          this._http.post('https://us-central1-kaa-chat-app.cloudfunctions.net/createStreamUser', {
+          this._http.post(`${environment.firebase.apiUrl}/createStreamUser`, {
             user: { ...user, displayName },
           }),
         ])
