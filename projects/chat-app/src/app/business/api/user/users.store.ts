@@ -1,6 +1,6 @@
 import { Injectable, Signal } from '@angular/core';
 
-import { UserMockup } from '../../../../../business/api/user/models/user.model';
+import { UserMockup } from './models/user.model';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject } from 'rxjs';

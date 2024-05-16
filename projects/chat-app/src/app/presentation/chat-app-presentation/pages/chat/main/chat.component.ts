@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -15,6 +16,9 @@ import { ChatFacade } from './chat-facade';
 @Component({
   selector: 'kaa-chat',
   standalone: true,
+  providers: [ChatFacade],
+  templateUrl: './chat.component.html',
+  styleUrl: './chat.component.scss',
   imports: [
     CoreComponent,
     FilterUsersComponent,
@@ -24,10 +28,8 @@ import { ChatFacade } from './chat-facade';
     ConversationsListSectionComponent,
     SkeletonCircleAndBarsComponent,
     RouterOutlet,
+    AsyncPipe,
   ],
-  providers: [ChatFacade],
-  templateUrl: './chat.component.html',
-  styleUrl: './chat.component.scss',
 })
 export class ChatComponent implements OnInit {
   protected chatFacade = inject(ChatFacade);

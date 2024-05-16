@@ -4,7 +4,7 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { AvatarComponent } from '@ui/AvatarWithContentComponent';
 import { SkeletonCircleAndBarsComponent } from '@ui/SkeletonCircleAndBarsComponent';
 
-import { UsersStore } from '../../users-data/users.store';
+import { UsersStore } from '../../../../../../business/api/user/users.store';
 
 @Component({
   selector: 'kaa-conversations-list-section',
