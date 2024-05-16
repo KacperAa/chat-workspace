@@ -12,23 +12,27 @@ import { switchMap } from 'rxjs';
 
 @Injectable()
 export class ChatFacade {
-  private _auth = inject(AuthStore);
+  private _authStore = inject(AuthStore);
   private _usersStore = inject(UsersStore);
   private _authHttp = inject(AuthHttpService);
   private _channelService: ChannelService = inject(ChannelService);
   private _chatService: ChatClientService = inject(ChatClientService);
   private _streamI18nService: StreamI18nService = inject(StreamI18nService);
 
-  private readonly _authUser: Signal<User> = computed(() => this._auth.loggedUser()!);
+  private readonly _authUser: Signal<User> = computed(() => this._authStore.loggedUser()!);
 
   readonly users: Signal<UserMockup[]> = this._usersStore.users;
 
   public initChat(): void {
-    this._authHttp
-      .getStreamToken()
-      .pipe(
-        switchMap(streamToken => this._chatService.init(environment.stream.key, this._authUser().uid, streamToken))
-      );
+    this._authHttp.getStreamToken().pipe(
+      switchMap(streamToken => this._chatService.init(environment.stream.key, this._authUser().uid, streamToken)),
+      switchMap(() =>
+        this._channelService.init({
+          type: 'messaging',
+          id: { $in: [this._authUser().uid] },
+        })
+      )
+    );
 
     this._streamI18nService.setTranslation();
   }
