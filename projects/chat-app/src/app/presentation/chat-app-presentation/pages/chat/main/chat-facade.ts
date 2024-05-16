@@ -1,4 +1,4 @@
-import { Injectable, Signal, computed, inject } from '@angular/core';
+import { Injectable, Signal, WritableSignal, computed, inject, signal } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
 
@@ -8,7 +8,7 @@ import { AuthStore } from '../../../../../business/api/auth/auth.store';
 import { UserMockup } from '../../../../../business/api/user/models/user.model';
 import { UsersStore } from '../users-data/users.store';
 
-import { Observable, catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap } from 'rxjs';
 
 @Injectable()
 export class ChatFacade {
@@ -19,7 +19,9 @@ export class ChatFacade {
   private _chatService: ChatClientService = inject(ChatClientService);
   private _streamI18nService: StreamI18nService = inject(StreamI18nService);
 
-  private _chatIsReady$!: Observable<boolean>;
+  private _chatIsReady: WritableSignal<boolean> = signal(false);
+
+  readonly chatIsReady: Signal<boolean> = this._chatIsReady.asReadonly();
 
   private readonly _authUser: Signal<User> = computed(() => this._authStore.loggedUser()!);
 
@@ -28,7 +30,7 @@ export class ChatFacade {
   public initChat(): void {
     this._streamI18nService.setTranslation();
 
-    this._chatIsReady$ = this._authHttp.getStreamToken().pipe(
+    this._authHttp.getStreamToken().pipe(
       switchMap(streamToken => this._chatService.init(environment.stream.key, this._authUser().uid, streamToken)),
       switchMap(() =>
         this._channelService.init({
@@ -36,8 +38,8 @@ export class ChatFacade {
           members: { $in: [this._authUser().uid] },
         })
       ),
-      map(() => true),
-      catchError(() => of(false))
+      map(() => this._chatIsReady.set(true)),
+      catchError(() => of(this._chatIsReady.set(false)))
     );
   }
 }
