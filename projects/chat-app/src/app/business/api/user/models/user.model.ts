@@ -1,4 +1,5 @@
-export interface User {
+export interface UserMockup {
+  // do modyfikacji w przyszłości
   id: string;
   firstName: string;
   lastName: string;

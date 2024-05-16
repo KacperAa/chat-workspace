@@ -4,6 +4,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { APP_ROUTES } from './app.routes';
 
@@ -25,5 +26,6 @@ export const appConfig: ApplicationConfig = {
       )
     ),
     importProvidersFrom(provideAuth(() => getAuth())),
+    importProvidersFrom(TranslateModule.forRoot()),
   ],
 };

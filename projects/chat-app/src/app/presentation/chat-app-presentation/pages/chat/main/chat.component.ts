@@ -30,11 +30,12 @@ import { ChatFacade } from './chat-facade';
   styleUrl: './chat.component.scss',
 })
 export class ChatComponent implements OnInit {
-  public chatFacade = inject(ChatFacade);
+  protected chatFacade = inject(ChatFacade);
 
   private _usersHttp = inject(UserHttpService);
 
   public ngOnInit(): void {
+    this.chatFacade.initChat();
     this._usersHttp.getUsers().subscribe();
   }
 }
