@@ -8,7 +8,7 @@ import { AuthStore } from '../../../../../business/api/auth/auth.store';
 import { UserMockup } from '../../../../../business/api/user/models/user.model';
 import { UsersStore } from '../users-data/users.store';
 
-import { switchMap } from 'rxjs';
+import { Observable, catchError, map, of, switchMap } from 'rxjs';
 
 @Injectable()
 export class ChatFacade {
@@ -19,21 +19,25 @@ export class ChatFacade {
   private _chatService: ChatClientService = inject(ChatClientService);
   private _streamI18nService: StreamI18nService = inject(StreamI18nService);
 
+  private _chatIsReady$!: Observable<boolean>;
+
   private readonly _authUser: Signal<User> = computed(() => this._authStore.loggedUser()!);
 
   readonly users: Signal<UserMockup[]> = this._usersStore.users;
 
   public initChat(): void {
-    this._authHttp.getStreamToken().pipe(
+    this._streamI18nService.setTranslation();
+
+    this._chatIsReady$ = this._authHttp.getStreamToken().pipe(
       switchMap(streamToken => this._chatService.init(environment.stream.key, this._authUser().uid, streamToken)),
       switchMap(() =>
         this._channelService.init({
           type: 'messaging',
-          id: { $in: [this._authUser().uid] },
+          members: { $in: [this._authUser().uid] },
         })
-      )
+      ),
+      map(() => true),
+      catchError(() => of(false))
     );
-
-    this._streamI18nService.setTranslation();
   }
 }
