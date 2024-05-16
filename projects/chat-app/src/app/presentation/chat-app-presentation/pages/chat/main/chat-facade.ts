@@ -9,7 +9,7 @@ import { UserMockup } from '../../../../../business/api/user/models/user.model';
 import { UsersStore } from '../../../../../business/api/user/users.store';
 import { ChatLoader } from '../../../chat-loader/chat-loader';
 
-import { Observable, catchError, map, of, switchMap, tap } from 'rxjs';
+import { catchError, switchMap, tap } from 'rxjs';
 
 @Injectable()
 export class ChatFacade {

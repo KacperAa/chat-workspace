@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -28,7 +27,6 @@ import { ChatFacade } from './chat-facade';
     ConversationsListSectionComponent,
     SkeletonCircleAndBarsComponent,
     RouterOutlet,
-    AsyncPipe,
   ],
 })
 export class ChatComponent implements OnInit {
