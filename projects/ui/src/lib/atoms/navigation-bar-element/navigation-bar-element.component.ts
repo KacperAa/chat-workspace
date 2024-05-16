@@ -32,7 +32,6 @@ export class NavigationBarElementComponent implements OnInit {
     if (this.isActivated()) {
       const element = this.elementRef.nativeElement;
       const classList = (element as HTMLElement).classList;
-
       classList.add('active');
     }
   }

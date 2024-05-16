@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
@@ -27,6 +28,7 @@ import { ChatFacade } from './chat-facade';
     ConversationsListSectionComponent,
     SkeletonCircleAndBarsComponent,
     RouterOutlet,
+    RouterModule,
   ],
 })
 export class ChatComponent implements OnInit {
