@@ -1,26 +1,16 @@
 <section>
   <ul class="conversation-list">
-    <!-- @if (!isFetching()) {
-      @for (user of usersStore.users(); track user) {
-        <li class="conversation-list__conversation-presentation">
-          <ui-avatar-with-content>
-            <img ui-avatar [src]="user.profilePicture" [alt]="user.firstName + ' profile image'" />
-            <div right-content class="text-wrapper">
-              <span>{{ user.firstName + ' ' + user.lastName }}</span>
-              <div class="text-wrapper__last-message-and-delivary-time">
-                <p>This is mockup data!....</p>
-                <span>21:37</span>
-              </div>
-            </div>
-          </ui-avatar-with-content>
-        </li>
-      }
-    } @else {
-      @for (_ of [].constructor(10); track _) {
-        <li class="conversation-list__conversation-presentation">
-          <ui-skeleton-circle-and-bars />
-        </li>
-      }
-    } -->
+    <li class="conversation-list__conversation-presentation">
+      <ui-avatar-with-content>
+        <!-- <img ui-avatar [src]="user.profilePicture" [alt]="user.firstName + ' profile image'" /> -->
+        <div right-content class="text-wrapper">
+          <!-- <span>{{ user.firstName + ' ' + user.lastName }}</span> -->
+          <div class="text-wrapper__last-message-and-delivary-time">
+            <p>This is mockup data!....</p>
+            <span>21:37</span>
+          </div>
+        </div>
+      </ui-avatar-with-content>
+    </li>
   </ul>
 </section>
