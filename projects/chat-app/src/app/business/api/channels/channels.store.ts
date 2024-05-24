@@ -11,7 +11,6 @@ export class ChannelsStore {
   private _channelService = inject(ChannelService);
 
   readonly channels: Signal<Channel<DefaultStreamChatGenerics>[] | undefined> = toSignal(
-    this._channelService.channels$,
-    { initialValue: [] }
+    this._channelService.channels$
   );
 }

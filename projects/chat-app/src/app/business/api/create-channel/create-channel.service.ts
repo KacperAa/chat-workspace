@@ -12,11 +12,12 @@ export class CreateChannelService {
   private _chatService = inject(ChatClientService);
   private _authStore = inject(AuthStore);
 
-  async createChannel(): Promise<void> {
-    const channel = this._chatService.chatClient.channel('messaging', 'talking-about-angular', {
+  createChannel(): void {
+    console.log('here');
+    const channel = this._chatService.chatClient.channel('messaging', 'dupsko', {
       image:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png',
-      name: 'Talking about Angular',
+      name: 'Tduspko',
       members: [this._authStore.loggedUser()!.uid],
     });
 

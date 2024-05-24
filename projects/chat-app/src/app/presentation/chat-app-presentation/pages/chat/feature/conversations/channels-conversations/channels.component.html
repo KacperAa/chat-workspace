@@ -1,16 +1,27 @@
 <section>
   <ul class="conversation-list">
-    <li class="conversation-list__conversation-presentation">
-      <ui-avatar-with-content>
-        <!-- <img ui-avatar [src]="user.profilePicture" [alt]="user.firstName + ' profile image'" /> -->
-        <div right-content class="text-wrapper">
-          <!-- <span>{{ user.firstName + ' ' + user.lastName }}</span> -->
-          <div class="text-wrapper__last-message-and-delivary-time">
-            <p>This is mockup data!....</p>
-            <span>21:37</span>
-          </div>
-        </div>
-      </ui-avatar-with-content>
-    </li>
+    @if (!isChannelsFetching()) {
+      @for (channel of channelsStore.channels(); track channel.data) {
+        <li class="conversation-list__conversation-presentation">
+          <ui-avatar-with-content>
+            <img ui-avatar [src]="channel.data?.image" />
+            <div right-content class="text-wrapper">
+              <span>{{ channel.data?.name }}</span>
+              <div class="text-wrapper__last-message-and-delivary-time">
+                <p>{{ channel.data?.name }}</p>
+                <span>21:37</span>
+                <!-- TODO jest last message at i dodam go kiedy bedzie obsluga wiadomosci -->
+              </div>
+            </div>
+          </ui-avatar-with-content>
+        </li>
+      }
+    } @else {
+      @for (_ of [].constructor(10); track _) {
+        <li class="conversation-list__conversation-loader">
+          <ui-skeleton-circle-and-bars />
+        </li>
+      }
+    }
   </ul>
 </section>

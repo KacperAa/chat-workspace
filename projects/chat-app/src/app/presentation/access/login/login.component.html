@@ -10,7 +10,7 @@
       <input matInput formControlName="password" placeholder="password..." />
     </mat-form-field>
 
-    <button mat-raised-button color="accent">Login</button>
+    <button mat-raised-button color="accent" (click)="loginFacade.signIn()">Login</button>
     <button mat-button color="primary">Register</button>
   </form>
 </kaa-auth-core>
