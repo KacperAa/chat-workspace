@@ -16,7 +16,7 @@ export class ChannelsStore {
   private _mappedChannels$ = this._channelService.channels$.pipe(
     filter((channels): channels is Channel<DefaultStreamChatGenerics>[] => !!channels),
     map(channels =>
-      channels!.map(channel => ({
+      channels.map(channel => ({
         id: String(channel.id),
         name: String(channel.data?.name ?? ''),
         image: String(channel.data?.image ?? ''),
