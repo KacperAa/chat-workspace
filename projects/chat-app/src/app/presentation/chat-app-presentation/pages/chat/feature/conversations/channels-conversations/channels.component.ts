@@ -23,8 +23,8 @@ export class ChannelsComponent {
     return !this.channelsStore.mappedChannelsData();
   });
 
-  public navigateToChannel(): void {
-    console.log('w');
+  public navigateToChannel(id: unknown): void {
+    console.log(id);
     this.router.navigate(['chat/1']);
   }
 }

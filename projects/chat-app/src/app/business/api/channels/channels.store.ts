@@ -1,4 +1,4 @@
-import { Injectable, Signal, computed, inject } from '@angular/core';
+import { Injectable, Signal, inject } from '@angular/core';
 import { Channel } from 'stream-chat';
 import { ChannelService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
@@ -17,12 +17,15 @@ export class ChannelsStore {
     filter((channels): channels is Channel<DefaultStreamChatGenerics>[] => !!channels),
     map(channels =>
       channels!.map(channel => ({
-        name: channel.data?.name,
-        image: channel.data?.image,
-        last_message_at: channel.data?.last_message_at,
+        id: String(channel.id),
+        name: String(channel.data?.name ?? ''),
+        image: String(channel.data?.image ?? ''),
+        last_message_at: String(channel.data?.last_message_at ?? ''),
       }))
     )
   );
+
+  public getChannel(id: unknown): void {}
 
   readonly mappedChannelsData: Signal<ChannelListElement[]> = toSignal(this._mappedChannels$, { initialValue: [] });
 }
