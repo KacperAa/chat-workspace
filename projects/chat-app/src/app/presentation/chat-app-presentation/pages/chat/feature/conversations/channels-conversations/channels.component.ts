@@ -18,6 +18,6 @@ export class ChannelsComponent {
   public channelsStore: ChannelsStore = inject(ChannelsStore);
 
   public isChannelsFetching: Signal<boolean> = computed(() => {
-    return !this.channelsStore.channels();
+    return !this.channelsStore.mappedChannelsData();
   });
 }
