@@ -1,5 +1,5 @@
 <ui-horizontal-scroll>
-  @if (!isFetching()) {
+  @if (chatLoader.isChatLoaded()) {
     @for (user of users(); track user.firstName) {
       <ui-avatar-with-content>
         <img ui-avatar [src]="user.profilePicture" alt="{{ user.firstName + ' profile image' }}" />

@@ -1,6 +1,6 @@
 <kaa-core>
   <main class="chat-page">
-    <router-outlet />
+    <!-- <router-outlet /> -->
     <kaa-filter-users />
 
     <section class="chat-page__users">
@@ -9,13 +9,13 @@
 
     <ul class="navigation-bars-list" role="navigation">
       <li role="listitem">
-        <a ui-nav-bar-element href="" [isActivated]="true">Main folder</a>
+        <a ui-nav-bar-element [routerLink]="['conversations']">Main folder</a>
       </li>
       <li role="listitem">
-        <a ui-nav-bar-element href="">Groups</a>
+        <a ui-nav-bar-element [routerLink]="['channels']">Groups</a>
       </li>
     </ul>
 
-    <kaa-conversations-list-section />
+    <router-outlet />
   </main>
 </kaa-core>
