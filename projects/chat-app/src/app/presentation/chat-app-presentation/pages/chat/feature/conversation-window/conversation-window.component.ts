@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -6,12 +7,12 @@ import { ConversationData } from '../../../../../../business/api/channels/models
 import { MessagesCollectionComponent } from '../../ui/organisms/messages-collection/messages-collection.component';
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';
 
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 @Component({
   selector: 'kaa-conversation-window',
   standalone: true,
-  imports: [MessagesCollectionComponent, ConversationCoreComponent],
+  imports: [MessagesCollectionComponent, ConversationCoreComponent, AsyncPipe],
   templateUrl: './conversation-window.component.html',
   styleUrl: './conversation-window.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,13 +24,15 @@ export class ConversationWindowComponent implements OnInit {
   public channelData$!: Observable<ConversationData>;
 
   public ngOnInit(): void {
-    this._getChannelData();
+    this.channelData$ = this._getChannelData();
   }
 
-  private _getChannelData(): void {
-    this._activatedRoute.params.subscribe((params: Params) => {
-      const channelId = params['id'];
-      this.channelData$ = this._channelStore.getChannel(channelId);
-    });
+  private _getChannelData(): Observable<ConversationData> {
+    return this._activatedRoute.params.pipe(
+      switchMap((params: Params) => {
+        const channelId = params['id'];
+        return this._channelStore.getChannel(channelId);
+      })
+    );
   }
 }

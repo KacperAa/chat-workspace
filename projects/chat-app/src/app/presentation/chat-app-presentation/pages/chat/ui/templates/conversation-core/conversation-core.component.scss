@@ -18,6 +18,12 @@
     }
   }
 
+  &__avatar-skeleton-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   &__actions-wrapper {
     display: flex;
     justify-content: flex-end;

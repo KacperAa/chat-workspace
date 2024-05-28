@@ -4,10 +4,17 @@
       <mat-icon>arrow_back</mat-icon>
     </button>
 
-    <ui-avatar-with-content class="user-conversation-presentation__avatar-with-content">
-      <img ui-avatar size="small" src="../../../../../../../assets/images/profile-img.png" />
-      <span class="right-content">Kacper</span>
-    </ui-avatar-with-content>
+    @if (conversationPresentationData()) {
+      <ui-avatar-with-content class="user-conversation-presentation__avatar-with-content">
+        <img ui-avatar size="small" [src]="conversationPresentationData()?.image" />
+        <span class="right-content">{{ conversationPresentationData()?.name }}</span>
+      </ui-avatar-with-content>
+    } @else {
+      <div class="user-conversation-presentation__avatar-skeleton-wrapper">
+        <ui-skeleton-circle-loader size="small" />
+        <ui-skeleton-bar width="5" height="1" />
+      </div>
+    }
 
     <div class="user-conversation-presentation__actions-wrapper">
       <button mat-icon-button color="accent">
