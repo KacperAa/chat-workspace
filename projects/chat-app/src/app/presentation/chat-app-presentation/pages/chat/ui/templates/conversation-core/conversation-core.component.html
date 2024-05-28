@@ -28,16 +28,18 @@
   <ng-content />
 
   <mat-toolbar class="user-conversation-presentation__toolbar-bottom">
-    <div class="user-conversation-presentation__actions-wrapper">
-      @for (actionButton of bottomActionButtons; track actionButton.icon) {
-        <button mat-icon-button color="accent">
-          <mat-icon>{{ actionButton.icon }}</mat-icon>
-        </button>
-      }
-    </div>
+    @if (!isInputFocusMode) {
+      <div class="user-conversation-presentation__actions-wrapper">
+        @for (actionButton of bottomActionButtons; track actionButton.icon) {
+          <button mat-icon-button color="accent">
+            <mat-icon>{{ actionButton.icon }}</mat-icon>
+          </button>
+        }
+      </div>
+    }
 
-    <ui-form-field>
-      <input #messageInputRef ui-input placeholder="Aa" (input)="onWrite.emit()" />
+    <ui-form-field style="width: 100%">
+      <input ui-input placeholder="Aa" (input)="onWrite.emit()" (focus)="onInputFocus()" (blur)="onInputBlur()" />
       <button suffix mat-icon-button>
         <mat-icon suffix color="primary">mood</mat-icon>
       </button>

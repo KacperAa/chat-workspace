@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Signal, input, output, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,8 +35,16 @@ export class ConversationCoreComponent {
   public conversationPresentationData = input.required<ConversationData | null>();
   public onWrite = output<void>();
 
-  public messageInputRef: Signal<ElementRef<HTMLInputElement>> = viewChild.required('messageInputRef');
+  public isInputFocusMode: boolean = false;
 
   public topActionButtons: ActionButton[] = [{ icon: 'phone' }, { icon: 'videocam' }, { icon: 'info' }];
   public bottomActionButtons: ActionButton[] = [{ icon: 'photo' }, { icon: 'microphone' }, { icon: 'photo_camera' }];
+
+  public onInputFocus(): void {
+    this.isInputFocusMode = true;
+  }
+
+  public onInputBlur(): void {
+    this.isInputFocusMode = false;
+  }
 }
