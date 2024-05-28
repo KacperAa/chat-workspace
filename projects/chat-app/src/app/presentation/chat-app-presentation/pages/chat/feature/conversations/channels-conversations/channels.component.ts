@@ -1,10 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Component, Signal, computed, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { AvatarComponent } from '../../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
 import { SkeletonCircleAndBarsComponent } from '../../../../../../../../../../ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component';
-import { ChannelsStore } from '../../../../../../../business/api/channels/channels.store';
+import { ChannelsListMapperService } from '../../../../../../../business/api/channels/channels-list-mapper/channels-list-mapper.service';
 import { ChatLoader } from '../../../../../chat-loader/chat-loader';
 
 @Component({
@@ -12,16 +13,16 @@ import { ChatLoader } from '../../../../../chat-loader/chat-loader';
   standalone: true,
   templateUrl: './channels.component.html',
   styleUrl: '../_conversations.base.scss',
-  imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent, RouterOutlet],
+  imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent, RouterOutlet, DatePipe],
 })
 export class ChannelsComponent {
   private _router: Router = inject(Router);
 
   public chatLoader: ChatLoader = inject(ChatLoader);
-  public channelsStore: ChannelsStore = inject(ChannelsStore);
+  public channelsStore: ChannelsListMapperService = inject(ChannelsListMapperService);
 
   public isChannelsFetching: Signal<boolean> = computed(() => {
-    return !this.channelsStore.mappedChannelsData();
+    return !this.channelsStore.channelsList();
   });
 
   public navigateToChannel(id: string): void {

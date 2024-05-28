@@ -10,7 +10,7 @@ import { InputComponent } from '@ui/InputComponent';
 import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
-import { ConversationData } from '../../../../../../../business/api/channels/models/conversation-data.model';
+import { ConversationData } from '../../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
 import { ActionButton } from './models/action-button.model';
 
 @Component({

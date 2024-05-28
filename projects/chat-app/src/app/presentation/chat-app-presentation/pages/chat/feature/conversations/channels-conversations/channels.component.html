@@ -1,16 +1,15 @@
 <section>
   <ul class="conversation-list">
     @if (!isChannelsFetching()) {
-      @for (channel of channelsStore.mappedChannelsData(); track channel) {
+      @for (channel of channelsStore.channelsList(); track channel) {
         <li (click)="navigateToChannel(channel.id)" class="conversation-list__conversation-presentation">
           <ui-avatar-with-content>
             <img ui-avatar [src]="channel.image" />
             <div right-content class="text-wrapper">
               <span>{{ channel.name }}</span>
               <div class="text-wrapper__last-message-and-delivary-time">
-                <p>{{ channel.name }}</p>
-                <span>21:37</span>
-                <!-- TODO jest last message at i dodam go kiedy bedzie obsluga wiadomosci -->
+                <p>{{ channel.last_message }}</p>
+                <span>{{ channel.last_message_at | date: 'shortTime' }}</span>
               </div>
             </div>
           </ui-avatar-with-content>
