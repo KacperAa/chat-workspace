@@ -1,38 +1,21 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { ChannelsStore } from '../../../../../../business/api/channels/channels.store';
-import { ConversationData } from '../../../../../../business/api/channels/models/conversation-data.model';
-import { MessagesCollectionComponent } from '../../ui/organisms/messages-collection/messages-collection.component';
+import { TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
+import { SkeletonBarComponent } from '../../../../../../../../../ui/src/lib/atoms';
+import { VerticalScrollComponent } from '../../../../../../../../../ui/src/lib/organisms';
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';
-
-import { Observable, switchMap } from 'rxjs';
+import { ConversationWindowFacade } from './conversation-window.facade';
 
 @Component({
   selector: 'kaa-conversation-window',
   standalone: true,
-  imports: [MessagesCollectionComponent, ConversationCoreComponent, AsyncPipe],
+  imports: [ConversationCoreComponent, AsyncPipe, VerticalScrollComponent, TextCloudComponent, SkeletonBarComponent],
+  providers: [ConversationWindowFacade],
   templateUrl: './conversation-window.component.html',
   styleUrl: './conversation-window.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConversationWindowComponent implements OnInit {
-  private _channelStore = inject(ChannelsStore);
-  private _activatedRoute = inject(ActivatedRoute);
-
-  public channelData$!: Observable<ConversationData>;
-
-  public ngOnInit(): void {
-    this.channelData$ = this._getChannelData();
-  }
-
-  private _getChannelData(): Observable<ConversationData> {
-    return this._activatedRoute.params.pipe(
-      switchMap((params: Params) => {
-        const channelId = params['id'];
-        return this._channelStore.getChannel(channelId);
-      })
-    );
-  }
+export class ConversationWindowComponent {
+  protected conversationWindowFacade = inject(ConversationWindowFacade);
 }

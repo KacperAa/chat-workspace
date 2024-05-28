@@ -1,3 +1,18 @@
-<kaa-conversation-core [conversationPresentationData]="channelData$ | async">
-  <kaa-messages-collection />
+<kaa-conversation-core [conversationPresentationData]="conversationWindowFacade.channelData()!">
+  <ui-vertical-scroll>
+    @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
+      @for (message of messagesCollection; track message) {
+        <ui-text-cloud>{{ message.text }}</ui-text-cloud>
+      }
+    } @else {
+      <div class="skeletons-wrapper">
+        @for (_ of [].constructor(8); track _) {
+          <ui-skeleton-bar class="skeleton" width="15" height="2" />
+          <ui-skeleton-bar class="skeleton" width="9" height="3" />
+          <ui-skeleton-bar class="skeleton" width="7" height="2" />
+          <ui-skeleton-bar class="skeleton" width="8" height="2" />
+        }
+      </div>
+    }
+  </ui-vertical-scroll>
 </kaa-conversation-core>
