@@ -15,7 +15,8 @@ import { ChatLoader } from '../../../../../chat-loader/chat-loader';
   imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent, RouterOutlet],
 })
 export class ChannelsComponent {
-  private router: Router = inject(Router);
+  private _router: Router = inject(Router);
+
   public chatLoader: ChatLoader = inject(ChatLoader);
   public channelsStore: ChannelsStore = inject(ChannelsStore);
 
@@ -24,7 +25,6 @@ export class ChannelsComponent {
   });
 
   public navigateToChannel(id: string): void {
-    this.channelsStore.getChannel(id);
-    this.router.navigate(['chat/1']);
+    this._router.navigate([`chat/${id}`]);
   }
 }
