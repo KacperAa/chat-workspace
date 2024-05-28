@@ -4,4 +4,6 @@ type ChannelListElementBase = Pick<ChannelData, 'id' | 'name' | 'image' | 'last_
 
 export type ChannelListElement = {
   +readonly [P in keyof ChannelListElementBase]-?: string;
+} & {
+  last_message?: string | null;
 };

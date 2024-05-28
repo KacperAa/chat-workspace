@@ -13,17 +13,25 @@ import { filter, map } from 'rxjs';
 export class ChannelsListMapperService {
   private _channelService = inject(ChannelService);
 
-  public mappedChannelsData: Signal<ChannelListElement[] | undefined> = toSignal(
+  public channelsList: Signal<ChannelListElement[] | null> = toSignal(
     this._channelService.channels$.pipe(
       filter((channels): channels is Channel<DefaultStreamChatGenerics>[] => !!channels),
-      map(channels =>
-        channels.map(channel => ({
-          id: String(channel.id),
-          name: String(channel.data?.name ?? ''),
-          image: String(channel.data?.image ?? ''),
-          last_message_at: String(channel.data?.last_message_at ?? ''),
-        }))
-      )
-    )
+      map(channels => channels.map(channel => this._mapChannel(channel)))
+    ),
+    { initialValue: null }
   );
+
+  private _mapChannel(channel: Channel<DefaultStreamChatGenerics>): ChannelListElement {
+    const { id, data, state } = channel;
+    const latestMessages = state.latestMessages;
+    const lastMessage = latestMessages.length > 0 ? latestMessages[latestMessages.length - 1].text : null;
+
+    return {
+      id: String(id),
+      name: String(data?.name ?? ''),
+      image: String(data?.image ?? ''),
+      last_message_at: String(data?.last_message_at ?? ''),
+      last_message: lastMessage,
+    };
+  }
 }

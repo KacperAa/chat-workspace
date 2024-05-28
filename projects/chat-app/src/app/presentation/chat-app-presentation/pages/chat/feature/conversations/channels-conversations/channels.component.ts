@@ -22,7 +22,7 @@ export class ChannelsComponent {
   public channelsStore: ChannelsListMapperService = inject(ChannelsListMapperService);
 
   public isChannelsFetching: Signal<boolean> = computed(() => {
-    return !this.channelsStore.mappedChannelsData();
+    return !this.channelsStore.channelsList();
   });
 
   public navigateToChannel(id: string): void {
