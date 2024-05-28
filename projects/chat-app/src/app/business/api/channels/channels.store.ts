@@ -3,6 +3,7 @@ import { Channel } from 'stream-chat';
 import { ChannelService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { ChannelListElement } from './models/channel-list-element.model';
+import { ConversationData } from './models/conversation-data.model';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, filter, map } from 'rxjs';
@@ -25,25 +26,17 @@ export class ChannelsStore {
     )
   );
 
-  public getChannel(id: string): Observable<unknown> {
+  public getChannel(id: string): Observable<ConversationData> {
     return this._channelService.channels$.pipe(
-      map(channels => {
-        for (const channel of channels!) {
-          console.log(channel);
-          if (channel.id === id) {
-            console.log(channel);
-            return {
-              id: String(channel.id),
-              name: String(channel.data?.name ?? ''),
-              image: String(channel.data?.image ?? ''),
-              messageSets: channel.state.messageSets,
-            };
-          }
-
-          return channel.id === id ? channel : null;
-        }
-        return null;
-      })
+      map(channels => channels?.find(channel => channel.id === id)),
+      filter((channel): channel is Channel<DefaultStreamChatGenerics> => !!channel),
+      map(channel => ({
+        id: String(channel.id),
+        name: String(channel.data?.name ?? ''),
+        image: String(channel.data?.image ?? ''),
+        last_message_at: String(channel.data?.last_message_at ?? ''),
+        messageSets: channel.state.messageSets,
+      }))
     );
   }
 
