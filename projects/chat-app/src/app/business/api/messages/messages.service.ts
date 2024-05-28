@@ -13,10 +13,6 @@ export class MessagesService {
   private _channelStore = inject(ChannelsStore);
 
   public getMessages(id: string): Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> {
-    return this._channelStore.getChannelApi(id).pipe(
-      map(channel => {
-        return channel.state.messages;
-      })
-    );
+    return this._channelStore.getChannelApi(id).pipe(map(channel => channel.state.messages));
   }
 }

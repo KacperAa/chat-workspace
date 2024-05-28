@@ -30,7 +30,6 @@ export class ChannelsStore {
 
   public getChannel(id: string): Observable<ConversationData> {
     return this.getChannelApi(id).pipe(
-      shareReplay(),
       map(channel => {
         this._channelService.setAsActiveChannel(channel);
         return {
@@ -46,6 +45,7 @@ export class ChannelsStore {
 
   public getChannelApi(id: string): Observable<Channel<DefaultStreamChatGenerics>> {
     return this._channelService.channels$.pipe(
+      shareReplay(),
       map(channels => channels?.find(channel => channel.id === id)),
       filter((channel): channel is Channel<DefaultStreamChatGenerics> => !!channel)
     );
