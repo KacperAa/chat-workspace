@@ -11,6 +11,7 @@ import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
 import { ConversationData } from '../../../../../../../business/api/channels/models/conversation-data.model';
+import { ActionButton } from './models/action-button.model';
 
 @Component({
   selector: 'kaa-conversation-core',
@@ -32,4 +33,7 @@ import { ConversationData } from '../../../../../../../business/api/channels/mod
 })
 export class ConversationCoreComponent {
   public conversationPresentationData = input.required<ConversationData | null>();
+
+  public topActionButtons: ActionButton[] = [{ icon: 'phone' }, { icon: 'videocam' }, { icon: 'info' }];
+  public bottomActionButtons: ActionButton[] = [{ icon: 'photo' }, { icon: 'microphone' }, { icon: 'photo_camera' }];
 }
