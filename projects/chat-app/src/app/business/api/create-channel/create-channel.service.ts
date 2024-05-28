@@ -13,7 +13,6 @@ export class CreateChannelService {
   private _authStore = inject(AuthStore);
 
   createChannel(): void {
-    console.log('here');
     const channel = this._chatService.chatClient.channel('messaging', 'dupsko', {
       image:
         'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png',

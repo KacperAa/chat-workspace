@@ -5,7 +5,7 @@ import { ChannelService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 import { ChannelListElement } from './models/channel-list-element.model';
 
 import { toSignal } from '@angular/core/rxjs-interop';
-import { filter, map } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,27 @@ export class ChannelsStore {
     )
   );
 
-  public getChannel(id: unknown): void {}
+  public getChannel(id: string): Observable<unknown> {
+    return this._channelService.channels$.pipe(
+      map(channels => {
+        for (const channel of channels!) {
+          console.log(channel);
+          if (channel.id === id) {
+            console.log(channel);
+            return {
+              id: String(channel.id),
+              name: String(channel.data?.name ?? ''),
+              image: String(channel.data?.image ?? ''),
+              messageSets: channel.state.messageSets,
+            };
+          }
+
+          return channel.id === id ? channel : null;
+        }
+        return null;
+      })
+    );
+  }
 
   readonly mappedChannelsData: Signal<ChannelListElement[]> = toSignal(this._mappedChannels$, { initialValue: [] });
 }
