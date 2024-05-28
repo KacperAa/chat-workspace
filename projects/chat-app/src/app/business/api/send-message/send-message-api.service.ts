@@ -4,7 +4,7 @@ import { ChannelService } from 'stream-chat-angular';
 @Injectable({
   providedIn: 'root',
 })
-export class SendMessageService {
+export class SendMessageApiService {
   private _channelService = inject(ChannelService);
 
   private _activeChannel = this._channelService.activeChannel;

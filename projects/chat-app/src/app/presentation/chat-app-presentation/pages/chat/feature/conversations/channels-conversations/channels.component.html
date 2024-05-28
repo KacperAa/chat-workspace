@@ -9,8 +9,7 @@
               <span>{{ channel.name }}</span>
               <div class="text-wrapper__last-message-and-delivary-time">
                 <p>{{ channel.name }}</p>
-                <span>{{ channel.last_message_at }}</span>
-                <!-- TODO jest last message at i dodam go kiedy bedzie obsluga wiadomosci -->
+                <span>{{ channel.last_message_at | date: 'shortTime' }}</span>
               </div>
             </div>
           </ui-avatar-with-content>

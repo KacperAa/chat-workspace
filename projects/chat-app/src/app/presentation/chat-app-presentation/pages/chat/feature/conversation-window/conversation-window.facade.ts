@@ -5,7 +5,7 @@ import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { ChannelMapperService } from '../../../../../../business/api/channels/channel-mapper/channel-mapper.service';
 import { ConversationData } from '../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
-import { MessagesMappperService } from '../../../../../../business/api/channels/messages/messages-mapper.service';
+import { MessagesMappperService } from '../../../../../../business/api/channels/messages-mapper/messages-mapper.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, switchMap } from 'rxjs';

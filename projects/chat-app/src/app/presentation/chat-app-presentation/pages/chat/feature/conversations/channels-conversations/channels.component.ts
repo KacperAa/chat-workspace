@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Signal, computed, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
@@ -12,7 +13,7 @@ import { ChatLoader } from '../../../../../chat-loader/chat-loader';
   standalone: true,
   templateUrl: './channels.component.html',
   styleUrl: '../_conversations.base.scss',
-  imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent, RouterOutlet],
+  imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent, RouterOutlet, DatePipe],
 })
 export class ChannelsComponent {
   private _router: Router = inject(Router);
