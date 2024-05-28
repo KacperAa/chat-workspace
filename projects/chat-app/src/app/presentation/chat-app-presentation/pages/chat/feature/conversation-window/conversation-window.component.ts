@@ -6,7 +6,6 @@ import { ConversationData } from '../../../../../../business/api/channels/models
 import { MessagesCollectionComponent } from '../../ui/organisms/messages-collection/messages-collection.component';
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';
 
-import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -21,8 +20,7 @@ export class ConversationWindowComponent implements OnInit {
   private _channelStore = inject(ChannelsStore);
   private _activatedRoute = inject(ActivatedRoute);
 
-  private _channelData!: Observable<ConversationData>;
-  public channelData = toSignal(this._channelData, { requireSync: true });
+  public channelData$!: Observable<ConversationData>;
 
   public ngOnInit(): void {
     this._getChannelData();
@@ -31,7 +29,7 @@ export class ConversationWindowComponent implements OnInit {
   private _getChannelData(): void {
     this._activatedRoute.params.subscribe((params: Params) => {
       const channelId = params['id'];
-      this._channelData = this._channelStore.getChannel(channelId);
+      this.channelData$ = this._channelStore.getChannel(channelId);
     });
   }
 }
