@@ -5,6 +5,7 @@ import { FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
+import { SkeletonBarComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { VerticalScrollComponent } from '../../../../../../../../../ui/src/lib/organisms';
 import { ChannelsStore } from '../../../../../../business/api/channels/channels.store';
 import { ConversationData } from '../../../../../../business/api/channels/models/conversation-data.model';
@@ -16,7 +17,7 @@ import { Observable, switchMap } from 'rxjs';
 @Component({
   selector: 'kaa-conversation-window',
   standalone: true,
-  imports: [ConversationCoreComponent, AsyncPipe, VerticalScrollComponent, TextCloudComponent],
+  imports: [ConversationCoreComponent, AsyncPipe, VerticalScrollComponent, TextCloudComponent, SkeletonBarComponent],
   templateUrl: './conversation-window.component.html',
   styleUrl: './conversation-window.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

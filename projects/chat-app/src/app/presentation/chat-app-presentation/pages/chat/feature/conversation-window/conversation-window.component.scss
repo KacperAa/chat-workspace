@@ -1,0 +1,19 @@
+.skeletons-wrapper {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+
+  &.skeleton:nth-child(6n + 1),
+  .skeleton:nth-child(6n + 2),
+  .skeleton:nth-child(6n + 6) {
+    justify-self: start;
+  }
+
+  &.skeleton:nth-child(6n + 3),
+  .skeleton:nth-child(6n + 4),
+  .skeleton:nth-child(6n + 5) {
+    justify-self: end;
+  }
+}
