@@ -1,3 +1,7 @@
 <kaa-conversation-core [conversationPresentationData]="channelData$ | async">
-  <kaa-messages-collection />
+  <ui-vertical-scroll>
+    @for (message of messagesCollection$ | async; track message) {
+      <ui-text-cloud>{{ message.text }}</ui-text-cloud>
+    }
+  </ui-vertical-scroll>
 </kaa-conversation-core>
