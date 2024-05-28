@@ -1,7 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
+import { ChannelsStore } from '../../../../../../business/api/channels/channels.store';
+import { ConversationData } from '../../../../../../business/api/channels/models/conversation-data.model';
 import { MessagesCollectionComponent } from '../../ui/organisms/messages-collection/messages-collection.component';
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';
+
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'kaa-conversation-window',
@@ -11,4 +15,8 @@ import { ConversationCoreComponent } from '../../ui/templates/conversation-core/
   styleUrl: './conversation-window.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConversationWindowComponent {}
+export class ConversationWindowComponent {
+  private _channelStore = inject(ChannelsStore);
+
+  public channelData!: Observable<ConversationData>;
+}
