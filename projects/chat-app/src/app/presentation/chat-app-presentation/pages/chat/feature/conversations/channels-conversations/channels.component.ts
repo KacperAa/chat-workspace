@@ -1,4 +1,5 @@
 import { Component, Signal, computed, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 import { AvatarComponent } from '../../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
@@ -11,13 +12,19 @@ import { ChatLoader } from '../../../../../chat-loader/chat-loader';
   standalone: true,
   templateUrl: './channels.component.html',
   styleUrl: '../_conversations.base.scss',
-  imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent],
+  imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent, RouterOutlet],
 })
 export class ChannelsComponent {
+  private _router: Router = inject(Router);
+
   public chatLoader: ChatLoader = inject(ChatLoader);
   public channelsStore: ChannelsStore = inject(ChannelsStore);
 
   public isChannelsFetching: Signal<boolean> = computed(() => {
     return !this.channelsStore.mappedChannelsData();
   });
+
+  public navigateToChannel(id: string): void {
+    this._router.navigate([`chat/${id}`]);
+  }
 }

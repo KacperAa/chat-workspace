@@ -2,7 +2,7 @@
   <ul class="conversation-list">
     @if (!isChannelsFetching()) {
       @for (channel of channelsStore.mappedChannelsData(); track channel) {
-        <li class="conversation-list__conversation-presentation">
+        <li (click)="navigateToChannel(channel.id)" class="conversation-list__conversation-presentation">
           <ui-avatar-with-content>
             <img ui-avatar [src]="channel.image" />
             <div right-content class="text-wrapper">

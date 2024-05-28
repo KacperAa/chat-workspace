@@ -4,21 +4,24 @@
       <mat-icon>arrow_back</mat-icon>
     </button>
 
-    <ui-avatar-with-content class="user-conversation-presentation__avatar-with-content">
-      <img ui-avatar size="small" src="../../../../../../../assets/images/profile-img.png" />
-      <span class="right-content">Kacper</span>
-    </ui-avatar-with-content>
+    @if (conversationPresentationData()) {
+      <ui-avatar-with-content class="user-conversation-presentation__avatar-with-content">
+        <img ui-avatar size="small" [src]="conversationPresentationData()?.image" />
+        <span class="right-content">{{ conversationPresentationData()?.name }}</span>
+      </ui-avatar-with-content>
+    } @else {
+      <div class="user-conversation-presentation__avatar-skeleton-wrapper">
+        <ui-skeleton-circle-loader size="small" />
+        <ui-skeleton-bar width="5" height="1" />
+      </div>
+    }
 
     <div class="user-conversation-presentation__actions-wrapper">
-      <button mat-icon-button color="accent">
-        <mat-icon>phone</mat-icon>
-      </button>
-      <button mat-icon-button color="accent">
-        <mat-icon>videocam</mat-icon>
-      </button>
-      <button mat-icon-button color="accent">
-        <mat-icon>info</mat-icon>
-      </button>
+      @for (actionButton of topActionButtons; track actionButton.icon) {
+        <button mat-icon-button color="accent">
+          <mat-icon>{{ actionButton.icon }}</mat-icon>
+        </button>
+      }
     </div>
   </mat-toolbar>
 
@@ -26,15 +29,11 @@
 
   <mat-toolbar class="user-conversation-presentation__toolbar-bottom">
     <div class="user-conversation-presentation__actions-wrapper">
-      <button mat-icon-button color="accent">
-        <mat-icon>photo</mat-icon>
-      </button>
-      <button mat-icon-button color="accent">
-        <mat-icon>microphone</mat-icon>
-      </button>
-      <button mat-icon-button color="accent">
-        <mat-icon>photo_camera</mat-icon>
-      </button>
+      @for (actionButton of bottomActionButtons; track actionButton.icon) {
+        <button mat-icon-button color="accent">
+          <mat-icon>{{ actionButton.icon }}</mat-icon>
+        </button>
+      }
     </div>
 
     <ui-form-field>

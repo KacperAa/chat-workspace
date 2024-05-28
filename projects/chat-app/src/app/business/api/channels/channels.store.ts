@@ -1,11 +1,12 @@
-import { Injectable, Signal, computed, inject } from '@angular/core';
+import { Injectable, Signal, inject } from '@angular/core';
 import { Channel } from 'stream-chat';
 import { ChannelService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { ChannelListElement } from './models/channel-list-element.model';
+import { ConversationData } from './models/conversation-data.model';
 
 import { toSignal } from '@angular/core/rxjs-interop';
-import { filter, map } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +17,28 @@ export class ChannelsStore {
   private _mappedChannels$ = this._channelService.channels$.pipe(
     filter((channels): channels is Channel<DefaultStreamChatGenerics>[] => !!channels),
     map(channels =>
-      channels!.map(channel => ({
-        name: channel.data?.name,
-        image: channel.data?.image,
-        last_message_at: channel.data?.last_message_at,
+      channels.map(channel => ({
+        id: String(channel.id),
+        name: String(channel.data?.name ?? ''),
+        image: String(channel.data?.image ?? ''),
+        last_message_at: String(channel.data?.last_message_at ?? ''),
       }))
     )
   );
+
+  public getChannel(id: string): Observable<ConversationData> {
+    return this._channelService.channels$.pipe(
+      map(channels => channels?.find(channel => channel.id === id)),
+      filter((channel): channel is Channel<DefaultStreamChatGenerics> => !!channel),
+      map(channel => ({
+        id: String(channel.id),
+        name: String(channel.data?.name ?? ''),
+        image: String(channel.data?.image ?? ''),
+        last_message_at: String(channel.data?.last_message_at ?? ''),
+        messageSets: channel.state.messageSets,
+      }))
+    );
+  }
 
   readonly mappedChannelsData: Signal<ChannelListElement[]> = toSignal(this._mappedChannels$, { initialValue: [] });
 }
