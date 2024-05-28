@@ -38,11 +38,17 @@
       </div>
     }
 
-    <ui-form-field style="width: 100%">
+    <ui-form-field class="dynamic-input">
       <input ui-input placeholder="Aa" (input)="onWrite.emit()" (focus)="onInputFocus()" (blur)="onInputBlur()" />
-      <button suffix mat-icon-button>
-        <mat-icon suffix color="primary">mood</mat-icon>
-      </button>
+      @if (!isInputFocusMode) {
+        <button suffix mat-icon-button>
+          <mat-icon suffix color="primary">mood</mat-icon>
+        </button>
+      } @else {
+        <button suffix mat-icon-button>
+          <mat-icon suffix color="primary">search</mat-icon>
+        </button>
+      }
     </ui-form-field>
     @if (isInputFocusMode) {
       <button class="send-message-btn" mat-icon-button>
