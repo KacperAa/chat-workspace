@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, input, output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -34,7 +34,7 @@ export class ConversationCoreComponent implements OnInit {
   public conversationPresentationData = input.required<ConversationData | null>();
   public onWrite = output<void>();
 
-  public messageFormControl = new FormControl<string | null>('');
+  public messageFormControl = new FormControl<string | null>('', [Validators.maxLength(1000)]);
 
   public isInputFocusMode: boolean = false;
   public isSendButtonVisible: boolean = false;
@@ -46,9 +46,23 @@ export class ConversationCoreComponent implements OnInit {
     this._trackIsSendButtonVisible();
   }
 
+  public onSendMessage(): void {
+    if (this._isMessageCanSend()) {
+      console.log(this.messageFormControl.value);
+      this.messageFormControl.reset();
+    }
+  }
+
   public _trackIsSendButtonVisible(): void {
     this.messageFormControl.valueChanges.subscribe(value => {
       this.isSendButtonVisible = this.isInputFocusMode && value?.length! > 0;
     });
+  }
+
+  private _isMessageCanSend(): boolean {
+    const isFormValid: boolean = this.messageFormControl.valid;
+    const message: string | null = this.messageFormControl.value;
+
+    return message !== null && isFormValid;
   }
 }

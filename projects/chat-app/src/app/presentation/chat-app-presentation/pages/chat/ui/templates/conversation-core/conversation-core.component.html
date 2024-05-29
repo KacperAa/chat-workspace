@@ -44,7 +44,7 @@
       (inputFocusMode)="isInputFocusMode = $event" />
 
     @if (isSendButtonVisible) {
-      <button class="send-message-btn" mat-icon-button>
+      <button mat-icon-button class="send-message-btn" (click)="onSendMessage()">
         <mat-icon suffix color="accent">send</mat-icon>
       </button>
     }
