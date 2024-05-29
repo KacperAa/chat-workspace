@@ -1,10 +1,10 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostListener, output } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
 import { InputComponent } from '../../../../../../../../../../ui/src/lib/atoms';
 import { FormFieldComponent } from '../../../../../../../../../../ui/src/lib/molecules/form-field/form-field.component';
+import { inputCollapseAnimation } from './animations/collapse-input.animation';
 
 @Component({
   selector: 'kaa-message-input',
@@ -14,23 +14,7 @@ import { FormFieldComponent } from '../../../../../../../../../../ui/src/lib/mol
   host: {
     '[@inputWidth]': "isInputFocusMode ? 'expanded' : 'collapsed'",
   },
-  animations: [
-    trigger('inputWidth', [
-      state(
-        'collapsed',
-        style({
-          width: '50%',
-        })
-      ),
-      state(
-        'expanded',
-        style({
-          width: '100%',
-        })
-      ),
-      transition('collapsed <=> expanded', [animate('0.2s ease-in-out')]),
-    ]),
-  ],
+  animations: [inputCollapseAnimation()],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageInputComponent {
