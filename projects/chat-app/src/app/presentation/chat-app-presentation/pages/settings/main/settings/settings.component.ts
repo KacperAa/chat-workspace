@@ -1,5 +1,6 @@
 import { Component, Signal, inject } from '@angular/core';
 import { User } from '@angular/fire/auth';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -20,6 +21,7 @@ import { AuthStore } from '../../../../../../business/api/auth/auth.store';
     MatToolbar,
     MatIconButton,
     AvatarComponent,
+    MatBottomSheetModule,
     AvatarWithContentComponent,
     AvatarWithIconButtonComponent,
   ],
