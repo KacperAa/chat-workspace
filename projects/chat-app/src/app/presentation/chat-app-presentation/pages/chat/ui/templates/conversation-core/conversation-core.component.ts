@@ -11,7 +11,6 @@ import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
 import { ConversationData } from '../../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
-import { SendMessageApiService } from '../../../../../../../business/api/send-message/send-message-api.service';
 import { MessageInputComponent } from '../../molecules/message-input/message-input.component';
 import { ActionButton } from './models/action-button.model';
 
