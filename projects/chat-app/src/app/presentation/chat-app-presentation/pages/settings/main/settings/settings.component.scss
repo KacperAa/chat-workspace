@@ -1,0 +1,16 @@
+.settings-page {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--app-dark-background-color);
+  color: var(--app-color-white);
+
+  &__settings-shell {
+    display: grid;
+    justify-items: center;
+    padding: 2rem;
+
+    .image-low-margin {
+      margin-bottom: 0.5rem;
+    }
+  }
+}

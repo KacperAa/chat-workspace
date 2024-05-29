@@ -1,0 +1,22 @@
+<main class="settings-page">
+  <mat-toolbar>
+    <button mat-icon-button color="accent" (click)="navigateToChat()"><mat-icon>arrow_back</mat-icon></button>
+  </mat-toolbar>
+
+  <section class="settings-page__settings-shell">
+    <ui-avatar-with-icon-button
+      borderColorVar="--app-dark-background-color"
+      backgroundColorVar="--app-color-dark"
+      (onClickBtn)="openEditPicture()">
+      <img
+        ui-avatar
+        size="large"
+        class="image-low-margin"
+        [src]="user()?.photoURL"
+        [alt]="user()?.displayName + ' profile image'" />
+      <mat-icon class="icon-overlay">photo_camera</mat-icon>
+    </ui-avatar-with-icon-button>
+
+    <span>{{ user()?.displayName }}</span>
+  </section>
+</main>

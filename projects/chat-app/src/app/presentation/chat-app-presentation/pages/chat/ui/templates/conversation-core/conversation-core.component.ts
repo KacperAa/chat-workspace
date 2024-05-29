@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
@@ -10,7 +11,6 @@ import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
 import { ConversationData } from '../../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
-import { SendMessageApiService } from '../../../../../../../business/api/send-message/send-message-api.service';
 import { MessageInputComponent } from '../../molecules/message-input/message-input.component';
 import { ActionButton } from './models/action-button.model';
 
@@ -32,10 +32,12 @@ import { ActionButton } from './models/action-button.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConversationCoreComponent {
-  private _messageApiService = inject(SendMessageApiService);
+  private _router = inject(Router);
 
   public conversationPresentationData = input.required<ConversationData | null>();
+
   public onWrite = output<void>();
+  public sendMessage = output<string>();
 
   public messageFormControl = new FormControl<string | null>('', [
     Validators.required,
@@ -53,8 +55,12 @@ export class ConversationCoreComponent {
 
     if (isFormValid) {
       const message: string = this.messageFormControl.value!;
-      this._messageApiService.sendMessage(message);
+      this.sendMessage.emit(message);
       this.messageFormControl.reset();
     }
+  }
+
+  public navigateToChat(): void {
+    this._router.navigate(['chat/channels']);
   }
 }
