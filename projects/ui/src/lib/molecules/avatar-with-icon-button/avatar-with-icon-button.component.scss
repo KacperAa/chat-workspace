@@ -1,15 +1,25 @@
+@mixin icon-size {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
 .avatar-container {
   position: relative;
-  display: inline-block;
-}
 
-.avatar-container img[ui-avatar] {
-  display: block;
-}
+  .icon-wrapper {
+    background-color: #212121;
+    border: 6px solid #303030;
+    position: absolute;
+    padding: 0.6rem;
+    border-radius: 50%;
+    top: 75%;
+    left: 75%;
+    transform: translate(-40%, -40%);
+    box-shadow: none;
+  }
 
-.icon-overlay {
-  position: absolute;
-  top: 70%;
-  left: 75%;
-  transform: translate(-50%, -50%);
+  .icon-overlay {
+    @include icon-size;
+  }
 }
