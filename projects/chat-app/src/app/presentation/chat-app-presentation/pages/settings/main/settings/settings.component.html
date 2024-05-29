@@ -12,10 +12,11 @@
         ui-avatar
         size="large"
         class="image-low-margin"
-        [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWF5S7Lv3Miyjfu-9ZzaYbWAcqcvmsXJfgwQ&s'" />
+        [src]="user()?.photoURL"
+        [alt]="user()?.displayName + ' profile image'" />
       <mat-icon class="icon-overlay">photo_camera</mat-icon>
     </ui-avatar-with-icon-button>
 
-    <span>J00r</span>
+    <span>{{ user()?.displayName }}</span>
   </section>
 </main>

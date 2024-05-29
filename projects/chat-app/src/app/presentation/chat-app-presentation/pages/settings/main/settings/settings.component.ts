@@ -1,4 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
+import { User } from '@angular/fire/auth';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -9,6 +10,7 @@ import {
   AvatarWithContentComponent,
   AvatarWithIconButtonComponent,
 } from '../../../../../../../../../ui/src/lib/molecules';
+import { AuthStore } from '../../../../../../business/api/auth/auth.store';
 
 @Component({
   selector: 'kaa-settings',
@@ -26,6 +28,9 @@ import {
 })
 export class SettingsComponent {
   private _router: Router = inject(Router);
+  private _authStore = inject(AuthStore);
+
+  public user: Signal<User | null> = this._authStore.loggedUser;
 
   public navigateToChat(): void {
     this._router.navigate(['chat/conversations']);
