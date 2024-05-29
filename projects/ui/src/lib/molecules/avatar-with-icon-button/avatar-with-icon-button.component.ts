@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 import { CircleSizeService } from '../../atoms/circle-size/circle-size.service';
@@ -13,5 +13,8 @@ import { CircleSizeService } from '../../atoms/circle-size/circle-size.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarWithIconButtonComponent {
-  public onClickIcon = output<void>();
+  public borderColorVar = input('');
+  public backgroundColorVar = input('');
+
+  public onClickBtn = output<void>();
 }

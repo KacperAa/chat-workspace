@@ -1,6 +1,10 @@
 <div class="avatar-container">
   <ng-content select="img[ui-avatar]" />
-  <button class="icon-wrapper" (click)="onClickIcon.emit()">
+  <button
+    class="icon-wrapper"
+    (click)="onClickBtn.emit()"
+    [style.borderColor]="'var(' + borderColorVar() + ')'"
+    [style.backgroundColor]="'var(' + backgroundColorVar() + ')'">
     <ng-content select=".icon-overlay, [icon-overlay]"></ng-content>
   </button>
 </div>
