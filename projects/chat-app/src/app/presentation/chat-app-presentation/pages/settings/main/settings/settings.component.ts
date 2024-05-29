@@ -15,6 +15,6 @@ export class SettingsComponent {
   private _router: Router = inject(Router);
 
   public navigateToChat(): void {
-    this._router.navigate(['chat']);
+    this._router.navigate(['chat/conversations']);
   }
 }

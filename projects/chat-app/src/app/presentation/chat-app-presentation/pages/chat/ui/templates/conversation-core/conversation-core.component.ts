@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
@@ -33,6 +34,7 @@ import { ActionButton } from './models/action-button.model';
 })
 export class ConversationCoreComponent {
   private _messageApiService = inject(SendMessageApiService);
+  private _router = inject(Router);
 
   public conversationPresentationData = input.required<ConversationData | null>();
   public onWrite = output<void>();
@@ -56,5 +58,9 @@ export class ConversationCoreComponent {
       this._messageApiService.sendMessage(message);
       this.messageFormControl.reset();
     }
+  }
+
+  public navigateToChat(): void {
+    this._router.navigate(['chat/channels']);
   }
 }
