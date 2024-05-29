@@ -4,13 +4,16 @@
   </mat-toolbar>
 
   <section class="settings-page__settings-shell">
-    <ui-avatar-with-icon-button backgroundColorVar="--app-color-dark" borderColorVar="--app-dark-background-color">
+    <ui-avatar-with-icon-button
+      backgroundColorVar="--app-color-dark"
+      borderColorVar="--app-dark-background-color"
+      (onClickBtn)="openEditPicture()">
       <img
         ui-avatar
         size="large"
         class="image-low-margin"
         [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWF5S7Lv3Miyjfu-9ZzaYbWAcqcvmsXJfgwQ&s'" />
-      <mat-icon class="icon-overlay">edit</mat-icon>
+      <mat-icon class="icon-overlay">photo_camera</mat-icon>
     </ui-avatar-with-icon-button>
 
     <span>J00r</span>

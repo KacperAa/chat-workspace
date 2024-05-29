@@ -5,6 +5,6 @@
     (click)="onClickBtn.emit()"
     [style.borderColor]="'var(' + borderColorVar() + ')'"
     [style.backgroundColor]="'var(' + backgroundColorVar() + ')'">
-    <ng-content select=".icon-overlay, [icon-overlay]"></ng-content>
+    <ng-content select=".icon-overlay, [icon-overlay]" />
   </button>
 </div>

@@ -14,9 +14,9 @@ import {
   selector: 'kaa-settings',
   standalone: true,
   imports: [
+    MatIcon,
     MatToolbar,
     MatIconButton,
-    MatIcon,
     AvatarComponent,
     AvatarWithContentComponent,
     AvatarWithIconButtonComponent,
@@ -30,4 +30,6 @@ export class SettingsComponent {
   public navigateToChat(): void {
     this._router.navigate(['chat/conversations']);
   }
+
+  public openEditPicture(): void {}
 }
