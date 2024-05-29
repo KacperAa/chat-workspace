@@ -33,5 +33,10 @@
   &__toolbar-bottom {
     position: fixed;
     bottom: 0;
+    padding: 0 2.5rem;
+  }
+
+  .send-message-btn {
+    margin-left: 1rem;
   }
 }
