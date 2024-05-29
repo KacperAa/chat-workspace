@@ -1,4 +1,6 @@
-<kaa-conversation-core [conversationPresentationData]="conversationWindowFacade.channelData()!">
+<kaa-conversation-core
+  [conversationPresentationData]="conversationWindowFacade.channelData()!"
+  (sendMessage)="conversationWindowFacade.sendMessage($event)">
   <ui-vertical-scroll>
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       @for (message of messagesCollection; track message) {

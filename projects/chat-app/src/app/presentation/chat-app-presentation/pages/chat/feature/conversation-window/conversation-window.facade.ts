@@ -9,12 +9,14 @@ import { MessagesMappperService } from '../../../../../../business/api/channels/
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, switchMap } from 'rxjs';
+import { SendMessageApiService } from '../../../../../../business/api/send-message/send-message-api.service';
 
 @Injectable()
 export class ConversationWindowFacade {
   private _activatedRoute = inject(ActivatedRoute);
   private _channelMapper = inject(ChannelMapperService);
   private _messagesMapper = inject(MessagesMappperService);
+  private _sendMessageApiService = inject(SendMessageApiService);
 
   private _channelData$: Observable<ConversationData> = this._initializeChannelData();
   private _messagesCollection$: Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> =
@@ -25,6 +27,11 @@ export class ConversationWindowFacade {
     this._messagesCollection$,
     { initialValue: null }
   );
+
+
+  public sendMessage(message: string): void {
+    this._sendMessageApiService.sendMessage(message)
+  }
 
   private _initializeChannelData(): Observable<ConversationData> {
     return this._activatedRoute.params.pipe(switchMap((params: Params) => this._fetchChannelData(params['id'])));

@@ -33,11 +33,12 @@ import { ActionButton } from './models/action-button.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConversationCoreComponent {
-  private _messageApiService = inject(SendMessageApiService);
   private _router = inject(Router);
 
   public conversationPresentationData = input.required<ConversationData | null>();
+
   public onWrite = output<void>();
+  public sendMessage = output<string>();
 
   public messageFormControl = new FormControl<string | null>('', [
     Validators.required,
@@ -55,7 +56,7 @@ export class ConversationCoreComponent {
 
     if (isFormValid) {
       const message: string = this.messageFormControl.value!;
-      this._messageApiService.sendMessage(message);
+      this.sendMessage.emit(message);
       this.messageFormControl.reset();
     }
   }
