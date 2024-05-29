@@ -4,22 +4,26 @@
   font-size: 18px;
 }
 
+::ng-deep .icon-overlay {
+  @include icon-size;
+}
+
 .avatar-container {
   position: relative;
 
   .icon-wrapper {
-    background-color: #212121;
-    border: 6px solid #303030;
     position: absolute;
-    padding: 0.6rem;
-    border-radius: 50%;
     top: 75%;
     left: 75%;
+    background-color: #212121;
+    border: 6px solid #303030;
+    padding: 0.6rem;
+    border-radius: 50%;
     transform: translate(-40%, -40%);
-  }
 
-  .icon-overlay {
-    @include icon-size;
+    &:first-child {
+      @include icon-size;
+    }
 
     &:hover {
       cursor: pointer;

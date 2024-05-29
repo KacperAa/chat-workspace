@@ -1,6 +1,6 @@
 <div class="avatar-container">
   <ng-content select="img[ui-avatar]" />
-  <div class="icon-wrapper">
-    <mat-icon class="icon-overlay">edit</mat-icon>
+  <div class="icon-wrapper" role="button">
+    <ng-content select=".icon-overlay, [icon-overlay]"></ng-content>
   </div>
 </div>
