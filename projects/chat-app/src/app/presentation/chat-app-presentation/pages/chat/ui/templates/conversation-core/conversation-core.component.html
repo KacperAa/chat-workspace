@@ -38,10 +38,13 @@
       </div>
     }
 
-    <kaa-message-input (onWrite)="onWrite.emit()" (inputFocusMode)="isInputFocusMode = $event" />
+    <kaa-message-input
+      [messageFormControl]="messageFormControl"
+      (onWrite)="onWrite.emit()"
+      (inputFocusMode)="isInputFocusMode = $event" />
 
-    @if (isInputFocusMode) {
-      <button class="send-message-btn" mat-icon-button>
+    @if (messageFormControl.valid) {
+      <button mat-icon-button class="send-message-btn" (click)="onSendMessage()">
         <mat-icon suffix color="accent">send</mat-icon>
       </button>
     }

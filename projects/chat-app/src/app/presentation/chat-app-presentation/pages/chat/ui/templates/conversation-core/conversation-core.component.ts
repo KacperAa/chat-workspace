@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,8 +34,22 @@ export class ConversationCoreComponent {
   public conversationPresentationData = input.required<ConversationData | null>();
   public onWrite = output<void>();
 
+  public messageFormControl = new FormControl<string | null>('', [
+    Validators.required,
+    Validators.minLength(1),
+    Validators.maxLength(1000),
+  ]);
+
   public isInputFocusMode: boolean = false;
 
   public topActionButtons: ActionButton[] = [{ icon: 'phone' }, { icon: 'videocam' }, { icon: 'info' }];
   public bottomActionButtons: ActionButton[] = [{ icon: 'photo' }, { icon: 'microphone' }, { icon: 'photo_camera' }];
+
+  public onSendMessage(): void {
+    const isFormValid: boolean = this.messageFormControl.valid;
+    if (isFormValid) {
+      console.log(this.messageFormControl.value);
+      this.messageFormControl.reset();
+    }
+  }
 }
