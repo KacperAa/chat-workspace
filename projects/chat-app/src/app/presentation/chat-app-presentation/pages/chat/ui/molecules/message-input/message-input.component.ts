@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostListener, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, input, output } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 
@@ -10,7 +12,7 @@ import { inputCollapseAnimation } from './animations/collapse-input.animation';
   selector: 'kaa-message-input',
   standalone: true,
   templateUrl: './message-input.component.html',
-  imports: [FormFieldComponent, MatIcon, InputComponent, MatIconButton],
+  imports: [FormFieldComponent, MatIcon, InputComponent, MatIconButton, ReactiveFormsModule],
   host: {
     '[@inputWidth]': "isInputFocusMode ? 'expanded' : 'collapsed'",
   },
@@ -18,10 +20,12 @@ import { inputCollapseAnimation } from './animations/collapse-input.animation';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageInputComponent {
+  public messageFormControl = input.required<FormControl<string | null>>();
+
   public onWrite = output<void>();
+  public inputFocusMode = output<boolean>();
 
   public isInputFocusMode: boolean = false;
-  public inputFocusMode = output<boolean>();
 
   @HostListener('document:click', ['$event'])
   public onClick(event: MouseEvent): void {

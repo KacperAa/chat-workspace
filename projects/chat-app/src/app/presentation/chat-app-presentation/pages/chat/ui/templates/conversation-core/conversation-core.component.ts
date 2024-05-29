@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -32,6 +33,8 @@ import { ActionButton } from './models/action-button.model';
 export class ConversationCoreComponent {
   public conversationPresentationData = input.required<ConversationData | null>();
   public onWrite = output<void>();
+
+  public messageFormControl = new FormControl<string | null>('');
 
   public isInputFocusMode: boolean = false;
 
