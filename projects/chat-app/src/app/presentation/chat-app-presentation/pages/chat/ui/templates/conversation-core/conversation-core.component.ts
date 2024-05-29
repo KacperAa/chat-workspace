@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -10,6 +10,7 @@ import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
 import { ConversationData } from '../../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
+import { SendMessageApiService } from '../../../../../../../business/api/send-message/send-message-api.service';
 import { MessageInputComponent } from '../../molecules/message-input/message-input.component';
 import { ActionButton } from './models/action-button.model';
 
@@ -31,6 +32,8 @@ import { ActionButton } from './models/action-button.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConversationCoreComponent {
+  private _messageApiService = inject(SendMessageApiService);
+
   public conversationPresentationData = input.required<ConversationData | null>();
   public onWrite = output<void>();
 
@@ -47,8 +50,10 @@ export class ConversationCoreComponent {
 
   public onSendMessage(): void {
     const isFormValid: boolean = this.messageFormControl.valid;
+
     if (isFormValid) {
-      console.log(this.messageFormControl.value);
+      const message: string = this.messageFormControl.value!;
+      this._messageApiService.sendMessage(message);
       this.messageFormControl.reset();
     }
   }
