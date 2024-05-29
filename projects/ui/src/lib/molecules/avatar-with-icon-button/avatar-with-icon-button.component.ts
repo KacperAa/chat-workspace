@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 import { CircleSizeService } from '../../atoms/circle-size/circle-size.service';
@@ -12,4 +12,6 @@ import { CircleSizeService } from '../../atoms/circle-size/circle-size.service';
   templateUrl: './avatar-with-icon-button.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvatarWithIconButtonComponent {}
+export class AvatarWithIconButtonComponent {
+  public onClickIcon = output<void>();
+}
