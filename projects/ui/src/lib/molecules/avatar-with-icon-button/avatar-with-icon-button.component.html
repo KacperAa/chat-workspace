@@ -1,6 +1,6 @@
 <div class="avatar-container">
   <ng-content select="img[ui-avatar]" />
-  <button class="icon-wrapper" role="button" (click)="onClickIcon.emit()">
+  <button class="icon-wrapper" (click)="onClickIcon.emit()">
     <ng-content select=".icon-overlay, [icon-overlay]"></ng-content>
   </button>
 </div>
