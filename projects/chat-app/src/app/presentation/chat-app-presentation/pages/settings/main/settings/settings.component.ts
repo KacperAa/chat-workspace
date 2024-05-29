@@ -5,12 +5,22 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 
 import { AvatarComponent } from '../../../../../../../../../ui/src/lib/atoms';
-import { AvatarWithContentComponent } from '../../../../../../../../../ui/src/lib/molecules';
+import {
+  AvatarWithContentComponent,
+  AvatarWithIconButtonComponent,
+} from '../../../../../../../../../ui/src/lib/molecules';
 
 @Component({
   selector: 'kaa-settings',
   standalone: true,
-  imports: [MatToolbar, MatIconButton, MatIcon, AvatarComponent, AvatarWithContentComponent],
+  imports: [
+    MatToolbar,
+    MatIconButton,
+    MatIcon,
+    AvatarComponent,
+    AvatarWithContentComponent,
+    AvatarWithIconButtonComponent,
+  ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })

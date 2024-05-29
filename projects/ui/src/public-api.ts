@@ -10,5 +10,10 @@ export {
   InputComponent,
   TextCloudComponent,
 } from './lib/atoms';
-export { AvatarWithContentComponent, SkeletonCircleAndBarsComponent, FormFieldComponent } from './lib/molecules';
+export {
+  AvatarWithContentComponent,
+  SkeletonCircleAndBarsComponent,
+  FormFieldComponent,
+  AvatarWithIconButtonComponent,
+} from './lib/molecules';
 export { HorizontalScrollComponent, VerticalScrollComponent } from './lib/organisms';

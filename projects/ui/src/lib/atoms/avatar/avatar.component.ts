@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewEncapsulation,
-  inject,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewEncapsulation, inject, input } from '@angular/core';
 
 import { CircleSizeService } from '../circle-size/circle-size.service';
 import { CirclePresentationSize } from '../circle-size/models/circle-presentation-size.model';
@@ -24,7 +16,7 @@ import { CirclePresentationSize } from '../circle-size/models/circle-presentatio
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AvatarComponent implements OnInit {
+export class AvatarComponent {
   private _circleSize = inject(CircleSizeService);
   public readonly size = input<CirclePresentationSize>('normal');
 
@@ -36,8 +28,6 @@ export class AvatarComponent implements OnInit {
 
     classList.add('circle', 'mat-elevation-z10');
   }
-
-  public ngOnInit(): void {}
 
   public setAvatarSize(): string {
     return this._circleSize.setCircleSizeClass(this.size());
