@@ -25,7 +25,7 @@
     </div>
   </mat-toolbar>
 
-  <ng-content #dupsko />
+  <ng-content />
 
   <mat-toolbar class="user-conversation-presentation__toolbar-bottom">
     @if (!isInputFocusMode) {
@@ -38,18 +38,8 @@
       </div>
     }
 
-    <ui-form-field class="dynamic-input">
-      <input ui-input placeholder="Aa" (input)="onWrite.emit()" (focus)="onInputFocus()" />
-      @if (!isInputFocusMode) {
-        <button suffix mat-icon-button>
-          <mat-icon suffix color="primary">mood</mat-icon>
-        </button>
-      } @else {
-        <button suffix mat-icon-button>
-          <mat-icon suffix color="primary">search</mat-icon>
-        </button>
-      }
-    </ui-form-field>
+    <kaa-message-input (onWrite)="onWrite.emit()" (inputFocusMode)="isInputFocusMode = $event" />
+
     @if (isInputFocusMode) {
       <button class="send-message-btn" mat-icon-button>
         <mat-icon suffix color="accent">send</mat-icon>

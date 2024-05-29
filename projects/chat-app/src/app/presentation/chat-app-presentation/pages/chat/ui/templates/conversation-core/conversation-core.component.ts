@@ -5,12 +5,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
-import { FormFieldComponent } from '@ui/FormFieldComponent';
-import { InputComponent } from '@ui/InputComponent';
 import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
 import { ConversationData } from '../../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
+import { MessageInputComponent } from '../../molecules/message-input/message-input.component';
 import { ActionButton } from './models/action-button.model';
 
 @Component({
@@ -22,10 +21,9 @@ import { ActionButton } from './models/action-button.model';
     AvatarWithContentComponent,
     MatIcon,
     AvatarComponent,
-    FormFieldComponent,
-    InputComponent,
     SkeletonCircleLoaderComponent,
     SkeletonBarComponent,
+    MessageInputComponent,
   ],
   templateUrl: './conversation-core.component.html',
   styleUrl: './conversation-core.component.scss',
@@ -39,26 +37,4 @@ export class ConversationCoreComponent {
 
   public topActionButtons: ActionButton[] = [{ icon: 'phone' }, { icon: 'videocam' }, { icon: 'info' }];
   public bottomActionButtons: ActionButton[] = [{ icon: 'photo' }, { icon: 'microphone' }, { icon: 'photo_camera' }];
-
-  @HostListener('document:click', ['$event'])
-  public onClick(event: MouseEvent): void {
-    this._handleOutsideBottomToolbarClick(event);
-  }
-
-  public onInputFocus(): void {
-    this.isInputFocusMode = true;
-  }
-
-  /**
-   * Handles clicks outside the bottom toolbar to switch input mode.
-   * Ensures that the wide input doesn't close every time the send message button is clicked.
-   */
-  private _handleOutsideBottomToolbarClick(event: MouseEvent): void {
-    const isClickInsideBottomToolbar =
-      (event.target as HTMLElement).closest('.user-conversation-presentation__toolbar-bottom') !== null;
-
-    if (!isClickInsideBottomToolbar) {
-      this.isInputFocusMode = false;
-    }
-  }
 }
