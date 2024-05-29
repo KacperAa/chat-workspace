@@ -19,4 +19,10 @@ export const APP_ROUTES: Routes = [
       import('./presentation/chat-app-presentation/pages/chat/main/chat.routes').then(r => r.CHAT_ROUTES),
     ...canActivate(() => redirectUnauthorizedTo(['login'])),
   },
+  {
+    path: 'settings',
+    loadChildren: () =>
+      import('./presentation/chat-app-presentation/pages/settings/main/settings.routes').then(r => r.SETTINGS_ROUTES),
+    ...canActivate(() => redirectUnauthorizedTo(['login'])),
+  },
 ];
