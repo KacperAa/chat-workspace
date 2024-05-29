@@ -16,10 +16,13 @@
     top: 75%;
     left: 75%;
     transform: translate(-40%, -40%);
-    box-shadow: none;
   }
 
   .icon-overlay {
     @include icon-size;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
