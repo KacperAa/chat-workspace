@@ -1,11 +1,11 @@
 <h2 mat-dialog-title>Edit picture</h2>
 <mat-dialog-content>
   <mat-form-field color="accent">
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [formControl]="editPictureControl" />
+    <mat-label>Picture http adress</mat-label>
+    <input matInput placeholder="http..." [formControl]="editPictureControl" />
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button (click)="onClose()">Close</button>
-  <button mat-button>Ok</button>
+  <button mat-button>Edit</button>
 </mat-dialog-actions>
