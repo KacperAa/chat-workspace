@@ -27,11 +27,8 @@ export class EditPhotoBottomSheetComponent {
       panelClass: 'modal-panel',
     });
 
-    dialog.afterClosed().subscribe(value => {
-      this._chatLoader.patchIsChatLoadedState(true);
-      this._updateUserProfile.updateUserPhoto(value).subscribe(() => {
-        this._chatLoader.patchIsChatLoadedState(false);
-      });
+    dialog.afterClosed().subscribe(photoUrl => {
+      this._handleUpdatePhotoStream(photoUrl);
     });
     this._bottomSheetRef.dismiss();
   }
@@ -42,5 +39,13 @@ export class EditPhotoBottomSheetComponent {
 
   public onSelectLibrary(): void {
     this._bottomSheetRef.dismiss();
+  }
+
+  private _handleUpdatePhotoStream(photoUrl: string): void {
+    this._chatLoader.patchIsChatLoadedState(true);
+
+    this._updateUserProfile.updateUserPhoto(photoUrl).subscribe(() => {
+      this._chatLoader.patchIsChatLoadedState(false);
+    });
   }
 }
