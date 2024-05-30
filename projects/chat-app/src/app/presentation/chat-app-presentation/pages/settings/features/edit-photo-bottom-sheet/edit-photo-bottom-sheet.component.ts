@@ -20,6 +20,7 @@ export class EditPhotoBottomSheetComponent {
   public onAddViaLink(): void {
     this._dialog.open(AddPictureViaLinkDialogComponent, {
       disableClose: true,
+      panelClass: 'modal-panel',
     });
 
     this._bottomSheetRef.dismiss();
