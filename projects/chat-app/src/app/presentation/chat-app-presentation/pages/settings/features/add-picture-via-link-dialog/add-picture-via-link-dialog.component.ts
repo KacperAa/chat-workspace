@@ -32,4 +32,8 @@ export class AddPictureViaLinkDialogComponent {
   onClose(): void {
     this._dialogRef.close();
   }
+
+  onEdit(): void {
+    this._dialogRef.close(this.editPictureControl.value);
+  }
 }

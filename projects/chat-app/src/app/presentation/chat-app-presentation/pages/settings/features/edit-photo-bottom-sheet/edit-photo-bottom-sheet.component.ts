@@ -18,10 +18,12 @@ export class EditPhotoBottomSheetComponent {
   private _dialog = inject(MatDialog);
 
   public onAddViaLink(): void {
-    this._dialog.open(AddPictureViaLinkDialogComponent, {
+    const dialog = this._dialog.open(AddPictureViaLinkDialogComponent, {
       disableClose: true,
       panelClass: 'modal-panel',
     });
+
+    dialog.afterClosed().subscribe(res => console.log(res));
 
     this._bottomSheetRef.dismiss();
   }
