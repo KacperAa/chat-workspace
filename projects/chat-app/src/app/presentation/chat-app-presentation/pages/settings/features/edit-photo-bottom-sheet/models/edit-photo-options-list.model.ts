@@ -1,4 +1,4 @@
-export interface EditPhotoOptionsList {
+export interface EditPhotoOptionElement {
   optionDescription: string;
   matIconName: string;
   onClickOption: () => void;
