@@ -36,6 +36,8 @@ export class SettingsComponent {
 
   public user: Signal<User | null> = this._authStore.loggedUser;
 
+  ngOnInit(): void {}
+
   public navigateToChat(): void {
     this._router.navigate(['chat/conversations']);
   }

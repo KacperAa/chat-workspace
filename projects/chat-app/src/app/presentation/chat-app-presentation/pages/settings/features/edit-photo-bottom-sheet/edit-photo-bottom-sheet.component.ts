@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
-import { AddPictureViaLinkDialogComponent } from '../add-picture-via-link-dialog/add-picture-via-link-dialog.component';
+import { EditUserApiService } from '../../../../../../business/api/edit-user/edit-user-api.service';
+import { AddPictureViaLinkDialogComponent } from '../../ui/molecules/add-picture-via-link-dialog/add-picture-via-link-dialog.component';
 
 @Component({
   selector: 'kaa-edit-photo-bottom-sheet',
@@ -14,8 +15,9 @@ import { AddPictureViaLinkDialogComponent } from '../add-picture-via-link-dialog
   styleUrl: './edit-photo-bottom-sheet.component.scss',
 })
 export class EditPhotoBottomSheetComponent {
-  private _bottomSheetRef = inject(MatBottomSheetRef<EditPhotoBottomSheetComponent>);
   private _dialog = inject(MatDialog);
+  private _editUserApi = inject(EditUserApiService);
+  private _bottomSheetRef = inject(MatBottomSheetRef<EditPhotoBottomSheetComponent>);
 
   public onAddViaLink(): void {
     const dialog = this._dialog.open(AddPictureViaLinkDialogComponent, {
@@ -23,7 +25,9 @@ export class EditPhotoBottomSheetComponent {
       panelClass: 'modal-panel',
     });
 
-    dialog.afterClosed().subscribe(res => console.log(res));
+    dialog.afterClosed().subscribe(value => {
+      console.log(value);
+    });
 
     this._bottomSheetRef.dismiss();
   }
