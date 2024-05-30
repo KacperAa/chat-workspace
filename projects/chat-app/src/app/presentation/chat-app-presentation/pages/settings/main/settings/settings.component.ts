@@ -1,6 +1,6 @@
 import { Component, Signal, inject } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -12,6 +12,7 @@ import {
   AvatarWithIconButtonComponent,
 } from '../../../../../../../../../ui/src/lib/molecules';
 import { AuthStore } from '../../../../../../business/api/auth/auth.store';
+import { EditPhotoBottomSheetComponent } from '../../features/edit-photo-bottom-sheet/edit-photo-bottom-sheet.component';
 
 @Component({
   selector: 'kaa-settings',
@@ -29,8 +30,9 @@ import { AuthStore } from '../../../../../../business/api/auth/auth.store';
   styleUrl: './settings.component.scss',
 })
 export class SettingsComponent {
-  private _router: Router = inject(Router);
   private _authStore = inject(AuthStore);
+  private _router: Router = inject(Router);
+  private _bottomSheet = inject(MatBottomSheet);
 
   public user: Signal<User | null> = this._authStore.loggedUser;
 
@@ -38,5 +40,7 @@ export class SettingsComponent {
     this._router.navigate(['chat/conversations']);
   }
 
-  public openEditPicture(): void {}
+  public openEditPhotoBottomSheet(): void {
+    this._bottomSheet.open(EditPhotoBottomSheetComponent);
+  }
 }
