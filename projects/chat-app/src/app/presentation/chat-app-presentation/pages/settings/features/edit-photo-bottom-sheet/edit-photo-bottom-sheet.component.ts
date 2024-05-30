@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
-import { EditUserApiService } from '../../../../../../business/api/edit-user/edit-user-api.service';
+import { UpdateUserProfileApiService } from '../../../../../../business/api/update-user-profile/update-user-profile-api.service';
+import { ChatLoader } from '../../../../chat-loader/chat-loader';
 import { AddPictureViaLinkDialogComponent } from '../../ui/molecules/add-picture-via-link-dialog/add-picture-via-link-dialog.component';
 
 @Component({
@@ -16,7 +17,8 @@ import { AddPictureViaLinkDialogComponent } from '../../ui/molecules/add-picture
 })
 export class EditPhotoBottomSheetComponent {
   private _dialog = inject(MatDialog);
-  private _editUserApi = inject(EditUserApiService);
+  private _chatLoader = inject(ChatLoader);
+  private _updateUserProfile = inject(UpdateUserProfileApiService);
   private _bottomSheetRef = inject(MatBottomSheetRef<EditPhotoBottomSheetComponent>);
 
   public onAddViaLink(): void {
@@ -26,9 +28,11 @@ export class EditPhotoBottomSheetComponent {
     });
 
     dialog.afterClosed().subscribe(value => {
-      console.log(value);
+      this._chatLoader.patchIsChatLoadedState(true);
+      this._updateUserProfile.updateUserPhoto(value).subscribe(() => {
+        this._chatLoader.patchIsChatLoadedState(false);
+      });
     });
-
     this._bottomSheetRef.dismiss();
   }
 
