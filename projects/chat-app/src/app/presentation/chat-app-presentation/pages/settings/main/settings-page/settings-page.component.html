@@ -4,18 +4,22 @@
   </mat-toolbar>
 
   <section class="settings-page__settings-shell">
-    <ui-avatar-with-icon-button
-      borderColorVar="--app-dark-background-color"
-      backgroundColorVar="--app-color-dark"
-      (onClickBtn)="openEditPhotoBottomSheet()">
-      <img
-        ui-avatar
-        size="large"
-        class="image-low-margin"
-        [src]="user()?.photoURL"
-        [alt]="user()?.displayName + ' profile image'" />
-      <mat-icon class="icon-overlay">photo_camera</mat-icon>
-    </ui-avatar-with-icon-button>
+    @if (!isLoading()) {
+      <ui-avatar-with-icon-button
+        borderColorVar="--app-dark-background-color"
+        backgroundColorVar="--app-color-dark"
+        (onClickBtn)="openEditPhotoBottomSheet()">
+        <img
+          ui-avatar
+          size="large"
+          class="image-low-margin"
+          [src]="user()?.photoURL"
+          [alt]="user()?.displayName + ' profile image'" />
+        <mat-icon class="icon-overlay">photo_camera</mat-icon>
+      </ui-avatar-with-icon-button>
+    } @else {
+      <ui-skeleton-circle-loader size="large" />
+    }
 
     <span>{{ user()?.displayName }}</span>
   </section>

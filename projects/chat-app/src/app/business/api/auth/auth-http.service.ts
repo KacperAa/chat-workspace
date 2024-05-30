@@ -21,6 +21,9 @@ export class AuthHttpService {
   private _firebaseAuth = inject(Auth);
   private _http = inject(HttpClient);
 
+  private _defaultUserPicture: string =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyrzeK7cLswnL6YC1rIwMisKdHUs3KWyqKcA&s';
+
   public getStreamToken() {
     return this._http
       .post<{ token: string }>(`${environment.firebase.apiUrl}/createStreamToken`, {
@@ -37,7 +40,7 @@ export class AuthHttpService {
     return from(createUserWithEmailAndPassword(this._firebaseAuth, email, password)).pipe(
       switchMap(({ user }) =>
         forkJoin([
-          updateProfile(user, { displayName }),
+          updateProfile(user, { displayName, photoURL: this._defaultUserPicture }),
           this._http.post(`${environment.firebase.apiUrl}/createStreamUser`, {
             user: { ...user, displayName },
           }),
