@@ -1,10 +1,16 @@
 <h2 class="sheet-heading-2">Change profile picture</h2>
 
-<mat-nav-list role="button">
-  @for (option of editOptionsList; track option) {
-    <mat-list-item (click)="option.onClickOption()">
-      <mat-icon matListItemIcon>{{ option.matIconName }}</mat-icon>
-      <span>{{ option.optionDescription }}</span>
-    </mat-list-item>
-  }
+<mat-nav-list>
+  <mat-list-item (click)="onAddViaLink()">
+    <mat-icon matListItemIcon>http</mat-icon>
+    <span>Add via link</span>
+  </mat-list-item>
+  <mat-list-item (click)="onTakePhoto()">
+    <mat-icon matListItemIcon>photo_camera</mat-icon>
+    <span>Take a photo</span>
+  </mat-list-item>
+  <mat-list-item (click)="onSelectLibrary()">
+    <mat-icon matListItemIcon>photo</mat-icon>
+    <span>Select from library</span>
+  </mat-list-item>
 </mat-nav-list>
