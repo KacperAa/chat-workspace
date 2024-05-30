@@ -15,7 +15,7 @@ import { AuthStore } from '../../../../../../business/api/auth/auth.store';
 import { EditPhotoBottomSheetComponent } from '../../features/edit-photo-bottom-sheet/edit-photo-bottom-sheet.component';
 
 @Component({
-  selector: 'kaa-settings',
+  selector: 'kaa-settings-page',
   standalone: true,
   imports: [
     MatIcon,
@@ -29,7 +29,7 @@ import { EditPhotoBottomSheetComponent } from '../../features/edit-photo-bottom-
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })
-export class SettingsComponent {
+export class SettingsPageComponent {
   private _authStore = inject(AuthStore);
   private _router: Router = inject(Router);
   private _bottomSheet = inject(MatBottomSheet);
