@@ -26,8 +26,8 @@ import { EditPhotoBottomSheetComponent } from '../../features/edit-photo-bottom-
     AvatarWithContentComponent,
     AvatarWithIconButtonComponent,
   ],
-  templateUrl: './settings.component.html',
-  styleUrl: './settings.component.scss',
+  templateUrl: './settings-page.component.html',
+  styleUrl: './settings-page.component.scss',
 })
 export class SettingsPageComponent {
   private _authStore = inject(AuthStore);
