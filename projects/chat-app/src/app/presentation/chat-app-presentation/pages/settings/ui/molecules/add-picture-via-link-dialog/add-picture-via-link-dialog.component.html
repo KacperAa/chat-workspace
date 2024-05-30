@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Edit picture</h2>
+<mat-dialog-content>
+  <mat-form-field class="field-max-width" color="accent">
+    <mat-label>Picture http adress</mat-label>
+    <input matInput placeholder="http..." [formControl]="editPictureControl" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="buttons-spacer">
+  <button mat-button (click)="onClose()">Close</button>
+  <button mat-button (click)="onEdit()">Edit</button>
+</mat-dialog-actions>
