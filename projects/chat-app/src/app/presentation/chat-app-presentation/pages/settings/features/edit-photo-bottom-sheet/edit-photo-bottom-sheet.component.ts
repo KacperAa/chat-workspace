@@ -3,6 +3,8 @@ import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
+import { EditPhotoOptionsList } from './models/edit-photo-options-list.model';
+
 @Component({
   selector: 'kaa-edit-photo-bottom-sheet',
   standalone: true,
@@ -13,7 +15,31 @@ import { MatListModule } from '@angular/material/list';
 export class EditPhotoBottomSheetComponent {
   private _bottomSheetRef = inject(MatBottomSheetRef<EditPhotoBottomSheetComponent>);
 
+  public editOptionsList: EditPhotoOptionsList[] = [
+    {
+      optionDescription: 'Add via link',
+      matIconName: 'http',
+      onClickOption: this._onAddViaLink,
+    },
+    {
+      optionDescription: 'Take a photo',
+      matIconName: 'photo_camera',
+      onClickOption: this._onTakePhoto,
+    },
+    {
+      optionDescription: 'Select from library',
+      matIconName: 'photo',
+      onClickOption: this._onSelectFromLibrary,
+    },
+  ];
+
   public openLink(): void {
     this._bottomSheetRef.dismiss();
   }
+
+  private _onAddViaLink(): void {}
+
+  private _onTakePhoto(): void {}
+
+  private _onSelectFromLibrary(): void {}
 }
