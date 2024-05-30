@@ -1,7 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+
+import { AddPictureViaLinkDialogComponent } from '../add-picture-via-link-dialog/add-picture-via-link-dialog.component';
 
 @Component({
   selector: 'kaa-edit-photo-bottom-sheet',
@@ -12,8 +15,13 @@ import { MatListModule } from '@angular/material/list';
 })
 export class EditPhotoBottomSheetComponent {
   private _bottomSheetRef = inject(MatBottomSheetRef<EditPhotoBottomSheetComponent>);
+  private _dialog = inject(MatDialog);
 
   public onAddViaLink(): void {
+    this._dialog.open(AddPictureViaLinkDialogComponent, {
+      disableClose: true,
+    });
+
     this._bottomSheetRef.dismiss();
   }
 
