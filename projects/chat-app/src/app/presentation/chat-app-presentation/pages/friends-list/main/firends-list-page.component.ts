@@ -17,4 +17,6 @@ export class FirendsListPageComponent {
   public navigateToUserConversations(): void {
     this._router.navigate(['chat/conversations']);
   }
+
+  public navigateToAddFriends(): void {}
 }

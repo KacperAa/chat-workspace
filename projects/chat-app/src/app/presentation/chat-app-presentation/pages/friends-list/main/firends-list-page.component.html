@@ -1,7 +1,11 @@
 <div class="friends-list-page">
-  <mat-toolbar>
-    <button mat-button-icon color="accent" (click)="navigateToUserConversations()">
+  <mat-toolbar class="friends-list-page__toolbar">
+    <button mat-icon-button color="accent" (click)="navigateToUserConversations()">
       <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <button mat-icon-button color="primary" (click)="navigateToAddFriends()">
+      <mat-icon>person_add</mat-icon>
     </button>
   </mat-toolbar>
   <main></main>
