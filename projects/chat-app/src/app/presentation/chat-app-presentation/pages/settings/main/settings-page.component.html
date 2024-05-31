@@ -1,9 +1,7 @@
-<main class="settings-page">
-  <mat-toolbar>
-    <button mat-icon-button color="accent" (click)="navigateToChat()"><mat-icon>arrow_back</mat-icon></button>
-  </mat-toolbar>
+<div class="settings-page">
+  <kaa-navigation-toolbar />
 
-  <section class="settings-page__settings-shell">
+  <main class="settings-page__settings-shell">
     @if (!isLoading()) {
       <ui-avatar-with-icon-button
         borderColorVar="--app-dark-background-color"
@@ -22,5 +20,5 @@
     }
 
     <span>{{ user()?.displayName }}</span>
-  </section>
-</main>
+  </main>
+</div>

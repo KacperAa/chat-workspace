@@ -5,16 +5,16 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'kaa-firends-list-page',
+  selector: 'kaa-navigation-toolbar',
   standalone: true,
-  imports: [MatToolbar, MatIconButton, MatIcon],
-  templateUrl: './firends-list-page.component.html',
-  styleUrl: './firends-list-page.component.scss',
+  imports: [MatToolbar, MatIcon, MatIconButton],
+  templateUrl: './navigation-toolbar.component.html',
+  styleUrl: './navigation-toolbar.component.scss',
 })
-export class FirendsListPageComponent {
+export class NavigationToolbarComponent {
   private _router = inject(Router);
 
-  public navigateToUserConversations(): void {
+  public navigateToChatConversations(): void {
     this._router.navigate(['chat/conversations']);
   }
 }
