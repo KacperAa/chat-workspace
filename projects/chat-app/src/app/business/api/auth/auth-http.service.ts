@@ -31,9 +31,6 @@ export class AuthHttpService {
       })
       .pipe(pluck('token'));
   }
-  public getCurrentUser() {
-    return this._firebaseAuth.currentUser!;
-  }
 
   public signIn({ email, password }: SigninCredentials): Observable<UserCredential> {
     return from(signInWithEmailAndPassword(this._firebaseAuth, email, password));
