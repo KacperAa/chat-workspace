@@ -7,7 +7,7 @@ import { SkeletonCircleLoaderComponent } from '../../../../../../../../ui/src/li
 import { AvatarWithIconButtonComponent } from '../../../../../../../../ui/src/lib/molecules';
 import { AvatarWithContentComponent } from '../../../../../../../../ui/src/lib/molecules';
 import { AuthStore } from '../../../../../business/api/auth/auth.store';
-import { ChatLoader } from '../../../chat-loader/chat-loader';
+import { ChatLoader } from '../../../../../business/chat-loader/chat-loader';
 import { NavigationToolbarComponent } from '../../ui/molecules/navigation-toolbar/navigation-toolbar.component';
 import { EditPhotoBottomSheetComponent } from '../features/edit-photo-bottom-sheet/edit-photo-bottom-sheet.component';
 
