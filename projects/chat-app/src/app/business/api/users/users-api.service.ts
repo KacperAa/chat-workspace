@@ -1,8 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { APIResponse, UserResponse } from 'stream-chat';
-import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angular';
-
-import { Observable, from } from 'rxjs';
+import { ChatClientService } from 'stream-chat-angular';
 
 @Injectable({
   providedIn: 'root',
