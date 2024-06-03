@@ -5,8 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { UserResponse } from 'stream-chat';
-import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angular';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
+import { UserApiService } from '../../../../../business/api/all-app-users/user-api.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 import { NavigationToolbarComponent } from '../../ui/molecules/navigation-toolbar/navigation-toolbar.component';
 
@@ -21,8 +22,9 @@ import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
   styleUrl: './add-friends-page.component.scss',
 })
 export class AddFriendsPageComponent implements OnInit {
-  private _chatService = inject(ChatClientService);
   private _chatInitializer = inject(ChatInitializerService);
+
+  private _userApi = inject(UserApiService);
 
   public findFiendsControl = new FormControl('', { nonNullable: true });
   public availableUsers$!: Observable<UserResponse<DefaultStreamChatGenerics>[]>;
@@ -34,7 +36,7 @@ export class AddFriendsPageComponent implements OnInit {
       debounceTime(300),
       startWith(''),
       switchMap(queryString => {
-        return this._chatService.autocompleteUsers(queryString);
+        return this._userApi.getUsersByFilter(queryString);
       })
     );
   }
