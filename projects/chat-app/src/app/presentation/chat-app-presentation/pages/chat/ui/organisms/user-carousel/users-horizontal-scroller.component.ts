@@ -6,7 +6,7 @@ import { HorizontalScrollComponent } from '@ui/HorizontalScrollComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
 import { UserMockup } from '../../../../../../../business/api/user/models/user.model';
-import { ChatLoader } from '../../../../../chat-loader/chat-loader';
+import { ChatLoader } from '../../../../../../../business/chat-loader/chat-loader';
 
 @Component({
   selector: 'kaa-users-horizontal-scroller',

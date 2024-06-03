@@ -1,0 +1,10 @@
+.friends-list-page {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--app-dark-background-color);
+
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -6,7 +6,7 @@ import { AvatarComponent } from '../../../../../../../../../../ui/src/lib/atoms'
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
 import { SkeletonCircleAndBarsComponent } from '../../../../../../../../../../ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component';
 import { ChannelsListMapperService } from '../../../../../../../business/api/channels/channels-list-mapper/channels-list-mapper.service';
-import { ChatLoader } from '../../../../../chat-loader/chat-loader';
+import { ChatLoader } from '../../../../../../../business/chat-loader/chat-loader';
 
 @Component({
   selector: 'kaa-channels',

@@ -7,6 +7,7 @@ import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent
 import { SkeletonCircleAndBarsComponent } from '@ui/SkeletonCircleAndBarsComponent';
 
 import { UserHttpService } from '../../../../../business/api/user/user-http.service';
+import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 import { CoreComponent } from '../../../core/core.component';
 import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
 import { UsersHorizontalScrollerComponent } from '../ui/organisms/user-carousel/users-horizontal-scroller.component';
@@ -32,10 +33,11 @@ import { ChatFacade } from './chat-facade';
 export class ChatComponent implements OnInit {
   protected chatFacade = inject(ChatFacade);
 
+  private _chatInitializer = inject(ChatInitializerService);
   private _usersHttp = inject(UserHttpService);
 
   public ngOnInit(): void {
-    this.chatFacade.initChat();
+    this._chatInitializer.initChat();
     this._usersHttp.getUsers().subscribe();
   }
 }
