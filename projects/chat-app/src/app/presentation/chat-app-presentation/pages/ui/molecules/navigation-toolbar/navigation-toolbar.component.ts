@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
   imports: [MatToolbar, MatIcon, MatIconButton],
   templateUrl: './navigation-toolbar.component.html',
   styleUrl: './navigation-toolbar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationToolbarComponent {
   private _router = inject(Router);

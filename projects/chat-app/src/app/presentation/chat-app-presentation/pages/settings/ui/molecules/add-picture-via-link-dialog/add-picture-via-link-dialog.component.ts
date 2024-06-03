@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
@@ -23,6 +23,7 @@ import { MatInput } from '@angular/material/input';
   ],
   templateUrl: './add-picture-via-link-dialog.component.html',
   styleUrl: './add-picture-via-link-dialog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddPictureViaLinkDialogComponent {
   private _dialogRef = inject(MatDialogRef);

@@ -11,7 +11,6 @@ import { APP_ROUTES } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(HttpClientModule),
-
     provideRouter(APP_ROUTES),
     provideAnimationsAsync(),
     importProvidersFrom(

@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
@@ -17,9 +17,9 @@ import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
   selector: 'kaa-add-friends-page',
   standalone: true,
   imports: [NavigationToolbarComponent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, AsyncPipe],
-
   templateUrl: './add-friends-page.component.html',
   styleUrl: './add-friends-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddFriendsPageComponent implements OnInit {
   private _chatInitializer = inject(ChatInitializerService);
