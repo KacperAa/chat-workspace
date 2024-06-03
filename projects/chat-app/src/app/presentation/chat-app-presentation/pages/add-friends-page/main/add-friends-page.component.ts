@@ -1,4 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ChatClientService } from 'stream-chat-angular';
@@ -8,16 +10,17 @@ import { NavigationToolbarComponent } from '../../ui/molecules/navigation-toolba
 @Component({
   selector: 'kaa-add-friends-page',
   standalone: true,
-  imports: [NavigationToolbarComponent, MatFormField, MatLabel, MatInput],
+  imports: [NavigationToolbarComponent, MatFormField, MatLabel, MatInput, ReactiveFormsModule],
 
   templateUrl: './add-friends-page.component.html',
   styleUrl: './add-friends-page.component.scss',
 })
-export class AddFriendsPageComponent {
-  // private _usersApiService = inject(UsersApiService);
+export class AddFriendsPageComponent implements OnInit {
   private _chatService = inject(ChatClientService);
 
-  ngOnInit(): void {
-    // console.log(this._usersApiService.getAllUsers());
+  public findFiendsControl = new FormControl('');
+
+  public ngOnInit(): void {
+    this.findFiendsControl.valueChanges.subscribe(value => console.log(value));
   }
 }
