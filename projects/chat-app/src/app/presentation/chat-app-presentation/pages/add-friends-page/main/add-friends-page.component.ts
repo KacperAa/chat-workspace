@@ -4,10 +4,8 @@ import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { UserResponse } from 'stream-chat';
-import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { UserApiService } from '../../../../../business/api/all-app-users/user-api.service';
+import { UserApiService, UserMergedResponse } from '../../../../../business/api/all-app-users/user-api.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 import { NavigationToolbarComponent } from '../../ui/molecules/navigation-toolbar/navigation-toolbar.component';
 import { UserListComponent } from '../../ui/organism/user-list/user-list.component';
@@ -36,7 +34,7 @@ export class AddFriendsPageComponent implements OnInit {
   private _userApi = inject(UserApiService);
 
   public findFiendsControl = new FormControl('', { nonNullable: true });
-  public availableUsers$!: Observable<UserResponse<DefaultStreamChatGenerics>[]>;
+  public availableUsers$!: Observable<UserMergedResponse[]>;
 
   public ngOnInit(): void {
     this._chatInitializer.initChat();

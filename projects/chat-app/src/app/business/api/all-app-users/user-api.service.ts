@@ -13,7 +13,7 @@ type MappedUserFields = {
   [P in keyof BasicUserFields]: P extends 'photoURL' ? string | null : string;
 };
 
-type UserMergedResponse = UserResponse<DefaultStreamChatGenerics> & {
+export type UserMergedResponse = UserResponse<DefaultStreamChatGenerics> & {
   photoURL: string | null;
 };
 
@@ -21,8 +21,8 @@ type UserMergedResponse = UserResponse<DefaultStreamChatGenerics> & {
   providedIn: 'root',
 })
 export class UserApiService {
-  private _chatService = inject(ChatClientService);
   private _fireDatabase = inject(Database);
+  private _chatService = inject(ChatClientService);
 
   public getUsersByFilter(queryString: string): Observable<UserMergedResponse[]> {
     return from(this._chatService.autocompleteUsers(queryString)).pipe(

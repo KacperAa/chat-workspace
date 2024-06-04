@@ -3,11 +3,10 @@ import { MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { MatList, MatListItem } from '@angular/material/list';
-import { UserResponse } from 'stream-chat';
-import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { AvatarComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithContentComponent } from '../../../../../../../../../ui/src/lib/molecules';
+import { UserMergedResponse } from '../../../../../../business/api/all-app-users/user-api.service';
 
 @Component({
   selector: 'kaa-user-list',
@@ -17,5 +16,5 @@ import { AvatarWithContentComponent } from '../../../../../../../../../ui/src/li
   styleUrl: './user-list.component.scss',
 })
 export class UserListComponent {
-  public users = input.required<UserResponse<DefaultStreamChatGenerics>[] | null>();
+  public users = input.required<UserMergedResponse[] | null>();
 }
