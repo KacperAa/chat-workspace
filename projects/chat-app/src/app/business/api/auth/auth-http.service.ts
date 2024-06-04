@@ -22,7 +22,6 @@ export class AuthHttpService {
   private _firebaseAuth = inject(Auth);
   private _http = inject(HttpClient);
   private _fireDatabase = inject(Database);
-  // private _fireDatabaseEndpoint = 'https://kaa-chat-app-default-rtdb.firebaseio.com/';
 
   private _defaultUserPicture: string =
     'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyrzeK7cLswnL6YC1rIwMisKdHUs3KWyqKcA&s';
