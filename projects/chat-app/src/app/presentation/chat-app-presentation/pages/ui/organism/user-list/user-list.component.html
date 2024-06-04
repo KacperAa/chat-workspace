@@ -2,7 +2,7 @@
   @for (user of users(); track user) {
     <mat-list-item class="list-item">
       <ui-avatar-with-content>
-        <img ui-avatar size="small" [src]="user.image" alt="" />
+        <img ui-avatar size="small" [src]="user['photoURL']" alt="" />
         <span class="right-content">{{ user.name }}</span>
       </ui-avatar-with-content>
       <button matListItemMeta mat-icon-button color="accent"><mat-icon>add</mat-icon></button>
