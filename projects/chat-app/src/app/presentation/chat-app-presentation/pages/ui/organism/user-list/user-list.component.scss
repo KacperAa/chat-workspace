@@ -1,0 +1,14 @@
+.right-content {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--app-color-gray);
+}
+
+.list-item {
+  transition: 0.3s filter;
+
+  &:hover {
+    filter: brightness(70%);
+    cursor: pointer;
+  }
+}

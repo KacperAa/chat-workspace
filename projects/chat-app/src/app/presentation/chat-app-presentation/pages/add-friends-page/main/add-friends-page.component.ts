@@ -10,13 +10,22 @@ import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 import { UserApiService } from '../../../../../business/api/all-app-users/user-api.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 import { NavigationToolbarComponent } from '../../ui/molecules/navigation-toolbar/navigation-toolbar.component';
+import { UserListComponent } from '../../ui/organism/user-list/user-list.component';
 
 import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
 
 @Component({
   selector: 'kaa-add-friends-page',
   standalone: true,
-  imports: [NavigationToolbarComponent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, AsyncPipe],
+  imports: [
+    NavigationToolbarComponent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    ReactiveFormsModule,
+    AsyncPipe,
+    UserListComponent,
+  ],
   templateUrl: './add-friends-page.component.html',
   styleUrl: './add-friends-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
