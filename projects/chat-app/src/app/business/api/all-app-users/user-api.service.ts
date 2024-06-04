@@ -1,21 +1,12 @@
 import { Injectable, inject } from '@angular/core';
-import { User } from '@angular/fire/auth';
 import { child, get } from '@angular/fire/database';
 import { Database, ref } from '@angular/fire/database';
-import { UserResponse } from 'stream-chat';
-import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angular';
+import { ChatClientService } from 'stream-chat-angular';
+
+import { MappedUserFields } from '../auth/models/mapped-user-fields.model';
+import { UserMergedResponse } from './models/user-merged-response.model';
 
 import { Observable, forkJoin, from, map, switchMap } from 'rxjs';
-
-type BasicUserFields = Pick<User, 'displayName' | 'photoURL' | 'email'>;
-
-type MappedUserFields = {
-  [P in keyof BasicUserFields]: P extends 'photoURL' ? string | null : string;
-};
-
-export type UserMergedResponse = UserResponse<DefaultStreamChatGenerics> & {
-  photoURL: string | null;
-};
 
 @Injectable({
   providedIn: 'root',
