@@ -7,10 +7,10 @@ import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angula
 
 import { Observable, forkJoin, from, map, switchMap } from 'rxjs';
 
-type SelectedUserFields = Pick<User, 'displayName' | 'photoURL' | 'email'>;
+type BasicUserFields = Pick<User, 'displayName' | 'photoURL' | 'email'>;
 
-type UserDatabaseResponse = {
-  [P in keyof SelectedUserFields]: P extends 'photoURL' ? string | null : string;
+type MappedUserFields = {
+  [P in keyof BasicUserFields]: P extends 'photoURL' ? string | null : string;
 };
 
 type UserMergedResponse = UserResponse<DefaultStreamChatGenerics> & {
@@ -41,7 +41,7 @@ export class UserApiService {
     );
   }
 
-  private _getFireUsersDatabase(uid: string): Observable<UserDatabaseResponse> {
+  private _getFireUsersDatabase(uid: string): Observable<MappedUserFields> {
     const dbRef = ref(this._fireDatabase);
     return from(
       get(child(dbRef, `users/${uid}`)).then(snapshot => {
