@@ -11,6 +11,7 @@ const STREAM_CHAT_IMPORTS = [StreamAutocompleteTextareaModule, StreamChatModule]
   selector: 'kaa-root',
   standalone: true,
   imports: [RouterOutlet, CoreComponent, TranslateModule, STREAM_CHAT_IMPORTS],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

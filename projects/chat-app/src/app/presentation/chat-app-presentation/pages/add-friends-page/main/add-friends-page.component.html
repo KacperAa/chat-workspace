@@ -2,13 +2,11 @@
   <kaa-navigation-toolbar />
 
   <main class="add-friends-page__add-firends-page_shell">
-    <mat-form-field color="accent">
+    <mat-form-field color="accent" appearance="outline">
       <mat-label>Find friends</mat-label>
-      <input matInput [formControl]="findFiendsControl" />
+      <input matInput [formControl]="findFriendsControl" />
     </mat-form-field>
 
-    @for (user of availableUsers$ | async; track user) {
-      {{ user }}
-    }
+    <kaa-user-list [users]="availableUsers$ | async" (onAddFriend)="addFriend($event)" />
   </main>
 </div>

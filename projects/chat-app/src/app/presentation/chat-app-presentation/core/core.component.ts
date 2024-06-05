@@ -31,6 +31,7 @@ const MATERIAL_IMPORTS = [
 })
 export class CoreComponent {
   public coreFacade = inject(CoreFacade);
+
   public isFetching = computed(() => {
     return this.coreFacade.loggedUser() === null;
   });

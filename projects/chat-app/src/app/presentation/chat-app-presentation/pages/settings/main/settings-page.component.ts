@@ -3,7 +3,7 @@ import { User } from '@angular/fire/auth';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatIcon } from '@angular/material/icon';
 
-import { SkeletonCircleLoaderComponent } from '../../../../../../../../ui/src/lib/atoms';
+import { AvatarComponent, SkeletonCircleLoaderComponent } from '../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithIconButtonComponent } from '../../../../../../../../ui/src/lib/molecules';
 import { AvatarWithContentComponent } from '../../../../../../../../ui/src/lib/molecules';
 import { AuthStore } from '../../../../../business/api/auth/auth.store';
@@ -16,6 +16,7 @@ import { EditPhotoBottomSheetComponent } from '../features/edit-photo-bottom-she
   standalone: true,
   imports: [
     MatIcon,
+    AvatarComponent,
     MatBottomSheetModule,
     AvatarWithContentComponent,
     NavigationToolbarComponent,

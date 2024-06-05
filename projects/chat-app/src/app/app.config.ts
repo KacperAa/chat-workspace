@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -11,7 +12,9 @@ import { APP_ROUTES } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(HttpClientModule),
+
     provideRouter(APP_ROUTES),
+    importProvidersFrom(),
     provideAnimationsAsync(),
     importProvidersFrom(
       provideFirebaseApp(() =>
@@ -25,6 +28,7 @@ export const appConfig: ApplicationConfig = {
         })
       )
     ),
+    importProvidersFrom(provideDatabase(() => getDatabase())),
     importProvidersFrom(provideAuth(() => getAuth())),
     importProvidersFrom(TranslateModule.forRoot()),
   ],
