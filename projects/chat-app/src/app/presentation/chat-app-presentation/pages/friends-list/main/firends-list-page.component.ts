@@ -39,7 +39,9 @@ export class FirendsListPageComponent implements OnInit {
     this._router.navigate(['chat/conversations']);
   }
 
-  public navigateToAddFriends(): void {}
+  public navigateToAddFriends(): void {
+    this._router.navigate(['add-friends']);
+  }
 
   private _getFriends(): void {
     const uid = this._auth.currentUser?.uid!;
