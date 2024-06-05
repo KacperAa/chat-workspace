@@ -14,6 +14,7 @@ import { SigninCredentials } from './models/signin-credentials';
 import { SignupCredentials } from './models/signup-credentials';
 
 import { Observable, forkJoin, from, pluck, switchMap } from 'rxjs';
+import { EventListenerObject } from 'rxjs/internal/observable/fromEvent';
 
 @Injectable({
   providedIn: 'root',
@@ -52,8 +53,16 @@ export class AuthHttpService {
     );
   }
 
-  public signOut(): Observable<void> {
-    return from(this._firebaseAuth.signOut());
+  public signOut() {
+    const user = this._firebaseAuth.currentUser!;
+
+    return from(this._firebaseAuth.signOut()).pipe(
+      switchMap(() =>
+        this._http.post(`${environment.firebase.apiUrl}/revokeStreamUserToken`, {
+          user,
+        })
+      )
+    );
   }
 
   private _writeUserData(uid: string, displayName: string, photoURL: string, email: string): Observable<void> {

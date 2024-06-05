@@ -14,7 +14,6 @@ export class CoreFacade {
   readonly loggedUser: Signal<User | null> = this._authStore.loggedUser;
 
   public signOut(): void {
-    this._authHttp.signOut();
-    this._router.navigate(['/login']);
+    this._authHttp.signOut().subscribe(() => this._router.navigate(['login']));
   }
 }

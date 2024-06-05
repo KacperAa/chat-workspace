@@ -25,7 +25,6 @@ export const createStreamUser = functions.https.onRequest((request, response) =>
         throw new functions.https.HttpsError('aborted', 'Could not create Stream user');
       }
     }
-    55;
   });
 });
 
