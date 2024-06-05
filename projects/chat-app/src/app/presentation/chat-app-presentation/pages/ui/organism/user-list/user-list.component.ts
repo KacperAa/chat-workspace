@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
@@ -17,4 +17,6 @@ import { UserMergedResponse } from '../../../../../../business/api/all-app-users
 })
 export class UserListComponent {
   public users = input.required<UserMergedResponse[] | null>();
+
+  public onAddFriend = output<UserMergedResponse>();
 }

@@ -40,6 +40,14 @@ export class AddFriendsPageComponent implements OnInit {
   public ngOnInit(): void {
     this._chatInitializer.initChat();
 
+    this._handleGetUsersInputStream();
+  }
+
+  public addFriend(user: UserMergedResponse): void {
+    console.log(user);
+  }
+
+  private _handleGetUsersInputStream(): void {
     this.availableUsers$ = this.findFiendsControl.valueChanges.pipe(
       debounceTime(300),
       startWith(''),

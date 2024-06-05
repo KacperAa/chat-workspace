@@ -7,6 +7,6 @@
       <input matInput [formControl]="findFiendsControl" />
     </mat-form-field>
 
-    <kaa-user-list [users]="availableUsers$ | async"></kaa-user-list>
+    <kaa-user-list [users]="availableUsers$ | async" (onAddFriend)="addFriend($event)"></kaa-user-list>
   </main>
 </div>

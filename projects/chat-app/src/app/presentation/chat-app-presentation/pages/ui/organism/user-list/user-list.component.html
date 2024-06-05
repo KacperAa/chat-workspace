@@ -2,15 +2,13 @@
   @for (user of users(); track user) {
     <mat-list-item class="list-item">
       <ui-avatar-with-content>
-        <img ui-avatar size="small" [src]="user.photoURL" alt="" />
+        <img ui-avatar size="small" [src]="user.photoURL" [alt]="user.name + 'avatar'" />
         <span class="right-content">{{ user.name }}</span>
       </ui-avatar-with-content>
-      <button matListItemMeta mat-icon-button color="accent"><mat-icon>add</mat-icon></button>
+      <button matListItemMeta mat-icon-button color="accent" (click)="onAddFriend.emit(user)">
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-list-item>
     <mat-divider></mat-divider>
   }
-
-  <mat-list-item>Item 2</mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>Item 3</mat-list-item>
 </mat-list>
