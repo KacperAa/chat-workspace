@@ -35,7 +35,7 @@ export class AddFriendsPageComponent implements OnInit {
   private _addFriend = inject(AddFriendService);
   private _chatInitializer = inject(ChatInitializerService);
 
-  public findFiendsControl = new FormControl('', { nonNullable: true });
+  public findFriendsControl = new FormControl('', { nonNullable: true });
   public availableUsers$!: Observable<UserMergedResponse[]>;
 
   public ngOnInit(): void {
@@ -49,7 +49,7 @@ export class AddFriendsPageComponent implements OnInit {
   }
 
   private _handleGetUsersInputStream(): void {
-    this.availableUsers$ = this.findFiendsControl.valueChanges.pipe(
+    this.availableUsers$ = this.findFriendsControl.valueChanges.pipe(
       debounceTime(300),
       startWith(''),
       switchMap(queryString => {

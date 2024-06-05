@@ -11,7 +11,7 @@ export class CoreFacade {
   private _authStore = inject(AuthStore);
   private _authHttp = inject(AuthHttpService);
 
-  readonly loggedUser: Signal<User | null> = this._authStore.loggedUser;
+  public loggedUser: Signal<User | null> = this._authStore.loggedUser;
 
   public signOut(): void {
     this._authHttp.signOut().subscribe(() => this._router.navigate(['login']));

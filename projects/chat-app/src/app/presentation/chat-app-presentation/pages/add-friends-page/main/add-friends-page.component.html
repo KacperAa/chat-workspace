@@ -4,7 +4,7 @@
   <main class="add-friends-page__add-firends-page_shell">
     <mat-form-field color="accent" appearance="outline">
       <mat-label>Find friends</mat-label>
-      <input matInput [formControl]="findFiendsControl" />
+      <input matInput [formControl]="findFriendsControl" />
     </mat-form-field>
 
     <kaa-user-list [users]="availableUsers$ | async" (onAddFriend)="addFriend($event)"></kaa-user-list>
