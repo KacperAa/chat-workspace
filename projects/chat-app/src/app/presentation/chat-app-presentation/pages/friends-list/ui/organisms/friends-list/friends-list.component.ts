@@ -6,6 +6,7 @@ import { MatList, MatListItem, MatListItemMeta } from '@angular/material/list';
 
 import { AvatarComponent } from '../../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules';
+import { MappedUserFields } from '../../../../../../../business/api/auth/models/mapped-user-fields.model';
 
 @Component({
   selector: 'kaa-friends-list',
@@ -24,7 +25,7 @@ import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src
   styleUrl: './friends-list.component.scss',
 })
 export class FriendsListComponent {
-  public friends = input.required<any[]>();
+  public friends = input.required<MappedUserFields[]>();
 
   public onMore = output<void>();
 }

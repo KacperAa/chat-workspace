@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 
+import { MappedUserFields } from '../../../../../business/api/auth/models/mapped-user-fields.model';
 import { FriendsService } from '../../../../../business/api/friends/friends.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 import { FriendsListComponent } from '../ui/organisms/friends-list/friends-list.component';
@@ -26,7 +27,7 @@ export class FirendsListPageComponent implements OnInit {
   private _friends = inject(FriendsService);
   private _chatInitializer = inject(ChatInitializerService);
 
-  public friendsList$!: Observable<any[]>;
+  public friendsList$!: Observable<MappedUserFields[]>;
 
   public ngOnInit(): void {
     this._chatInitializer.initChat();

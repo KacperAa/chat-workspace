@@ -2,7 +2,7 @@
   @for (friend of friends(); track friend) {
     <mat-list-item class="list-item">
       <ui-avatar-with-content>
-        <img ui-avatar size="small" [src]="friend.photoURL" [alt]="friend.name + 'avatar'" />
+        <img ui-avatar size="small" [src]="friend.photoURL" [alt]="friend.displayName + 'avatar'" />
         <span class="right-content">{{ friend.displayName }}</span>
       </ui-avatar-with-content>
       <button matListItemMeta mat-icon-button color="accent" (click)="onMore.emit()">
