@@ -1,14 +1,14 @@
 <div class="friends-list-page">
   <mat-toolbar class="friends-list-page__toolbar">
-    <button mat-icon-button color="accent" (click)="navigateToUserConversations()">
+    <button mat-icon-button color="accent" (click)="friendsListPageFacade.navigateToUserConversations()">
       <mat-icon>arrow_back</mat-icon>
     </button>
 
-    <button mat-icon-button color="primary" (click)="navigateToAddFriends()">
+    <button mat-icon-button color="primary" (click)="friendsListPageFacade.navigateToAddFriends()">
       <mat-icon>person_add</mat-icon>
     </button>
   </mat-toolbar>
   <main>
-    <kaa-friends-list [friends]="(friendsList$ | async)!" />
+    <kaa-friends-list [friends]="friendsListPageFacade.friendsList()!" />
   </main>
 </div>
