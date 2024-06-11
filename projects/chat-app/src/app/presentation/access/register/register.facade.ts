@@ -35,7 +35,7 @@ export class RegisterFacade {
   public register(): void {
     if (this.registerFormGroup.valid) {
       this._authHttp.signUp(this._transformFormValueToSend()).subscribe({
-        next: () => this._router.navigate(['chat']),
+        next: () => this._router.navigate(['chat/conversations']),
         error: error =>
           this._snackBar.open(error.message, 'close', {
             duration: 5000,
