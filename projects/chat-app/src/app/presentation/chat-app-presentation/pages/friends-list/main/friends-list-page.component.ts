@@ -11,11 +11,11 @@ import { FriendsListPageFacade } from './friends-list-page.facade';
   standalone: true,
   imports: [MatToolbar, MatIconButton, MatIcon, FriendsListComponent],
   providers: [FriendsListPageFacade],
-  templateUrl: './firends-list-page.component.html',
-  styleUrl: './firends-list-page.component.scss',
+  templateUrl: './friends-list-page.component.html',
+  styleUrl: './friends-list-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FirendsListPageComponent implements OnInit {
+export class FriendsListPageComponent implements OnInit {
   protected friendsListPageFacade = inject(FriendsListPageFacade);
 
   public ngOnInit(): void {
