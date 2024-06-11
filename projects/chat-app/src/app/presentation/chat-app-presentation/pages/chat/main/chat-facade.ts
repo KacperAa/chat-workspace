@@ -1,11 +1,13 @@
 import { Injectable, Signal, inject } from '@angular/core';
 
-import { UserMockup } from '../../../../../business/api/user/models/user.model';
-import { UsersStore } from '../../../../../business/api/user/users.store';
+import { MappedUserFields } from '../../../../../business/api/auth/models/mapped-user-fields.model';
+import { FriendsService } from '../../../../../business/api/friends/friends.service';
+
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable()
 export class ChatFacade {
-  private _usersStore = inject(UsersStore);
+  private _friendsList = inject(FriendsService);
 
-  readonly users: Signal<UserMockup[]> = this._usersStore.users;
+  public friendsList: Signal<MappedUserFields[]> = toSignal(this._friendsList.getFriends(), { initialValue: [] });
 }

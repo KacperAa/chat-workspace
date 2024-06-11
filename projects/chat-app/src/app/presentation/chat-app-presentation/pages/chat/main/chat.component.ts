@@ -20,24 +20,22 @@ import { ChatFacade } from './chat-facade';
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
   imports: [
+    RouterOutlet,
+    RouterModule,
     CoreComponent,
     FilterUsersComponent,
     AvatarWithContentComponent,
     UsersHorizontalScrollerComponent,
     NavigationBarElementComponent,
     SkeletonCircleAndBarsComponent,
-    RouterOutlet,
-    RouterModule,
   ],
 })
 export class ChatComponent implements OnInit {
   protected chatFacade = inject(ChatFacade);
 
   private _chatInitializer = inject(ChatInitializerService);
-  private _usersHttp = inject(UserHttpService);
 
   public ngOnInit(): void {
     this._chatInitializer.initChat();
-    this._usersHttp.getUsers().subscribe();
   }
 }

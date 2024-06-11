@@ -1,4 +1,5 @@
 import { Component, input, output } from '@angular/core';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
@@ -17,6 +18,7 @@ import { MappedUserFields } from '../../../../../../../business/api/auth/models/
     MatDivider,
     MatListItem,
     MatIconButton,
+    MatBadgeModule,
     AvatarComponent,
     MatListItemMeta,
     AvatarWithContentComponent,
