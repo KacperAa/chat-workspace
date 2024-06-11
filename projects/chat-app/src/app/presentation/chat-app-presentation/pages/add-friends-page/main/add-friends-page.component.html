@@ -7,8 +7,12 @@
       <input matInput [formControl]="addFriendsPageFacade.findFriendsControl" />
     </mat-form-field>
 
-    <kaa-user-list
-      [users]="addFriendsPageFacade.availableUsers()"
-      (onAddFriend)="addFriendsPageFacade.addFriend($event)" />
+    @if (!addFriendsPageFacade.isListLoading()) {
+      <kaa-user-list
+        [users]="addFriendsPageFacade.availableUsers()"
+        (onAddFriend)="addFriendsPageFacade.addFriend($event)" />
+    } @else {
+      <kaa-user-list-skeleton-loader />
+    }
   </main>
 </div>

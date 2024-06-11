@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { FormControl } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { UserApiService } from '../../../../../business/api/all-app-users/user-a
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Observable, debounceTime, startWith, switchMap } from 'rxjs';
+import { Observable, debounceTime, finalize, startWith, switchMap, tap } from 'rxjs';
 
 @Injectable()
 export class AddFriendsPageFacade {
@@ -19,6 +19,7 @@ export class AddFriendsPageFacade {
 
   public findFriendsControl = new FormControl('', { nonNullable: true });
   public availableUsers = toSignal(this._handleGetUsersInputStream$(), { initialValue: [] });
+  public isListLoading = signal(false);
 
   public initChatApp(): void {
     this._chatInitializer.initChat();
@@ -33,9 +34,12 @@ export class AddFriendsPageFacade {
   private _handleGetUsersInputStream$(): Observable<UserMergedResponse[]> {
     return this.findFriendsControl.valueChanges.pipe(
       debounceTime(300),
+      tap(() => {
+        this.isListLoading.set(true);
+      }),
       startWith(''),
       switchMap(queryString => {
-        return this._userApi.getUsersByFilter(queryString);
+        return this._userApi.getUsersByFilter(queryString).pipe(finalize(() => this.isListLoading.set(false)));
       })
     );
   }

@@ -12,15 +12,7 @@
     @if (friendsListPageFacade.isFriendsListLoaded()) {
       <kaa-friends-list [friends]="friendsListPageFacade.friendsList()" />
     } @else {
-      <mat-list>
-        @for (_ of [].constructor(10); track _) {
-          <mat-list-item>
-            <ui-skeleton-circle-loader matListItemAvatar size="small" />
-            <ui-skeleton-bar width="7" height="1" />
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        }
-      </mat-list>
+      <kaa-user-list-skeleton-loader />
     }
   </main>
 </div>
