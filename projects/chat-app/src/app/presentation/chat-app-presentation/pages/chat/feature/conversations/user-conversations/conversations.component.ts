@@ -1,10 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, Signal, inject } from '@angular/core';
 
 import { AvatarComponent } from '../../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
 import { SkeletonCircleAndBarsComponent } from '../../../../../../../../../../ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component';
-import { UsersStore } from '../../../../../../../business/api/user/users.store';
+import { MappedUserFields } from '../../../../../../../business/api/auth/models/mapped-user-fields.model';
+import { FriendsService } from '../../../../../../../business/api/friends/friends.service';
 import { ChatLoader } from '../../../../../../../business/chat-loader/chat-loader';
+
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'kaa-conversations',
@@ -15,5 +18,7 @@ import { ChatLoader } from '../../../../../../../business/chat-loader/chat-loade
 })
 export class ConversationsComponent {
   public chatLoader: ChatLoader = inject(ChatLoader);
-  public usersStore: UsersStore = inject(UsersStore);
+  private _friendsList = inject(FriendsService);
+
+  public friendsList: Signal<MappedUserFields[]> = toSignal(this._friendsList.getFriends(), { initialValue: [] });
 }

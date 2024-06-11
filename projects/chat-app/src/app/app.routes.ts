@@ -2,16 +2,16 @@ import { canActivate, redirectLoggedInTo, redirectUnauthorizedTo } from '@angula
 import { Routes } from '@angular/router';
 
 export const APP_ROUTES: Routes = [
-  { path: '', redirectTo: 'chat', pathMatch: 'full' },
+  { path: '', redirectTo: 'chat/conversations', pathMatch: 'full' },
   {
     path: 'login',
     loadComponent: () => import('./presentation/access/login/login.component').then(c => c.LoginComponent),
-    ...canActivate(() => redirectLoggedInTo(['chat'])),
+    ...canActivate(() => redirectLoggedInTo(['chat/conversations'])),
   },
   {
     path: 'register',
     loadComponent: () => import('./presentation/access/register/register.component').then(c => c.RegisterComponent),
-    ...canActivate(() => redirectLoggedInTo(['chat'])),
+    ...canActivate(() => redirectLoggedInTo(['chat/conversations'])),
   },
   {
     path: 'chat',

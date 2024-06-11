@@ -21,7 +21,7 @@ export class LoginFacade {
 
   public signIn(): void {
     this._httpAuth.signIn(this._transformFormValueToSend()).subscribe({
-      next: () => this._router.navigate(['chat']),
+      next: () => this._router.navigate(['chat/conversations']),
       error: error =>
         this._snackBar.open(error.message, 'close', {
           duration: 5000,

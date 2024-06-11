@@ -1,0 +1,9 @@
+<mat-list>
+  @for (_ of [].constructor(listLength()); track _) {
+    <mat-list-item>
+      <ui-skeleton-circle-loader matListItemAvatar size="small" />
+      <ui-skeleton-bar width="7" height="1" />
+    </mat-list-item>
+    <mat-divider />
+  }
+</mat-list>
