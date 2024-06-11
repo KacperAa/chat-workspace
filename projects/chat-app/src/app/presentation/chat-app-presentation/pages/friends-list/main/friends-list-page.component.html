@@ -9,7 +9,7 @@
     </button>
   </mat-toolbar>
   <main>
-    @if (friendsListPageFacade.friendsList().length > 0) {
+    @if (friendsListPageFacade.isFriendsListLoaded()) {
       <kaa-friends-list [friends]="friendsListPageFacade.friendsList()" />
     } @else {
       <mat-list>

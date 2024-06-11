@@ -1,4 +1,4 @@
-import { Injectable, Signal, inject } from '@angular/core';
+import { Injectable, Signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MappedUserFields } from '../../../../../business/api/auth/models/mapped-user-fields.model';
@@ -14,6 +14,8 @@ export class FriendsListPageFacade {
   private _chatInitializer = inject(ChatInitializerService);
 
   public friendsList: Signal<MappedUserFields[]> = toSignal(this._friends.getFriends(), { initialValue: [] });
+
+  public isFriendsListLoaded: Signal<boolean> = computed(() => this.friendsList().length > 0);
 
   public initChatApp(): void {
     this._chatInitializer.initChat();

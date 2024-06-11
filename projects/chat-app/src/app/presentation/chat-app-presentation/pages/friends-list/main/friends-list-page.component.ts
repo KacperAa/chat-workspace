@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/cor
 import { MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
-import { MatList, MatListModule } from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatToolbar } from '@angular/material/toolbar';
 
 import { SkeletonBarComponent, SkeletonCircleLoaderComponent } from '../../../../../../../../ui/src/lib/atoms';
@@ -13,14 +13,14 @@ import { FriendsListPageFacade } from './friends-list-page.facade';
   selector: 'kaa-firends-list-page',
   standalone: true,
   imports: [
+    MatIcon,
+    MatDivider,
     MatToolbar,
     MatIconButton,
-    MatIcon,
-    FriendsListComponent,
-    SkeletonCircleLoaderComponent,
-    SkeletonBarComponent,
     MatListModule,
-    MatDivider,
+    FriendsListComponent,
+    SkeletonBarComponent,
+    SkeletonCircleLoaderComponent,
   ],
   providers: [FriendsListPageFacade],
   templateUrl: './friends-list-page.component.html',
