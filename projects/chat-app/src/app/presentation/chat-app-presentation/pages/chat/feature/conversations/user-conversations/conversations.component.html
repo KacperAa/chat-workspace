@@ -1,12 +1,12 @@
 <section>
   <ul class="conversation-list">
     @if (chatLoader.isChatLoaded()) {
-      @for (user of usersStore.users(); track user) {
+      @for (user of friendsList(); track user) {
         <li class="conversation-list__conversation-presentation">
           <ui-avatar-with-content>
-            <img ui-avatar [src]="user.profilePicture" [alt]="user.firstName + ' profile image'" />
+            <img ui-avatar [src]="user.photoURL" [alt]="user.displayName + ' profile image'" />
             <div right-content class="text-wrapper">
-              <span>{{ user.firstName + ' ' + user.lastName }}</span>
+              <span>{{ user.displayName }}</span>
               <div class="text-wrapper__last-message-and-delivary-time">
                 <p>This is mockup data!....</p>
                 <span>21:37</span>
