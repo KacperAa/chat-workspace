@@ -1,6 +1,6 @@
 <mat-list>
   @for (friend of friends(); track friend) {
-    <mat-list-item class="list-item">
+    <mat-list-item class="list-item" (click)="onEmitUser.emit(friend)">
       <ui-avatar-with-content>
         <img ui-avatar size="small" [src]="friend['photoURL']" [alt]="friend.name + 'avatar'" />
         <span class="right-content">{{ friend.name }}</span>

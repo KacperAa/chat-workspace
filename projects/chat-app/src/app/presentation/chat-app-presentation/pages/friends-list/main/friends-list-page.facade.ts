@@ -3,15 +3,18 @@ import { Router } from '@angular/router';
 import { UserResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
+import { CreateChannelService } from '../../../../../business/api/create-channel/create-channel.service';
 import { FriendsService } from '../../../../../business/api/friends/friends.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 
 @Injectable()
 export class FriendsListPageFacade {
   private _router = inject(Router);
   private _friends = inject(FriendsService);
+  private _createChannel = inject(CreateChannelService);
   private _chatInitializer = inject(ChatInitializerService);
 
   public friendsList: Signal<[] | UserResponse<DefaultStreamChatGenerics>[]> = toSignal(
@@ -31,5 +34,20 @@ export class FriendsListPageFacade {
 
   public navigateToAddFriends(): void {
     this._router.navigate(['add-friends']);
+  }
+
+  public createChannelWithUser(targetUser: UserResponse<DefaultStreamChatGenerics>): void {
+    this._createChannel
+      .createChannelWithUser({
+        uid: targetUser.id,
+        displayName: targetUser?.name!,
+        photoURL: String(targetUser['photoURL']),
+      })
+      .pipe(
+        map(response => {
+          this._router.navigate([`chat/${response.channel.id}`]);
+        })
+      )
+      .subscribe();
   }
 }

@@ -29,6 +29,7 @@ import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src
 })
 export class FriendsListComponent {
   public friends = input.required<[] | UserResponse<DefaultStreamChatGenerics>[]>();
+  public onEmitUser = output<UserResponse<DefaultStreamChatGenerics>>();
 
   public onMore = output<void>();
 }
