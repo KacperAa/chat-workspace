@@ -18,7 +18,9 @@ import { CirclePresentationSize } from '../circle-size/models/circle-presentatio
 })
 export class AvatarComponent {
   private _circleSize = inject(CircleSizeService);
-  public readonly size = input<CirclePresentationSize>('normal');
+  public size = input<CirclePresentationSize>('normal');
+
+  public status = input<string>('online');
 
   public elementRef = inject(ElementRef);
 

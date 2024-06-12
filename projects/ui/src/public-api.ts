@@ -15,5 +15,6 @@ export {
   SkeletonCircleAndBarsComponent,
   FormFieldComponent,
   AvatarWithIconButtonComponent,
+  AvatarWithStatusComponent,
 } from './lib/molecules';
 export { HorizontalScrollComponent, VerticalScrollComponent } from './lib/organisms';

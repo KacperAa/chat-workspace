@@ -1,0 +1,26 @@
+@mixin status-dot-size {
+  width: 13px;
+  height: 13px;
+}
+
+.avatar-with-status {
+  position: relative;
+}
+
+.status-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  @include status-dot-size();
+  border-radius: 50%;
+
+  &--offline {
+    background-color: var(--app-color-warn);
+    border: 1px solid var(--app-color-warn);
+  }
+
+  &--online {
+    background-color: var(--app-color-success);
+    border: 1px solid var(--app-color-success);
+  }
+}
