@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { StatusDot } from './models/status-dot.model';
+
 @Component({
   selector: 'ui-avatar-with-status',
   standalone: true,
@@ -9,5 +11,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarWithStatusComponent {
-  public status = input<string>('online');
+  public status = input<StatusDot>('online');
 }
