@@ -16,6 +16,17 @@ export class FriendsService {
   private _database = inject(Database);
   private _chat = inject(ChatClientService);
 
+  public getFriendsFromChat(): Observable<UserResponse<DefaultStreamChatGenerics>[]> {
+    return this._getFriendsDatabase().pipe(
+      switchMap(friends => {
+        if (friends.length === 0) {
+          return of([]);
+        }
+        return this._queryFriends(friends);
+      })
+    );
+  }
+
   private _getFriendsDatabase(): Observable<MappedUserFields[]> {
     const uid = this._auth.currentUser?.uid!;
     const dbRef = ref(this._database);
@@ -35,28 +46,21 @@ export class FriendsService {
     );
   }
 
-  public getFriendsFromChat(): Observable<UserResponse<DefaultStreamChatGenerics>[]> {
-    return this._getFriendsDatabase().pipe(
-      switchMap(friends => {
-        if (friends.length === 0) {
-          return of([]);
-        }
-
-        const ids = friends.map(friend => friend.uid);
-
-        return from(this._chat.chatClient.queryUsers({ id: { $in: ids } })).pipe(
-          map(response => response.users),
-          map(users =>
-            users.map(user => {
-              const friend = friends.find(f => f.uid === user.id);
-              return {
-                ...user,
-                photoURL: friend!.photoURL,
-              };
-            })
-          )
-        );
-      })
+  private _queryFriends(friends: MappedUserFields[]) {
+    const uids = friends.map(friend => friend.uid);
+    return from(this._chat.chatClient.queryUsers({ id: { $in: uids } })).pipe(
+      map(response => response.users),
+      map(users => this._mapFriends(users, friends))
     );
+  }
+
+  private _mapFriends(users: UserResponse<DefaultStreamChatGenerics>[], friends: MappedUserFields[]) {
+    return users.map(user => {
+      const friend = friends.find(friend => friend.uid === user.id);
+      return {
+        ...user,
+        photoURL: friend!.photoURL,
+      };
+    });
   }
 }
