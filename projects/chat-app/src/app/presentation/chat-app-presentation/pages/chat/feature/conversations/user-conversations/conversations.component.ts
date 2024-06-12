@@ -17,11 +17,11 @@ import { toSignal } from '@angular/core/rxjs-interop';
   templateUrl: './conversations.component.html',
   styleUrl: '../_conversations.base.scss',
   imports: [
-    SkeletonCircleAndBarsComponent,
-    AvatarWithContentComponent,
+    StatusPipe,
     AvatarComponent,
     AvatarWithStatusComponent,
-    StatusPipe,
+    AvatarWithContentComponent,
+    SkeletonCircleAndBarsComponent,
   ],
 })
 export class ConversationsComponent {
