@@ -1,10 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Database, child, get, ref } from '@angular/fire/database';
+import { UserResponse } from 'stream-chat';
+import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { MappedUserFields } from '../auth/models/mapped-user-fields.model';
 
-import { Observable, from, map } from 'rxjs';
+import { Observable, from, map, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +14,10 @@ import { Observable, from, map } from 'rxjs';
 export class FriendsService {
   private _auth = inject(Auth);
   private _database = inject(Database);
+  private _chat = inject(ChatClientService);
 
   public getFriends(): Observable<MappedUserFields[]> {
     const uid = this._auth.currentUser?.uid!;
-
     const dbRef = ref(this._database);
 
     return from(get(child(dbRef, `friends/${uid}`))).pipe(
@@ -26,6 +28,23 @@ export class FriendsService {
         }
 
         return Object.keys(friendsObj).map(key => friendsObj[key]);
+      })
+    );
+  }
+
+  public getFriendsFromChat(): Observable<UserResponse<DefaultStreamChatGenerics>[]> {
+    return this.getFriends().pipe(
+      switchMap(friends => {
+        if (friends.length === 0) {
+          return of([]);
+        }
+
+        const ids = friends.map(friend => friend.uid);
+
+        return from(this._chat.chatClient.queryUsers({ id: { $in: ids } })).pipe(
+          map(response => response.users),
+          tap(firends => {})
+        );
       })
     );
   }

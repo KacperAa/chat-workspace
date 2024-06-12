@@ -29,4 +29,8 @@ export class ConversationsComponent {
   private _friendsList = inject(FriendsService);
 
   public friendsList: Signal<MappedUserFields[]> = toSignal(this._friendsList.getFriends(), { initialValue: [] });
+
+  ngOnInit(): void {
+    this._friendsList.getFriendsFromChat().subscribe(res => console.log(res));
+  }
 }
