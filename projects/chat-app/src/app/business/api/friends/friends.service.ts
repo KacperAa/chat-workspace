@@ -6,7 +6,7 @@ import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angula
 
 import { MappedUserFields } from '../auth/models/mapped-user-fields.model';
 
-import { Observable, from, map, of, switchMap, tap } from 'rxjs';
+import { Observable, from, map, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,8 +37,6 @@ export class FriendsService {
       map(snapshot => {
         const friendsObj = snapshot.val();
 
-        console.log(friendsObj);
-
         if (!friendsObj) {
           return [];
         }
@@ -53,14 +51,7 @@ export class FriendsService {
   private _queryFriends(friends: MappedUserFields[]): Observable<UserResponse<DefaultStreamChatGenerics>[]> {
     const uids = friends.map(friend => friend.uid);
 
-    const validUids = uids.filter(uid => typeof uid === 'string');
-
-    if (validUids.length !== uids.length) {
-      console.error('Niektóre UID nie są typu string:', uids);
-      return of([]);
-    }
-
-    return from(this._chat.chatClient.queryUsers({ id: { $in: validUids } })).pipe(
+    return from(this._chat.chatClient.queryUsers({ id: { $in: uids } })).pipe(
       map(response => response.users),
       map(users => this._mapFriends(users, friends))
     );
