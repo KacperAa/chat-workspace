@@ -51,7 +51,7 @@ export class FriendsService {
               const friend = friends.find(f => f.uid === user.id);
               return {
                 ...user,
-                photoURL: friend ? friend.photoURL : '',
+                photoURL: friend!.photoURL,
               };
             })
           )
