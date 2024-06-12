@@ -4,7 +4,7 @@
       @for (user of friendsList(); track user) {
         <li class="conversation-list__conversation-presentation">
           <ui-avatar-with-content>
-            <ui-avatar-with-status>
+            <ui-avatar-with-status [status]="user.online | status">
               <img ui-avatar [src]="user.photoURL" [alt]="user.displayName + ' profile image'" />
             </ui-avatar-with-status>
 
