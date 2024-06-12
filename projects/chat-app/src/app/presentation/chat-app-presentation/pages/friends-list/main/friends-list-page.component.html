@@ -10,7 +10,9 @@
   </mat-toolbar>
   <main>
     @if (friendsListPageFacade.isFriendsListLoaded()) {
-      <kaa-friends-list [friends]="friendsListPageFacade.friendsList()" />
+      <kaa-friends-list
+        [friends]="friendsListPageFacade.friendsList()"
+        (onEmitUser)="friendsListPageFacade.createChannelWithUser($event)" />
     } @else {
       <kaa-user-list-skeleton-loader />
     }

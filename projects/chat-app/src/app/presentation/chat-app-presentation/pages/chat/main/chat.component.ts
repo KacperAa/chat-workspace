@@ -6,7 +6,6 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { NavigationBarElementComponent } from '@ui/NavigationBarElementComponent';
 import { SkeletonCircleAndBarsComponent } from '@ui/SkeletonCircleAndBarsComponent';
 
-import { UserHttpService } from '../../../../../business/api/user/user-http.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 import { CoreComponent } from '../../../core/core.component';
 import { FilterUsersComponent } from '../feature/filter-users/filter-users.component';
@@ -25,9 +24,9 @@ import { ChatFacade } from './chat-facade';
     CoreComponent,
     FilterUsersComponent,
     AvatarWithContentComponent,
-    UsersHorizontalScrollerComponent,
     NavigationBarElementComponent,
     SkeletonCircleAndBarsComponent,
+    UsersHorizontalScrollerComponent,
   ],
 })
 export class ChatComponent implements OnInit {
