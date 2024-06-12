@@ -1,7 +1,4 @@
 <section>
-  <ui-avatar-with-status>
-    <img ui-avatar [src]="'......'" />
-  </ui-avatar-with-status>
   <ul class="conversation-list">
     @if (chatLoader.isChatLoaded()) {
       @for (user of friendsList(); track user) {
