@@ -33,8 +33,4 @@ export class ConversationsComponent {
     this._friendsList.getFriendsFromChat(),
     { initialValue: [] }
   );
-
-  ngOnInit(): void {
-    this._friendsList.getFriendsFromChat().subscribe(res => console.log(res));
-  }
 }
