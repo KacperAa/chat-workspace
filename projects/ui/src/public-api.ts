@@ -9,12 +9,12 @@ export {
   SkeletonBarComponent,
   InputComponent,
   TextCloudComponent,
-  StatusDotComponent,
 } from './lib/atoms';
 export {
   AvatarWithContentComponent,
   SkeletonCircleAndBarsComponent,
   FormFieldComponent,
   AvatarWithIconButtonComponent,
+  AvatarWithStatusComponent,
 } from './lib/molecules';
 export { HorizontalScrollComponent, VerticalScrollComponent } from './lib/organisms';

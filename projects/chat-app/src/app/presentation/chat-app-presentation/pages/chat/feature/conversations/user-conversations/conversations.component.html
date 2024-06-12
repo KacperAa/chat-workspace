@@ -1,10 +1,16 @@
 <section>
+  <ui-avatar-with-status>
+    <img ui-avatar [src]="'......'" />
+  </ui-avatar-with-status>
   <ul class="conversation-list">
     @if (chatLoader.isChatLoaded()) {
       @for (user of friendsList(); track user) {
         <li class="conversation-list__conversation-presentation">
           <ui-avatar-with-content>
-            <img ui-avatar [src]="user.photoURL" [alt]="user.displayName + ' profile image'" />
+            <ui-avatar-with-status>
+              <img ui-avatar [src]="user.photoURL" [alt]="user.displayName + ' profile image'" />
+            </ui-avatar-with-status>
+
             <div right-content class="text-wrapper">
               <span>{{ user.displayName }}</span>
               <div class="text-wrapper__last-message-and-delivary-time">

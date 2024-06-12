@@ -12,13 +12,15 @@ import { CirclePresentationSize } from '../circle-size/models/circle-presentatio
     '[class]': 'setAvatarSize()',
   },
   templateUrl: './avatar.component.html',
-  styleUrls: ['../../styles/_circle-presentation.scss'],
+  styleUrls: ['../../styles/_circle-presentation.scss', './avatar.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
   private _circleSize = inject(CircleSizeService);
-  public readonly size = input<CirclePresentationSize>('normal');
+  public size = input<CirclePresentationSize>('normal');
+
+  public status = input<string>('online');
 
   public elementRef = inject(ElementRef);
 
