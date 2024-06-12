@@ -6,7 +6,7 @@ import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angula
 
 import { MappedUserFields } from '../auth/models/mapped-user-fields.model';
 
-import { Observable, from, map, of, switchMap, tap } from 'rxjs';
+import { Observable, from, map, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
