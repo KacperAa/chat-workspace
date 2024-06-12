@@ -1,4 +1,6 @@
 import { Component, Signal, inject } from '@angular/core';
+import { UserResponse } from 'stream-chat';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { AvatarComponent } from '../../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithStatusComponent } from '../../../../../../../../../../ui/src/lib/molecules';
@@ -28,7 +30,10 @@ export class ConversationsComponent {
   public chatLoader: ChatLoader = inject(ChatLoader);
   private _friendsList = inject(FriendsService);
 
-  public friendsList: Signal<MappedUserFields[]> = toSignal(this._friendsList.getFriends(), { initialValue: [] });
+  public friendsList: Signal<[] | UserResponse<DefaultStreamChatGenerics>[]> = toSignal(
+    this._friendsList.getFriendsFromChat(),
+    { initialValue: [] }
+  );
 
   ngOnInit(): void {
     this._friendsList.getFriendsFromChat().subscribe(res => console.log(res));
