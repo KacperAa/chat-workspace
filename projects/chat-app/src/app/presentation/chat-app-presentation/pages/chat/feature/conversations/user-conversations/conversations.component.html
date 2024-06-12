@@ -4,12 +4,12 @@
       @for (user of friendsList(); track user) {
         <li class="conversation-list__conversation-presentation">
           <ui-avatar-with-content>
-            <ui-avatar-with-status [status]="user.online | status">
-              <img ui-avatar [src]="user.photoURL" [alt]="user.displayName + ' profile image'" />
+            <ui-avatar-with-status [status]="user.online! | status">
+              <img ui-avatar [src]="user['photoURL']" [alt]="user.name + ' profile image'" />
             </ui-avatar-with-status>
 
             <div right-content class="text-wrapper">
-              <span>{{ user.displayName }}</span>
+              <span>{{ user.name }}</span>
               <div class="text-wrapper__last-message-and-delivary-time">
                 <p>This is mockup data!....</p>
                 <span>21:37</span>

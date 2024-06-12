@@ -1,10 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Database, child, get, ref } from '@angular/fire/database';
+import { UserResponse } from 'stream-chat';
+import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { MappedUserFields } from '../auth/models/mapped-user-fields.model';
 
-import { Observable, from, map } from 'rxjs';
+import { Observable, from, map, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +14,21 @@ import { Observable, from, map } from 'rxjs';
 export class FriendsService {
   private _auth = inject(Auth);
   private _database = inject(Database);
+  private _chat = inject(ChatClientService);
 
-  public getFriends(): Observable<MappedUserFields[]> {
+  public getFriendsFromChat(): Observable<UserResponse<DefaultStreamChatGenerics>[]> {
+    return this._getFriendsDatabase().pipe(
+      switchMap(friends => {
+        if (friends.length === 0) {
+          return of([]);
+        }
+        return this._queryFriends(friends);
+      })
+    );
+  }
+
+  private _getFriendsDatabase(): Observable<MappedUserFields[]> {
     const uid = this._auth.currentUser?.uid!;
-
     const dbRef = ref(this._database);
 
     return from(get(child(dbRef, `friends/${uid}`))).pipe(
@@ -25,8 +38,29 @@ export class FriendsService {
           return [];
         }
 
-        return Object.keys(friendsObj).map(key => friendsObj[key]);
+        return Object.keys(friendsObj).map(key => ({
+          ...friendsObj[key],
+          id: key,
+        }));
       })
     );
+  }
+
+  private _queryFriends(friends: MappedUserFields[]) {
+    const uids = friends.map(friend => friend.uid);
+    return from(this._chat.chatClient.queryUsers({ id: { $in: uids } })).pipe(
+      map(response => response.users),
+      map(users => this._mapFriends(users, friends))
+    );
+  }
+
+  private _mapFriends(users: UserResponse<DefaultStreamChatGenerics>[], friends: MappedUserFields[]) {
+    return users.map(user => {
+      const friend = friends.find(friend => friend.uid === user.id);
+      return {
+        ...user,
+        photoURL: friend!.photoURL,
+      };
+    });
   }
 }

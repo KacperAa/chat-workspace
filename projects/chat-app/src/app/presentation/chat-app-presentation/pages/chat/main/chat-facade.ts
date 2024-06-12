@@ -1,6 +1,7 @@
 import { Injectable, Signal, inject } from '@angular/core';
+import { UserResponse } from 'stream-chat';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { MappedUserFields } from '../../../../../business/api/auth/models/mapped-user-fields.model';
 import { FriendsService } from '../../../../../business/api/friends/friends.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -9,5 +10,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class ChatFacade {
   private _friendsList = inject(FriendsService);
 
-  public friendsList: Signal<MappedUserFields[]> = toSignal(this._friendsList.getFriends(), { initialValue: [] });
+  public friendsList: Signal<[] | UserResponse<DefaultStreamChatGenerics>[]> = toSignal(
+    this._friendsList.getFriendsFromChat(),
+    { initialValue: [] }
+  );
 }
