@@ -16,7 +16,7 @@ export class FriendsService {
   private _database = inject(Database);
   private _chat = inject(ChatClientService);
 
-  public getFriends(): Observable<MappedUserFields[]> {
+  private _getFriendsDatabase(): Observable<MappedUserFields[]> {
     const uid = this._auth.currentUser?.uid!;
     const dbRef = ref(this._database);
 
@@ -36,7 +36,7 @@ export class FriendsService {
   }
 
   public getFriendsFromChat(): Observable<UserResponse<DefaultStreamChatGenerics>[]> {
-    return this.getFriends().pipe(
+    return this._getFriendsDatabase().pipe(
       switchMap(friends => {
         if (friends.length === 0) {
           return of([]);

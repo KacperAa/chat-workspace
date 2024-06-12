@@ -1,9 +1,9 @@
 <ui-horizontal-scroll>
   @if (chatLoader.isChatLoaded()) {
-    @for (user of users(); track user.displayName) {
+    @for (user of users(); track user.name) {
       <ui-avatar-with-content>
-        <img ui-avatar [src]="user.photoURL" alt="{{ user.displayName + ' profile image' }}" />
-        <span bottom-content>{{ user.displayName | firstName }}</span>
+        <img ui-avatar [src]="user['photoURL']" alt="{{ user.name + ' profile image' }}" />
+        <span bottom-content>{{ user.name! | firstName }}</span>
       </ui-avatar-with-content>
     }
   } @else {

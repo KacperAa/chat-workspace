@@ -1,7 +1,8 @@
 import { Injectable, Signal, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserResponse } from 'stream-chat';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { MappedUserFields } from '../../../../../business/api/auth/models/mapped-user-fields.model';
 import { FriendsService } from '../../../../../business/api/friends/friends.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 
@@ -13,7 +14,10 @@ export class FriendsListPageFacade {
   private _friends = inject(FriendsService);
   private _chatInitializer = inject(ChatInitializerService);
 
-  public friendsList: Signal<MappedUserFields[]> = toSignal(this._friends.getFriends(), { initialValue: [] });
+  public friendsList: Signal<[] | UserResponse<DefaultStreamChatGenerics>[]> = toSignal(
+    this._friends.getFriendsFromChat(),
+    { initialValue: [] }
+  );
 
   public isFriendsListLoaded: Signal<boolean> = computed(() => this.friendsList().length > 0);
 

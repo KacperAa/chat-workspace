@@ -4,10 +4,11 @@ import { MatIconButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { MatList, MatListItem, MatListItemMeta } from '@angular/material/list';
+import { UserResponse } from 'stream-chat';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { AvatarComponent } from '../../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules';
-import { MappedUserFields } from '../../../../../../../business/api/auth/models/mapped-user-fields.model';
 
 @Component({
   selector: 'kaa-friends-list',
@@ -27,7 +28,7 @@ import { MappedUserFields } from '../../../../../../../business/api/auth/models/
   styleUrl: './friends-list.component.scss',
 })
 export class FriendsListComponent {
-  public friends = input.required<MappedUserFields[]>();
+  public friends = input.required<[] | UserResponse<DefaultStreamChatGenerics>[]>();
 
   public onMore = output<void>();
 }
