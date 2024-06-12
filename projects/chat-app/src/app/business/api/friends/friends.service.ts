@@ -27,7 +27,10 @@ export class FriendsService {
           return [];
         }
 
-        return Object.keys(friendsObj).map(key => friendsObj[key]);
+        return Object.keys(friendsObj).map(key => ({
+          ...friendsObj[key],
+          id: key,
+        }));
       })
     );
   }
@@ -43,7 +46,15 @@ export class FriendsService {
 
         return from(this._chat.chatClient.queryUsers({ id: { $in: ids } })).pipe(
           map(response => response.users),
-          tap(firends => {})
+          map(users =>
+            users.map(user => {
+              const friend = friends.find(f => f.uid === user.id);
+              return {
+                ...user,
+                photoURL: friend ? friend.photoURL : '',
+              };
+            })
+          )
         );
       })
     );
