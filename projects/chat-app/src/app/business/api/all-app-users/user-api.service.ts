@@ -32,7 +32,7 @@ export class UserApiService {
     );
   }
 
-  private _getFireUsersDatabase(uid: string): Observable<MappedUserFields> {
+  public _getFireUsersDatabase(uid: string): Observable<MappedUserFields> {
     const dbRef = ref(this._fireDatabase);
     return from(
       get(child(dbRef, `users/${uid}`)).then(snapshot => {
