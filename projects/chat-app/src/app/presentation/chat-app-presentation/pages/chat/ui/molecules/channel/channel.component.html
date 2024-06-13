@@ -1,5 +1,8 @@
 <ui-avatar-with-content (click)="onClickChannel.emit(channel().data?.id)">
-  <img ui-avatar [src]="channelImage$ | async" />
+  <ui-avatar-with-status [status]="(isUserOnline$ | async)! | status">
+    <img ui-avatar [src]="channelImage$ | async" />
+  </ui-avatar-with-status>
+
   <div right-content class="text-wrapper">
     <span>{{ channelName$ | async }}</span>
     <div class="text-wrapper__last-message-and-delivary-time">

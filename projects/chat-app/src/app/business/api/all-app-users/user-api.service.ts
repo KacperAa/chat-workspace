@@ -32,6 +32,10 @@ export class UserApiService {
     );
   }
 
+  public getUserFormChat(userId: string) {
+    return from(this._chatService.chatClient.queryUsers({ id: userId }));
+  }
+
   public _getFireUsersDatabase(uid: string): Observable<MappedUserFields> {
     const dbRef = ref(this._fireDatabase);
     return from(

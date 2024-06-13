@@ -7,7 +7,9 @@ import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 import { AvatarComponent } from '@ui/AvatarComponent';
 
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
+import { AvatarWithStatusComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-status/avatar-with-status.component';
 import { UserApiService } from '../../../../../../../business/api/all-app-users/user-api.service';
+import { StatusPipe } from '../../../feature/conversations/user-conversations/pipe/status.pipe';
 
 import { Observable, map } from 'rxjs';
 
@@ -16,9 +18,11 @@ import { Observable, map } from 'rxjs';
   standalone: true,
   templateUrl: './channel.component.html',
   styleUrl: './channel.component.scss',
-  imports: [AvatarWithContentComponent, AvatarComponent, DatePipe, AsyncPipe],
+  imports: [AvatarWithContentComponent, AvatarComponent, DatePipe, AsyncPipe, AvatarWithStatusComponent, StatusPipe],
 })
 export class ChannelComponent implements OnInit {
+  public isUserOnline$!: Observable<boolean>;
+
   public channel = input.required<Channel<DefaultStreamChatGenerics>>();
   public onClickChannel = output<unknown>();
 
@@ -49,9 +53,16 @@ export class ChannelComponent implements OnInit {
 
     const otherMemberId = this._getOtherMemberId(currentUser.uid);
 
+    this.isUserOnline$ = this._userApiService.getUserFormChat(otherMemberId!).pipe(
+      map(response => {
+        const user = response.users[0];
+
+        return !!user && !!user.online;
+      })
+    );
+
     if (otherMemberId) {
       this.channelImage$ = this._userApiService._getFireUsersDatabase(otherMemberId).pipe(map(user => user.photoURL));
-
       this.channelName$ = this._userApiService._getFireUsersDatabase(otherMemberId).pipe(map(user => user.displayName));
     }
   }

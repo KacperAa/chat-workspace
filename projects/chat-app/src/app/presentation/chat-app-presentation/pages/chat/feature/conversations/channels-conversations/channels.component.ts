@@ -24,7 +24,6 @@ export class ChannelsComponent {
   });
 
   public navigateToChannel(id: unknown): void {
-    console.log(id);
     this._router.navigate([`chat/${id}`]);
   }
 }
