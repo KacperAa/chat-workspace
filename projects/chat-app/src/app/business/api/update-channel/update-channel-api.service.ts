@@ -13,14 +13,13 @@ export class UpdateChannelApiService {
   private _chatService = inject(ChatClientService);
 
   public updateUserConverstationImage(currentChannel: ChannelListElement) {
-    const channel = this._chatService.chatClient.getChannelById('messaging', currentChannel.id, {});
-
-    console.log(channel);
-
-    return from(
-      channel.update({
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5CjYCyPdUF3by-TAEHBHu_06YqHKr3Gl03A&s',
-      })
-    );
+    // const channel = this._chatService.chatClient.getChannelById('messaging', currentChannel.id, {});
+    // const userCreatorId = channel;
+    // console.log(userCreatorId);
+    // return from(
+    //   channel.update({
+    //     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5CjYCyPdUF3by-TAEHBHu_06YqHKr3Gl03A&s',
+    //   })
+    // );
   }
 }

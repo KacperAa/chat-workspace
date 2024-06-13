@@ -9,13 +9,21 @@ import { ChannelsListMapperService } from '../../../../../../../business/api/cha
 import { ChannelListElement } from '../../../../../../../business/api/channels/channels-list-mapper/models/channel-list-element.model';
 import { UpdateChannelApiService } from '../../../../../../../business/api/update-channel/update-channel-api.service';
 import { ChatLoader } from '../../../../../../../business/chat-loader/chat-loader';
+import { ChannelComponent } from '../../../ui/molecules/channel/channel.component';
 
 @Component({
   selector: 'kaa-channels',
   standalone: true,
   templateUrl: './channels.component.html',
   styleUrl: '../_conversations.base.scss',
-  imports: [SkeletonCircleAndBarsComponent, AvatarWithContentComponent, AvatarComponent, RouterOutlet, DatePipe],
+  imports: [
+    SkeletonCircleAndBarsComponent,
+    AvatarWithContentComponent,
+    AvatarComponent,
+    RouterOutlet,
+    DatePipe,
+    ChannelComponent,
+  ],
 })
 export class ChannelsComponent {
   private _router: Router = inject(Router);
@@ -34,6 +42,6 @@ export class ChannelsComponent {
   }
 
   public updateChannel(channel: ChannelListElement) {
-    this._updateChannel.updateUserConverstationImage(channel);
+    // this._updateChannel.updateUserConverstationImage(channel);
   }
 }

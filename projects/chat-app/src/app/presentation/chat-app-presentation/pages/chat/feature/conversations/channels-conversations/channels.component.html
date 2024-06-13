@@ -3,8 +3,9 @@
     @if (!isChannelsFetching()) {
       @for (channel of channelsStore.channelsList(); track channel) {
         <li (click)="navigateToChannel(channel.id)" class="conversation-list__conversation-presentation">
-          <ui-avatar-with-content>
-            <img ui-avatar [src]="channel.image" (click)="updateChannel(channel)" />
+          <kaa-channel [channel]="channel"></kaa-channel>
+          <!-- <ui-avatar-with-content>
+            <img ui-avatar [src]="channel.image" />
             <div right-content class="text-wrapper">
               <span>{{ channel.name }}</span>
               <div class="text-wrapper__last-message-and-delivary-time">
@@ -12,7 +13,7 @@
                 <span>{{ channel.last_message_at | date: 'shortTime' }}</span>
               </div>
             </div>
-          </ui-avatar-with-content>
+          </ui-avatar-with-content> -->
         </li>
       }
     } @else {
