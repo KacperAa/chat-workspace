@@ -29,6 +29,19 @@ export class ChannelComponent implements OnInit {
   private _userApiService = inject(UserApiService);
 
   public ngOnInit(): void {
+    this._setChannelPresentation();
+  }
+
+  public getLastMessage(): string | null {
+    const latestMessages = this.channel().state.latestMessages;
+    return latestMessages.length > 0 ? latestMessages[latestMessages.length - 1].text! : null;
+  }
+
+  public getLastMessageAt(): string {
+    return String(this.channel().data?.last_message_at ?? '');
+  }
+
+  private _setChannelPresentation(): void {
     const currentUser = this._auth.currentUser;
     if (!currentUser) {
       throw new Error('Current user not logged in');
@@ -47,14 +60,5 @@ export class ChannelComponent implements OnInit {
     const membersArray = Object.values(this.channel().state.members);
     const otherMember = membersArray.find(member => member.user_id !== currentUserId);
     return otherMember?.user?.id;
-  }
-
-  public getLastMessage(): string | null {
-    const latestMessages = this.channel().state.latestMessages;
-    return latestMessages.length > 0 ? latestMessages[latestMessages.length - 1].text! : null;
-  }
-
-  public getLastMessageAt(): string {
-    return String(this.channel().data?.last_message_at ?? '');
   }
 }

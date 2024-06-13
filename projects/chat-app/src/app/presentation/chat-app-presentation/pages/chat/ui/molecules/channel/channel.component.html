@@ -1,4 +1,4 @@
-<ui-avatar-with-content (onClickChannel)="onClickChannel.emit(channel().data?.id)">
+<ui-avatar-with-content (click)="onClickChannel.emit(channel().data?.id)">
   <img ui-avatar [src]="channelImage$ | async" />
   <div right-content class="text-wrapper">
     <span>{{ channelName$ | async }}</span>
