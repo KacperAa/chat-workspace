@@ -1,10 +1,10 @@
 <ui-avatar-with-content>
-  <img ui-avatar [src]="''" />
+  <img ui-avatar [src]="channelImage" />
   <div right-content class="text-wrapper">
-    <span>{{ channel().name }}</span>
+    <span>{{ channel().data?.name }}</span>
     <div class="text-wrapper__last-message-and-delivary-time">
-      <p>{{ channel().last_message }}</p>
-      <span>{{ channel().last_message_at | date: 'shortTime' }}</span>
+      <!-- <p>{{ channel().data }}</p> -->
+      <!-- <span>{{ channel().data?.last_message_at| date: 'shortTime' }}</span> -->
     </div>
   </div>
 </ui-avatar-with-content>

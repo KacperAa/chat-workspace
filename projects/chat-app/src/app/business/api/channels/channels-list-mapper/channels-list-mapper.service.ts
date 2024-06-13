@@ -34,4 +34,11 @@ export class ChannelsListMapperService {
       last_message: lastMessage,
     };
   }
+
+  public mockupChannelsList: Signal<Channel<DefaultStreamChatGenerics>[] | null> = toSignal(
+    this._channelService.channels$.pipe(
+      filter((channels): channels is Channel<DefaultStreamChatGenerics>[] => !!channels)
+    ),
+    { initialValue: null }
+  );
 }

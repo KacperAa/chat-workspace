@@ -28,7 +28,7 @@ import { ChannelComponent } from '../../../ui/molecules/channel/channel.componen
 export class ChannelsComponent {
   private _router: Router = inject(Router);
 
-  private _updateChannel = inject(UpdateChannelApiService);
+  // private _updateChannel = inject(UpdateChannelApiService);
 
   public chatLoader: ChatLoader = inject(ChatLoader);
   public channelsStore: ChannelsListMapperService = inject(ChannelsListMapperService);
