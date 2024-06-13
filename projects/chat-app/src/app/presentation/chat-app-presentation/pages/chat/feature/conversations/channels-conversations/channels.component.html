@@ -2,18 +2,8 @@
   <ul class="conversation-list">
     @if (!isChannelsFetching()) {
       @for (channel of channelsStore.mockupChannelsList(); track channel) {
-        <li (click)="navigateToChannel('')" class="conversation-list__conversation-presentation">
-          <kaa-channel [channel]="channel"></kaa-channel>
-          <!-- <ui-avatar-with-content>
-            <img ui-avatar [src]="channel.image" />
-            <div right-content class="text-wrapper">
-              <span>{{ channel.name }}</span>
-              <div class="text-wrapper__last-message-and-delivary-time">
-                <p>{{ channel.last_message }}</p>
-                <span>{{ channel.last_message_at | date: 'shortTime' }}</span>
-              </div>
-            </div>
-          </ui-avatar-with-content> -->
+        <li class="conversation-list__conversation-presentation">
+          <kaa-channel [channel]="channel" (onClickChannel)="navigateToChannel($event)"></kaa-channel>
         </li>
       }
     } @else {

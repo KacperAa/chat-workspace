@@ -1,10 +1,10 @@
-<ui-avatar-with-content>
+<ui-avatar-with-content (onClickChannel)="onClickChannel.emit(channel().data?.id)">
   <img ui-avatar [src]="channelImage$ | async" />
   <div right-content class="text-wrapper">
     <span>{{ channelName$ | async }}</span>
     <div class="text-wrapper__last-message-and-delivary-time">
-      <!-- <p>{{ channel().data }}</p> -->
-      <!-- <span>{{ channel().data?.last_message_at| date: 'shortTime' }}</span> -->
+      <p>{{ getLastMessage() }}</p>
+      <span>{{ getLastMessageAt() | date: 'shortTime' }}</span>
     </div>
   </div>
 </ui-avatar-with-content>
