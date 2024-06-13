@@ -7,9 +7,7 @@ import { AvatarWithStatusComponent } from '../../../../../../../../../../ui/src/
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
 import { SkeletonCircleAndBarsComponent } from '../../../../../../../../../../ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component';
 import { ConversationsService } from '../../../../../../../business/api/conversations/conversations.service';
-import { CreateChannelService } from '../../../../../../../business/api/create-channel/create-channel.service';
 import { FriendsService } from '../../../../../../../business/api/friends/friends.service';
-import { UpdateChannelApiService } from '../../../../../../../business/api/update-channel/update-channel-api.service';
 import { ChatLoader } from '../../../../../../../business/chat-loader/chat-loader';
 import { StatusPipe } from './pipe/status.pipe';
 
@@ -32,16 +30,11 @@ export class ConversationsComponent {
   public chatLoader: ChatLoader = inject(ChatLoader);
   private _friendsList = inject(FriendsService);
   private _conversation = inject(ConversationsService);
-  private _updateChannelApi = inject(UpdateChannelApiService);
 
   public friendsList: Signal<[] | UserResponse<DefaultStreamChatGenerics>[]> = toSignal(
     this._friendsList.getFriendsFromChat(),
     { initialValue: [] }
   );
-
-  constructor() {}
-
-  ngOnInit() {}
 
   public convertationList = toSignal(this._conversation.getUserConversations(), { initialValue: [] });
 }

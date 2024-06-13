@@ -4,7 +4,7 @@
       @for (channel of channelsStore.channelsList(); track channel) {
         <li (click)="navigateToChannel(channel.id)" class="conversation-list__conversation-presentation">
           <ui-avatar-with-content>
-            <img ui-avatar [src]="channel.image" />
+            <img ui-avatar [src]="channel.image" (click)="updateChannel(channel)" />
             <div right-content class="text-wrapper">
               <span>{{ channel.name }}</span>
               <div class="text-wrapper__last-message-and-delivary-time">
