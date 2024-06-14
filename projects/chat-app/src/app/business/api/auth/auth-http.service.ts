@@ -53,7 +53,7 @@ export class AuthHttpService {
     );
   }
 
-  public signOut() {
+  public signOut(): Observable<Object> {
     const user = this._firebaseAuth.currentUser!;
 
     return from(this._firebaseAuth.signOut()).pipe(
