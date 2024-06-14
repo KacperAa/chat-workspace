@@ -21,10 +21,10 @@ export class UserChannelConversationMapperService {
     const otherUserMemberId = this._getOtherMemberUserId(channel);
 
     return this._userApi.getUserFormChat(otherUserMemberId).pipe(
-      switchMap(response => {
+      switchMap(getStreamResponse => {
         return this._userApi._getFireUsersDatabase(otherUserMemberId).pipe(
           map(fireUser => {
-            const isUserOnline = Boolean(response.users[0].online);
+            const isUserOnline = Boolean(getStreamResponse.users[0].online);
             return {
               isUserOnline: isUserOnline,
               channelImage: String(fireUser.photoURL),
