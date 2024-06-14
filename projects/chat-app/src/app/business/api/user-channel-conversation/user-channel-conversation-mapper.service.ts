@@ -21,17 +21,19 @@ export class UserChannelConversationMapperService {
     const otherUserMemberId = this._getOtherMemberUserId(channel);
 
     return this._userApi.getUserFormChat(otherUserMemberId).pipe(
-      switchMap(() => {
-        return this._userApi._getFireUsersDatabase(otherUserMemberId);
-      }),
-      map(response => {
-        return {
-          isUserOnline: response.online,
-          channelImage: String(response.photoURL),
-          channelName: response.displayName,
-          last_message_at: String(channel.data?.last_message_at ?? ''),
-          last_message: this._getLastMessage(channel),
-        };
+      switchMap(response => {
+        return this._userApi._getFireUsersDatabase(otherUserMemberId).pipe(
+          map(fireUser => {
+            const isUserOnline = Boolean(response.users[0].online);
+            return {
+              isUserOnline: isUserOnline,
+              channelImage: String(fireUser.photoURL),
+              channelName: fireUser.displayName,
+              last_message_at: String(channel.data?.last_message_at ?? ''),
+              last_message: this._getLastMessage(channel),
+            };
+          })
+        );
       })
     );
   }
