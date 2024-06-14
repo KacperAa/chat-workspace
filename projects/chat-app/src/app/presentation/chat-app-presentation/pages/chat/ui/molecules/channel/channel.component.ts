@@ -8,7 +8,7 @@ import { AvatarComponent } from '@ui/AvatarComponent';
 
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
 import { AvatarWithStatusComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-status/avatar-with-status.component';
-import { UserApiService } from '../../../../../../../business/api/all-app-users/user-api.service';
+import { UserApiService } from '../../../../../../../business/api/users/user-api.service';
 import { StatusPipe } from './pipes/status.pipe';
 
 import { Observable, map } from 'rxjs';
