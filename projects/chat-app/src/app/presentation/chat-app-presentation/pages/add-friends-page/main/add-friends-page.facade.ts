@@ -2,9 +2,9 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { FormControl } from '@angular/forms';
 
-import { AddFriendService } from '../../../../../business/api/add-friend/add-friend.service';
-import { UserMergedResponse } from '../../../../../business/api/users/models/user-merged-response.model';
-import { UserApiService } from '../../../../../business/api/users/user-api.service';
+import { AddFriendService } from '../../../../../business/api/friend-repository/add-friend/add-friend.service';
+import { UserMergedResponse } from '../../../../../business/api/user-repository/user/models/user-merged-response.model';
+import { UserApiService } from '../../../../../business/api/user-repository/user/user-api.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';

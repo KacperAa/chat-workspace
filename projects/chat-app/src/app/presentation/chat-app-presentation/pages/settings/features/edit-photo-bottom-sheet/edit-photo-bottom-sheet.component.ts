@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
-import { UpdateUserProfileApiService } from '../../../../../../business/api/update-user-profile/update-user-profile-api.service';
+import { UpdateUserProfileApiService } from '../../../../../../business/api/user-repository/update-user-profile/update-user-profile-api.service';
 import { ChatLoader } from '../../../../../../business/chat-loader/chat-loader';
 import { AddPictureViaLinkDialogComponent } from '../../ui/molecules/add-picture-via-link-dialog/add-picture-via-link-dialog.component';
 

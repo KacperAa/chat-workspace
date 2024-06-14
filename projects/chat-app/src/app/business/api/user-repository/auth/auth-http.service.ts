@@ -9,12 +9,11 @@ import {
 } from '@angular/fire/auth';
 import { Database, ref, set } from '@angular/fire/database';
 
-import { environment } from '../../../../environments/environment';
+import { environment } from '../../../../../environments/environment';
 import { SigninCredentials } from './models/signin-credentials';
 import { SignupCredentials } from './models/signup-credentials';
 
 import { Observable, forkJoin, from, pluck, switchMap } from 'rxjs';
-import { EventListenerObject } from 'rxjs/internal/observable/fromEvent';
 
 @Injectable({
   providedIn: 'root',

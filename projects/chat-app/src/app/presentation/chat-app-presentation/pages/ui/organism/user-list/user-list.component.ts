@@ -6,7 +6,7 @@ import { MatList, MatListItem } from '@angular/material/list';
 
 import { AvatarComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithContentComponent } from '../../../../../../../../../ui/src/lib/molecules';
-import { UserMergedResponse } from '../../../../../../business/api/users/models/user-merged-response.model';
+import { UserMergedResponse } from '../../../../../../business/api/user-repository/user/models/user-merged-response.model';
 
 @Component({
   selector: 'kaa-user-list',

@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { UserResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { CreateChannelService } from '../../../../../business/api/create-channel/create-channel.service';
-import { FriendsService } from '../../../../../business/api/friends/friends.service';
+import { CreateChannelService } from '../../../../../business/api/channel-repository/create-channel/create-channel.service';
+import { FriendsService } from '../../../../../business/api/friend-repository/friends/friends.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';

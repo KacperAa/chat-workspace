@@ -4,7 +4,7 @@ import { Database, child, get, ref } from '@angular/fire/database';
 import { UserResponse } from 'stream-chat';
 import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { MappedUserFields } from '../auth/models/mapped-user-fields.model';
+import { MappedUserFields } from '../../user-repository/auth/models/mapped-user-fields.model';
 
 import { Observable, from, map, of, switchMap } from 'rxjs';
 

@@ -2,7 +2,7 @@ import { Injectable, Signal, inject } from '@angular/core';
 import { UserResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { FriendsService } from '../../../../../business/api/friends/friends.service';
+import { FriendsService } from '../../../../../business/api/friend-repository/friends/friends.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 

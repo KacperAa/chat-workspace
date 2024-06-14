@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { matchValidator } from '@validators/matchValidator';
 
-import { AuthHttpService } from '../../../business/api/auth/auth-http.service';
-import { SignupCredentials } from '../../../business/api/auth/models/signup-credentials';
+import { AuthHttpService } from '../../../business/api/user-repository/auth/auth-http.service';
+import { SignupCredentials } from '../../../business/api/user-repository/auth/models/signup-credentials';
 import { RegisterFormGroup } from './models/register-form-group.model';
 
 @Injectable()

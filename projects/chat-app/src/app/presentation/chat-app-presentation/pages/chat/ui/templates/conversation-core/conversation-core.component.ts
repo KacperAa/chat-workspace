@@ -10,7 +10,7 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
-import { ConversationData } from '../../../../../../../business/api/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
+import { ConversationData } from '../../../../../../../business/api/channel-repository/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
 import { MessageInputComponent } from '../../molecules/message-input/message-input.component';
 import { ActionButton } from './models/action-button.model';
 

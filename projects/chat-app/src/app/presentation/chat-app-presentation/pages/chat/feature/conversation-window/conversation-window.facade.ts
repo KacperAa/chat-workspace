@@ -3,10 +3,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { ConversationData } from '../../../../../../business/api/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
-import { MessageMapperService } from '../../../../../../business/api/message/message-mapper.service';
-import { SendMessageApiService } from '../../../../../../business/api/send-message/send-message-api.service';
-import { UserConversationMapperService } from '../../../../../../business/api/user-conversation/user-conversation/user-conversation-mapper.service';
+import { ConversationData } from '../../../../../../business/api/channel-repository/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
+import { UserConversationMapperService } from '../../../../../../business/api/channel-repository/user-conversation/user-conversation/user-conversation-mapper.service';
+import { MessageMapperService } from '../../../../../../business/api/message-repository/message/message-mapper.service';
+import { SendMessageApiService } from '../../../../../../business/api/message-repository/send-message/send-message-api.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, switchMap } from 'rxjs';
