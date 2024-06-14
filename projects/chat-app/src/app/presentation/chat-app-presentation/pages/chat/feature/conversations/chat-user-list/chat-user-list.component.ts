@@ -1,3 +1,4 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, Signal, computed, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
@@ -11,7 +12,7 @@ import { ChannelComponent } from '../../../ui/molecules/channel/channel.componen
   standalone: true,
   templateUrl: './chat-user-list.component.html',
   styleUrl: '../_conversations.base.scss',
-  imports: [SkeletonCircleAndBarsComponent, RouterOutlet, ChannelComponent],
+  imports: [SkeletonCircleAndBarsComponent, RouterOutlet, ChannelComponent, AsyncPipe],
 })
 export class ChannelsComponent {
   private _router: Router = inject(Router);
