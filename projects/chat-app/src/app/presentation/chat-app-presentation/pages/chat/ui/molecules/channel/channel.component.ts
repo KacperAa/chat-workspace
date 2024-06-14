@@ -8,6 +8,7 @@ import { AvatarComponent } from '@ui/AvatarComponent';
 
 import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
 import { AvatarWithStatusComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-status/avatar-with-status.component';
+import { UserChannelConversationMapperService } from '../../../../../../../business/api/user-channel-conversation/user-channel-conversation-mapper.service';
 import { UserApiService } from '../../../../../../../business/api/users/user-api.service';
 import { StatusPipe } from './pipes/status.pipe';
 
@@ -22,6 +23,8 @@ import { Observable, map } from 'rxjs';
 })
 export class ChannelComponent implements OnInit {
   public channel = input.required<Channel<DefaultStreamChatGenerics>>();
+
+  private _userChannelMapper = inject(UserChannelConversationMapperService);
 
   public channelName = input<string>('');
   public channelUrlImage = input<string>('');
@@ -38,6 +41,8 @@ export class ChannelComponent implements OnInit {
   private _userApiService = inject(UserApiService);
 
   public ngOnInit(): void {
+    this._userChannelMapper.mapUserChannelPresentation(this.channel()).subscribe(res => console.log(res));
+
     this._setChannelPresentation();
   }
 
