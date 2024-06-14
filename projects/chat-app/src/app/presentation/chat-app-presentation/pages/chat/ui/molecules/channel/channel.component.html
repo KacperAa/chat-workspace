@@ -1,13 +1,15 @@
-<ui-avatar-with-content (click)="onClickChannel.emit(channel().data?.id)">
-  <ui-avatar-with-status [status]="(mappedChannelElData$ | async)?.isUserOnline! | status">
-    <img ui-avatar [src]="(mappedChannelElData$ | async)?.channelImage" />
-  </ui-avatar-with-status>
+@if (mappedChannelElData$ | async; as channelData) {
+  <ui-avatar-with-content (click)="onClickChannel.emit(channel().data?.id)">
+    <ui-avatar-with-status [status]="channelData.isUserOnline! | status">
+      <img ui-avatar [src]="channelData.channelImage" />
+    </ui-avatar-with-status>
 
-  <div right-content class="text-wrapper">
-    <span>{{ (mappedChannelElData$ | async)?.channelName }}</span>
-    <div class="text-wrapper__last-message-and-delivary-time">
-      <p>{{ (mappedChannelElData$ | async)?.last_message }}</p>
-      <span>{{ (mappedChannelElData$ | async)?.last_message_at | date: 'shortTime' }}</span>
+    <div right-content class="text-wrapper">
+      <span>{{ channelData.channelName }}</span>
+      <div class="text-wrapper__last-message-and-delivary-time">
+        <p>{{ channelData.last_message }}</p>
+        <span>{{ channelData.last_message_at | date: 'shortTime' }}</span>
+      </div>
     </div>
-  </div>
-</ui-avatar-with-content>
+  </ui-avatar-with-content>
+}
