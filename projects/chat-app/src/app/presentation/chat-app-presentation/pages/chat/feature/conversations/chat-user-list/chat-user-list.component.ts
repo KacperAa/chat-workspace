@@ -9,7 +9,7 @@ import { ChannelComponent } from '../../../ui/molecules/channel/channel.componen
 @Component({
   selector: 'kaa-channels',
   standalone: true,
-  templateUrl: './channels.component.html',
+  templateUrl: './chat-user-list.component.html',
   styleUrl: '../_conversations.base.scss',
   imports: [SkeletonCircleAndBarsComponent, RouterOutlet, ChannelComponent],
 })
