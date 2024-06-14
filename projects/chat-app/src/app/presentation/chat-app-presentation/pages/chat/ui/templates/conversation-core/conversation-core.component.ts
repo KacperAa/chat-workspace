@@ -10,7 +10,7 @@ import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { SkeletonBarComponent } from '@ui/SkeletonBarComponent';
 import { SkeletonCircleLoaderComponent } from '@ui/SkeletonCircleLoaderComponent';
 
-import { ConversationData } from '../../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
+import { ConversationData } from '../../../../../../../business/api/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
 import { MessageInputComponent } from '../../molecules/message-input/message-input.component';
 import { ActionButton } from './models/action-button.model';
 
@@ -61,6 +61,6 @@ export class ConversationCoreComponent {
   }
 
   public navigateToChat(): void {
-    this._router.navigate(['chat/channels']);
+    this._router.navigate(['chat/conversations']);
   }
 }

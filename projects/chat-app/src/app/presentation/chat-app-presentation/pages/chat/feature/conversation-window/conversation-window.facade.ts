@@ -3,19 +3,19 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { ChannelMapperService } from '../../../../../../business/api/channels/channel-mapper/channel-mapper.service';
-import { ConversationData } from '../../../../../../business/api/channels/channel-mapper/models/conversation-data.model';
-import { MessagesMappperService } from '../../../../../../business/api/channels/messages-mapper/messages-mapper.service';
+import { ChannelMapperService } from '../../../../../../business/api/channel-conversation/channel-conversation-mapper/channel-mapper.service';
+import { ConversationData } from '../../../../../../business/api/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
+import { MessageMapperService } from '../../../../../../business/api/message/message-mapper.service';
+import { SendMessageApiService } from '../../../../../../business/api/send-message/send-message-api.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, switchMap } from 'rxjs';
-import { SendMessageApiService } from '../../../../../../business/api/send-message/send-message-api.service';
 
 @Injectable()
 export class ConversationWindowFacade {
   private _activatedRoute = inject(ActivatedRoute);
   private _channelMapper = inject(ChannelMapperService);
-  private _messagesMapper = inject(MessagesMappperService);
+  private _messagesMapper = inject(MessageMapperService);
   private _sendMessageApiService = inject(SendMessageApiService);
 
   private _channelData$: Observable<ConversationData> = this._initializeChannelData();
@@ -28,9 +28,8 @@ export class ConversationWindowFacade {
     { initialValue: null }
   );
 
-
   public sendMessage(message: string): void {
-    this._sendMessageApiService.sendMessage(message)
+    this._sendMessageApiService.sendMessage(message);
   }
 
   private _initializeChannelData(): Observable<ConversationData> {

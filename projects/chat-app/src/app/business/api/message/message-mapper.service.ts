@@ -2,14 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { ChannelsApiService } from '../channels-api.service';
+import { ChannelsApiService } from '../channel-conversation/channels-api.service';
 
 import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MessagesMappperService {
+export class MessageMapperService {
   private _channelsApi = inject(ChannelsApiService);
 
   public getMessages(id: string): Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> {
