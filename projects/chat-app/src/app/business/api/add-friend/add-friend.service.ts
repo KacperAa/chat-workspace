@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Database, push, ref, set } from '@angular/fire/database';
 
-import { UserMergedResponse } from '../all-app-users/models/user-merged-response.model';
+import { UserMergedResponse } from '../users/models/user-merged-response.model';
 
 import { Observable, from } from 'rxjs';
 

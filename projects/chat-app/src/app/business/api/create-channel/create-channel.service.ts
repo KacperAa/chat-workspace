@@ -12,17 +12,6 @@ export class CreateChannelService {
   private _auth = inject(Auth);
   private _chatService = inject(ChatClientService);
 
-  // public createChannel(): void {
-  //   const channel = this._chatService.chatClient.channel('messaging', 'dupsko', {
-  //     image:
-  //       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png',
-  //     name: 'Tduspko',
-  //     members: [this._auth.currentUser!.uid],
-  //   });
-
-  //   from(channel.create());
-  // }
-
   public createChannelWithUser(targetUser: {
     uid: string;
     displayName: string;
@@ -38,16 +27,7 @@ export class CreateChannelService {
     const channel = this._chatService.chatClient.channel('messaging', channelId, {
       members: [currentUser.uid, targetUser.uid],
       created_by: { id: currentUser.uid },
-      extra_data: {
-        [currentUser.uid]: {
-          nickname: currentUser.displayName,
-          photoURL: currentUser.photoURL,
-        },
-        [targetUser.uid]: {
-          nickname: targetUser.displayName,
-          photoURL: targetUser.photoURL,
-        },
-      },
+      image: targetUser.photoURL,
     });
 
     return from(channel.create());

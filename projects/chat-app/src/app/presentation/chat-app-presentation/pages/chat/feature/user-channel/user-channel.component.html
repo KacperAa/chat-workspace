@@ -1,0 +1,15 @@
+@if (mappedChannelElData$ | async; as channelData) {
+  <ui-avatar-with-content (click)="onClickChannel.emit(channel().data?.id)">
+    <ui-avatar-with-status [status]="channelData.isUserOnline! | status">
+      <img ui-avatar [src]="channelData.channelImage" />
+    </ui-avatar-with-status>
+
+    <div right-content class="text-wrapper">
+      <span>{{ channelData.channelName }}</span>
+      <div class="text-wrapper__last-message-and-delivary-time">
+        <p>{{ channelData.last_message }}</p>
+        <span>{{ channelData.last_message_at | date: 'shortTime' }}</span>
+      </div>
+    </div>
+  </ui-avatar-with-content>
+}

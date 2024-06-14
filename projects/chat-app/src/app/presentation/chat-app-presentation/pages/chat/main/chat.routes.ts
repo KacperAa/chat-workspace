@@ -8,14 +8,7 @@ export const CHAT_ROUTES: Routes = [
       {
         path: 'conversations',
         loadComponent: () =>
-          import('../feature/conversations/user-conversations/conversations.component').then(
-            c => c.ConversationsComponent
-          ),
-      },
-      {
-        path: 'channels',
-        loadComponent: () =>
-          import('../feature/conversations/channels-conversations/channels.component').then(c => c.ChannelsComponent),
+          import('../feature/conversations/chat-user-list/chat-user-list.component').then(c => c.ChannelsComponent),
       },
       {
         path: ':id',
