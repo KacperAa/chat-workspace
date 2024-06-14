@@ -3,10 +3,10 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { ChannelMapperService } from '../../../../../../business/api/channel-conversation/channel-conversation-mapper/channel-mapper.service';
 import { ConversationData } from '../../../../../../business/api/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
 import { MessageMapperService } from '../../../../../../business/api/message/message-mapper.service';
 import { SendMessageApiService } from '../../../../../../business/api/send-message/send-message-api.service';
+import { UserConversationMapperService } from '../../../../../../business/api/user-conversation/user-conversation/user-conversation-mapper.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, switchMap } from 'rxjs';
@@ -14,7 +14,7 @@ import { Observable, switchMap } from 'rxjs';
 @Injectable()
 export class ConversationWindowFacade {
   private _activatedRoute = inject(ActivatedRoute);
-  private _channelMapper = inject(ChannelMapperService);
+  private _conversationMapper = inject(UserConversationMapperService);
   private _messagesMapper = inject(MessageMapperService);
   private _sendMessageApiService = inject(SendMessageApiService);
 
@@ -41,7 +41,7 @@ export class ConversationWindowFacade {
   }
 
   private _fetchChannelData(channelId: string): Observable<ConversationData> {
-    return this._channelMapper.getChannel(channelId);
+    return this._conversationMapper.mapChannelToConversation(channelId);
   }
 
   private _fetchMessages(channelId: string): Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> {
