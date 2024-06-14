@@ -21,9 +21,14 @@ import { Observable, map } from 'rxjs';
   imports: [AvatarWithContentComponent, AvatarComponent, DatePipe, AsyncPipe, AvatarWithStatusComponent, StatusPipe],
 })
 export class ChannelComponent implements OnInit {
+  public channel = input.required<Channel<DefaultStreamChatGenerics>>();
+
+  public channelName = input<string>('');
+  public channelUrlImage = input<string>('');
+  public isUserOnline = input<boolean>(false);
+
   public isUserOnline$!: Observable<boolean>;
 
-  public channel = input.required<Channel<DefaultStreamChatGenerics>>();
   public onClickChannel = output<unknown>();
 
   public channelName$!: Observable<string | null>;
