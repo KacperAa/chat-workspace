@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { StatusDot } from '../../../../../../../../../../../ui/src/lib/molecules/avatar-with-status/models/status-dot.model';
+import { StatusDot } from '../../../../../../../../ui/src/lib/molecules/avatar-with-status/models/status-dot.model';
 
 @Pipe({
   name: 'status',

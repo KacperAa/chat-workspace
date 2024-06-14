@@ -4,20 +4,20 @@ import { Channel } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { AvatarComponent } from '@ui/AvatarComponent';
+import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
+import { AvatarWithStatusComponent } from '@ui/AvatarWithStatusComponent';
 
-import { AvatarWithContentComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-content/avatar-with-content.component';
-import { AvatarWithStatusComponent } from '../../../../../../../../../../ui/src/lib/molecules/avatar-with-status/avatar-with-status.component';
-import { UserChannelConversationListEl } from '../../../../../../../business/api/user-channel-conversation/models/user-channel-conversation-list-el.model';
-import { UserChannelConversationMapperService } from '../../../../../../../business/api/user-channel-conversation/user-channel-conversation-mapper.service';
-import { StatusPipe } from './pipes/status.pipe';
+import { UserChannelConversationListEl } from '../../../../../../business/api/user-channel-conversation/models/user-channel-conversation-list-el.model';
+import { UserChannelConversationMapperService } from '../../../../../../business/api/user-channel-conversation/user-channel-conversation-mapper.service';
+import { StatusPipe } from '../../pipes/status.pipe';
 
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'kaa-channel',
   standalone: true,
-  templateUrl: './channel.component.html',
-  styleUrl: './channel.component.scss',
+  templateUrl: './user-channel.component.html',
+  styleUrl: './user-channel.component.scss',
   imports: [AvatarWithContentComponent, AvatarComponent, DatePipe, AsyncPipe, AvatarWithStatusComponent, StatusPipe],
 })
 export class ChannelComponent implements OnInit {

@@ -1,7 +1,7 @@
 <section>
   <ul class="conversation-list">
     @if (!isChannelsFetching()) {
-      @for (channel of channelsStore.mockupChannelsList(); track channel) {
+      @for (channel of channelsStore.messagingChannelsList(); track channel) {
         <li class="conversation-list__conversation-presentation">
           <kaa-channel [channel]="channel" (onClickChannel)="navigateToChannel($event)"></kaa-channel>
         </li>
