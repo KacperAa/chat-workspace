@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { ChannelService } from 'stream-chat-angular';
 
-import { ChannelsApiService } from '../channels-api.service';
+import { ChannelsApiService } from '../../channels-api.service';
 import { ConversationData } from './models/conversation-data.model';
 
 import { Observable, map } from 'rxjs';

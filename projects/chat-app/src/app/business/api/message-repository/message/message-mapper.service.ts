@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { ChannelsApiService } from '../../channel-repository/channel-conversation/channels-api.service';
+import { ChannelsApiService } from '../../channel-repository/channels-api.service';
 
 import { Observable, map } from 'rxjs';
 
