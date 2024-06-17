@@ -17,7 +17,7 @@ export class FilterUsersService {
     return from(this._chatService.autocompleteUsers(queryString)).pipe(
       switchMap(users => {
         const userObservables = users.map(user =>
-          this._userApi.getFireUsersDatabase(user.id).pipe(
+          this._userApi.getFireUserFromDatabase(user.id).pipe(
             map(fireUser => ({
               ...user,
               photoURL: fireUser?.photoURL || null,

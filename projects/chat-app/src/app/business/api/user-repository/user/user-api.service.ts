@@ -18,7 +18,7 @@ export class UserApiService {
     return from(this._chatService.chatClient.queryUsers({ id: userId }));
   }
 
-  public getFireUsersDatabase(uid: string): Observable<MappedUserFields> {
+  public getFireUserFromDatabase(uid: string): Observable<MappedUserFields> {
     const dbRef = ref(this._fireDatabase);
     return from(
       get(child(dbRef, `users/${uid}`)).then(snapshot => {

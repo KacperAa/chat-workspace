@@ -22,7 +22,7 @@ export class UserChannelConversationMapperService {
 
     return this._userApi.getUserFormChat(otherUserMemberId).pipe(
       switchMap(getStreamResponse => {
-        return this._userApi.getFireUsersDatabase(otherUserMemberId).pipe(
+        return this._userApi.getFireUserFromDatabase(otherUserMemberId).pipe(
           map(fireUser => {
             const isUserOnline = Boolean(getStreamResponse.users[0].online);
             return {
