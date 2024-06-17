@@ -4,7 +4,11 @@
   <ui-vertical-scroll>
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       @for (message of messagesCollection; track message) {
-        <ui-text-cloud [color]="message.isCurrentUser | cloudColor">{{ message.text }}</ui-text-cloud>
+        <ui-text-cloud
+          [color]="message.isCurrentUser | cloudColor"
+          [position]="message.isCurrentUser ? 'right' : 'left'"
+          >{{ message.text }}</ui-text-cloud
+        >
       }
     } @else {
       <div class="skeletons-wrapper">

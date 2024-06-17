@@ -1,3 +1,5 @@
-<div class="text-cloud text-cloud--{{ color() }}">
+<div
+  class="text-cloud text-cloud--{{ color() }}"
+  [ngClass]="position() === 'left' ? 'left-position' : 'right-position'">
   <ng-content />
 </div>
