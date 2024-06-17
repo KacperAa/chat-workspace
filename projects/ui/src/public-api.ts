@@ -16,5 +16,6 @@ export {
   FormFieldComponent,
   AvatarWithIconButtonComponent,
   AvatarWithStatusComponent,
+  TypingIndicatorComponent,
 } from './lib/molecules';
 export { HorizontalScrollComponent, VerticalScrollComponent } from './lib/organisms';
