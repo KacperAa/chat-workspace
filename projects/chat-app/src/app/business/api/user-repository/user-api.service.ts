@@ -3,7 +3,7 @@ import { child, get } from '@angular/fire/database';
 import { Database, ref } from '@angular/fire/database';
 import { ChatClientService } from 'stream-chat-angular';
 
-import { MappedUserFields } from '../auth/models/mapped-user-fields.model';
+import { MappedUserFields } from '../auth-repository/models/mapped-user-fields.model';
 
 import { Observable, from } from 'rxjs';
 

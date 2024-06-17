@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { ChatClientService } from 'stream-chat-angular';
 
-import { UserMergedResponse } from '../models/user-merged-response.model';
 import { UserApiService } from '../user-api.service';
+import { UserMergedResponse } from './models/user-merged-response.model';
 
 import { Observable, forkJoin, from, map, switchMap } from 'rxjs';
 

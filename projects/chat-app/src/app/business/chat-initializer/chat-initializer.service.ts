@@ -3,8 +3,8 @@ import { User } from '@angular/fire/auth';
 import { ChannelService, ChatClientService, StreamI18nService } from 'stream-chat-angular';
 
 import { environment } from '../../../environments/environment';
-import { AuthHttpService } from '../api/user-repository/auth/auth-http.service';
-import { AuthStore } from '../api/user-repository/auth/auth.store';
+import { AuthHttpService } from '../api/auth-repository/auth-http.service';
+import { AuthStore } from '../api/auth-repository/auth.store';
 import { ChatLoader } from '../chat-loader/chat-loader';
 
 import { catchError, switchMap, tap } from 'rxjs';
