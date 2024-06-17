@@ -6,7 +6,7 @@
       @for (message of messagesCollection; track message) {
         <ui-text-cloud
           [color]="message.isCurrentUser | cloudColor"
-          [position]="message.isCurrentUser ? 'right' : 'left'"
+          [position]="message.isCurrentUser | cloudPosition"
           >{{ message.text }}</ui-text-cloud
         >
       }

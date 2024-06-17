@@ -6,6 +6,7 @@ import { VerticalScrollComponent } from '../../../../../../../../../ui/src/lib/o
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';
 import { ConversationWindowFacade } from './conversation-window.facade';
 import { CloudColorPipe } from './pipes/cloud-color.pipe';
+import { CloudPositionPipe } from './pipes/cloud-position.pipe';
 
 @Component({
   selector: 'kaa-conversation-window',
@@ -16,6 +17,7 @@ import { CloudColorPipe } from './pipes/cloud-color.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CloudColorPipe,
+    CloudPositionPipe,
     TextCloudComponent,
     SkeletonBarComponent,
     VerticalScrollComponent,
