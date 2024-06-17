@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
-import { AuthHttpService } from '../../../business/api/auth/auth-http.service';
-import { SigninCredentials } from '../../../business/api/auth/models/signin-credentials';
+import { AuthHttpService } from '../../../business/api/auth-repository/auth-http.service';
+import { SigninCredentials } from '../../../business/api/auth-repository/models/signin-credentials';
 import { LoginFormGroup } from './models/login-form-group.model';
 
 @Injectable()

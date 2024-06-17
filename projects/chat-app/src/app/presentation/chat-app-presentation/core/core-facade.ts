@@ -2,8 +2,8 @@ import { Injectable, Signal, inject } from '@angular/core';
 import { User } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
-import { AuthHttpService } from '../../../business/api/auth/auth-http.service';
-import { AuthStore } from '../../../business/api/auth/auth.store';
+import { AuthHttpService } from '../../../business/api/auth-repository/auth-http.service';
+import { AuthStore } from '../../../business/api/auth-repository/auth.store';
 
 @Injectable()
 export class CoreFacade {

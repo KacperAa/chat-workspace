@@ -1,9 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { ChannelService } from 'stream-chat-angular';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class SendMessageApiService {
   private _channelService = inject(ChannelService);
 

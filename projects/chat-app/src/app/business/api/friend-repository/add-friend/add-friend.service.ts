@@ -2,13 +2,11 @@ import { Injectable, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Database, push, ref, set } from '@angular/fire/database';
 
-import { UserMergedResponse } from '../users/models/user-merged-response.model';
+import { UserMergedResponse } from '../../user-repository/filter-users/models/user-merged-response.model';
 
 import { Observable, from } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AddFriendService {
   private _database = inject(Database);
 

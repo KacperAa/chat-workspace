@@ -14,11 +14,8 @@ import { SigninCredentials } from './models/signin-credentials';
 import { SignupCredentials } from './models/signup-credentials';
 
 import { Observable, forkJoin, from, pluck, switchMap } from 'rxjs';
-import { EventListenerObject } from 'rxjs/internal/observable/fromEvent';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthHttpService {
   private _firebaseAuth = inject(Auth);
   private _http = inject(HttpClient);

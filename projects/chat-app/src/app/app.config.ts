@@ -8,11 +8,12 @@ import { provideRouter } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { APP_ROUTES } from './app.routes';
+import { ApiModule } from './business/api/api.module';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     importProvidersFrom(HttpClientModule),
-
+    importProvidersFrom(ApiModule),
     provideRouter(APP_ROUTES),
     importProvidersFrom(),
     provideAnimationsAsync(),

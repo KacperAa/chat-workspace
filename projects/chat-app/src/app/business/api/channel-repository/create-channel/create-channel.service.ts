@@ -5,9 +5,7 @@ import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angula
 
 import { Observable, from } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CreateChannelService {
   private _auth = inject(Auth);
   private _chatService = inject(ChatClientService);

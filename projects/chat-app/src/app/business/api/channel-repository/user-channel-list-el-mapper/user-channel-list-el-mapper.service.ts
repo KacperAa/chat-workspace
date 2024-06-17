@@ -3,14 +3,12 @@ import { Auth } from '@angular/fire/auth';
 import { Channel } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { UserApiService } from '../../users/user-api.service';
+import { UserApiService } from '../../user-repository/user-api.service';
 import { UserChannelConversationListEl } from './models/user-channel-conversation-list-el.model';
 
 import { Observable, map, switchMap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UserChannelConversationMapperService {
   private _auth = inject(Auth);
   private _userApi = inject(UserApiService);
@@ -22,7 +20,7 @@ export class UserChannelConversationMapperService {
 
     return this._userApi.getUserFormChat(otherUserMemberId).pipe(
       switchMap(getStreamResponse => {
-        return this._userApi._getFireUsersDatabase(otherUserMemberId).pipe(
+        return this._userApi.getFireUserFromDatabase(otherUserMemberId).pipe(
           map(fireUser => {
             const isUserOnline = Boolean(getStreamResponse.users[0].online);
             return {

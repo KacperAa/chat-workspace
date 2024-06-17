@@ -6,7 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { AvatarComponent, SkeletonCircleLoaderComponent } from '../../../../../../../../ui/src/lib/atoms';
 import { AvatarWithIconButtonComponent } from '../../../../../../../../ui/src/lib/molecules';
 import { AvatarWithContentComponent } from '../../../../../../../../ui/src/lib/molecules';
-import { AuthStore } from '../../../../../business/api/auth/auth.store';
+import { AuthStore } from '../../../../../business/api/auth-repository/auth.store';
 import { ChatLoader } from '../../../../../business/chat-loader/chat-loader';
 import { NavigationToolbarComponent } from '../../ui/molecules/navigation-toolbar/navigation-toolbar.component';
 import { EditPhotoBottomSheetComponent } from '../features/edit-photo-bottom-sheet/edit-photo-bottom-sheet.component';
