@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 
-import { ConversationData } from '../../channel-conversation/channel-conversation-mapper/models/conversation-data.model';
 import { ChannelsApiService } from '../../channels-api.service';
-import { UserChannelConversationMapperService } from '../user-channel-list-el-mapper/user-channel-list-el-mapper.service';
+import { UserChannelConversationMapperService } from '../../user-channel-list-el-mapper/user-channel-list-el-mapper.service';
+import { ConversationData } from '../models/conversation-data.model';
 
 import { Observable, map, switchMap } from 'rxjs';
 

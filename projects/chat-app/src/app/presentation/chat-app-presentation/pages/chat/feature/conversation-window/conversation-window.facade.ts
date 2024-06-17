@@ -3,8 +3,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { ConversationData } from '../../../../../../business/api/channel-repository/channel-conversation/channel-conversation-mapper/models/conversation-data.model';
-import { UserConversationMapperService } from '../../../../../../business/api/channel-repository/user-conversation/user-conversation/user-conversation-mapper.service';
+import { ConversationData } from '../../../../../../business/api/channel-repository/conversations/models/conversation-data.model';
+import { UserConversationMapperService } from '../../../../../../business/api/channel-repository/conversations/user-conversation-mapper/user-conversation-mapper.service';
 import { MessageMapperService } from '../../../../../../business/api/message-repository/message/message-mapper.service';
 import { SendMessageApiService } from '../../../../../../business/api/message-repository/send-message/send-message-api.service';
 
@@ -14,9 +14,9 @@ import { Observable, switchMap } from 'rxjs';
 @Injectable()
 export class ConversationWindowFacade {
   private _activatedRoute = inject(ActivatedRoute);
-  private _conversationMapper = inject(UserConversationMapperService);
   private _messagesMapper = inject(MessageMapperService);
   private _sendMessageApiService = inject(SendMessageApiService);
+  private _conversationMapper = inject(UserConversationMapperService);
 
   private _channelData$: Observable<ConversationData> = this._initializeChannelData();
   private _messagesCollection$: Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> =

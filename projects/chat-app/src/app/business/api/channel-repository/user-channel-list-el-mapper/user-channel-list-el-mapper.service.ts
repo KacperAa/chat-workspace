@@ -3,7 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { Channel } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { UserApiService } from '../../../user-repository/user/user-api.service';
+import { UserApiService } from '../../user-repository/user/user-api.service';
 import { UserChannelConversationListEl } from './models/user-channel-conversation-list-el.model';
 
 import { Observable, map, switchMap } from 'rxjs';

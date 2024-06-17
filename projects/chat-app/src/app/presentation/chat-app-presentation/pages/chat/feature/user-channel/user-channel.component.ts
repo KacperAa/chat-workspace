@@ -7,8 +7,8 @@ import { AvatarComponent } from '@ui/AvatarComponent';
 import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
 import { AvatarWithStatusComponent } from '@ui/AvatarWithStatusComponent';
 
-import { UserChannelConversationListEl } from '../../../../../../business/api/channel-repository/user-conversation/user-channel-list-el-mapper/models/user-channel-conversation-list-el.model';
-import { UserChannelConversationMapperService } from '../../../../../../business/api/channel-repository/user-conversation/user-channel-list-el-mapper/user-channel-list-el-mapper.service';
+import { UserChannelConversationListEl } from '../../../../../../business/api/channel-repository/user-channel-list-el-mapper/models/user-channel-conversation-list-el.model';
+import { UserChannelConversationMapperService } from '../../../../../../business/api/channel-repository/user-channel-list-el-mapper/user-channel-list-el-mapper.service';
 import { StatusPipe } from '../../pipes/status.pipe';
 
 import { Observable } from 'rxjs';

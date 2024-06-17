@@ -2,7 +2,7 @@ import { Component, Signal, computed, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 import { SkeletonCircleAndBarsComponent } from '../../../../../../../../../../ui/src/lib/molecules/skeleton-circle-and-bars/skeleton-circle-and-bars.component';
-import { ChannelsListMapperService } from '../../../../../../../business/api/channel-repository/channel-conversation/channels-list-mapper/channels-list-mapper.service';
+import { ChannelsListMapperService } from '../../../../../../../business/api/channel-repository/channels-list-mapper/channels-list-mapper.service';
 import { ChannelComponent } from '../../user-channel/user-channel.component';
 
 @Component({
