@@ -12,4 +12,12 @@
   &--darkgray {
     background-color: rgb(40, 39, 39);
   }
+
+  &.left-position {
+    margin-right: auto;
+  }
+
+  &.right-position {
+    margin-left: auto;
+  }
 }

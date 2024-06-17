@@ -1,11 +1,10 @@
 import { Injectable, Signal, inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormatMessageResponse } from 'stream-chat';
-import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { ConversationData } from '../../../../../../business/api/channel-repository/conversations/models/conversation-data.model';
 import { UserConversationMapperService } from '../../../../../../business/api/channel-repository/conversations/user-conversation-mapper/user-conversation-mapper.service';
-import { MessageApiService } from '../../../../../../business/api/message-repository/message-api.service';
+import { MessageMapperService } from '../../../../../../business/api/message-repository/message-mapper/message-mapper.service';
+import { MessageResponseMapper } from '../../../../../../business/api/message-repository/message-mapper/models/message-response-mapper.model';
 import { SendMessageApiService } from '../../../../../../business/api/message-repository/send-message/send-message-api.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -14,19 +13,17 @@ import { Observable, switchMap } from 'rxjs';
 @Injectable()
 export class ConversationWindowFacade {
   private _activatedRoute = inject(ActivatedRoute);
-  private _messagesApi = inject(MessageApiService);
+  private _messageMapper = inject(MessageMapperService);
   private _sendMessageApiService = inject(SendMessageApiService);
   private _conversationMapper = inject(UserConversationMapperService);
 
   private _channelData$: Observable<ConversationData> = this._initializeChannelData();
-  private _messagesCollection$: Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> =
-    this._initializeMessages();
+  private _messagesCollection$: Observable<MessageResponseMapper[]> = this._initializeMessages();
 
   public channelData: Signal<ConversationData | null> = toSignal(this._channelData$, { initialValue: null });
-  public messagesCollection: Signal<FormatMessageResponse<DefaultStreamChatGenerics>[] | null> = toSignal(
-    this._messagesCollection$,
-    { initialValue: null }
-  );
+  public messagesCollection: Signal<MessageResponseMapper[] | null> = toSignal(this._messagesCollection$, {
+    initialValue: null,
+  });
 
   public sendMessage(message: string): void {
     this._sendMessageApiService.sendMessage(message);
@@ -36,7 +33,7 @@ export class ConversationWindowFacade {
     return this._activatedRoute.params.pipe(switchMap((params: Params) => this._fetchChannelData(params['id'])));
   }
 
-  private _initializeMessages(): Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> {
+  private _initializeMessages(): Observable<MessageResponseMapper[]> {
     return this._activatedRoute.params.pipe(switchMap((params: Params) => this._fetchMessages(params['id'])));
   }
 
@@ -44,7 +41,7 @@ export class ConversationWindowFacade {
     return this._conversationMapper.mapChannelToConversation(channelId);
   }
 
-  private _fetchMessages(channelId: string): Observable<FormatMessageResponse<DefaultStreamChatGenerics>[]> {
-    return this._messagesApi.getMessagesFromChannel(channelId);
+  private _fetchMessages(channelId: string): Observable<MessageResponseMapper[]> {
+    return this._messageMapper.mapMessages(channelId);
   }
 }
