@@ -16,4 +16,10 @@ export class ChannelsApiService {
       filter((channel): channel is Channel<DefaultStreamChatGenerics> => !!channel)
     );
   }
+
+  public getChannelsApi(): Observable<Channel<DefaultStreamChatGenerics>[]> {
+    return this._channelService.channels$.pipe(
+      filter((channels): channels is Channel<DefaultStreamChatGenerics>[] => channels !== undefined)
+    );
+  }
 }

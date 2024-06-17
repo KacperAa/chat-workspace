@@ -1,20 +1,28 @@
 import { Injectable, Signal, inject } from '@angular/core';
 import { Channel } from 'stream-chat';
-import { ChannelService, DefaultStreamChatGenerics } from 'stream-chat-angular';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
+
+import { ChannelsApiService } from '../../channels-api.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
-import { filter } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChannelsListMapperService {
-  private _channelService = inject(ChannelService);
+  private _channelApi = inject(ChannelsApiService);
 
   public messagingChannelsList: Signal<Channel<DefaultStreamChatGenerics>[] | null> = toSignal(
-    this._channelService.channels$.pipe(
-      filter((channels): channels is Channel<DefaultStreamChatGenerics>[] => !!channels)
-    ),
+    this._filterMessagingChannelsType(),
     { initialValue: null }
   );
+
+  private _filterMessagingChannelsType(): Observable<Channel<DefaultStreamChatGenerics>[]> {
+    return this._channelApi.getChannelsApi().pipe(
+      map(channels => {
+        return channels.filter(channel => (channel.type = 'messaging'));
+      })
+    );
+  }
 }
