@@ -1,0 +1,34 @@
+.tidots-container {
+  display: flex;
+
+  .tidot {
+    display: inline-block;
+    height: 4px;
+    margin-right: 2px;
+    background-color: white;
+    border-radius: 2px;
+    animation: mercuryTypingAnimation 1.5s infinite ease-in-out;
+  }
+
+  .tidot:nth-child(1) {
+    animation-delay: 200ms;
+  }
+  .tidot:nth-child(2) {
+    animation-delay: 300ms;
+  }
+  .tidot:nth-child(3) {
+    animation-delay: 400ms;
+  }
+
+  @keyframes mercuryTypingAnimation {
+    0% {
+      transform: translateY(0px);
+    }
+    28% {
+      transform: translateY(-5px);
+    }
+    44% {
+      transform: translateY(0px);
+    }
+  }
+}

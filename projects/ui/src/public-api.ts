@@ -9,7 +9,6 @@ export {
   SkeletonBarComponent,
   InputComponent,
   TextCloudComponent,
-  TypingIndicatorComponent,
 } from './lib/atoms';
 export {
   AvatarWithContentComponent,
@@ -17,5 +16,6 @@ export {
   FormFieldComponent,
   AvatarWithIconButtonComponent,
   AvatarWithStatusComponent,
+  TypingIndicatorComponent,
 } from './lib/molecules';
 export { HorizontalScrollComponent, VerticalScrollComponent } from './lib/organisms';

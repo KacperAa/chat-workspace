@@ -4,4 +4,3 @@ export * from './skeleton-loader/skeleton-circle/skeleton-circle-loader.componen
 export * from './skeleton-loader/skeleton-bar/skeleton-bar.component';
 export * from './input/input.component';
 export * from './text-cloud/text-cloud.component';
-export * from './typing-indicator/typing-indicator.component';

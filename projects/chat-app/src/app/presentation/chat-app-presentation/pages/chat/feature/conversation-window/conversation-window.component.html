@@ -7,6 +7,7 @@
         <ui-text-cloud [color]="message.isCurrentUser | cloudColor" [position]="message.isCurrentUser | cloudPosition"
           >{{ message.text }}
         </ui-text-cloud>
+        <ui-typing-indicator />
       }
     } @else {
       <div class="skeletons-wrapper">

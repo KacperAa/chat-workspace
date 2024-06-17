@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { SkeletonBarComponent } from '../../../../../../../../../ui/src/lib/atoms';
+import { TypingIndicatorComponent } from '../../../../../../../../../ui/src/lib/molecules';
 import { VerticalScrollComponent } from '../../../../../../../../../ui/src/lib/organisms';
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';
 import { ConversationWindowFacade } from './conversation-window.facade';
@@ -21,6 +22,7 @@ import { CloudPositionPipe } from './pipes/cloud-position.pipe';
     TextCloudComponent,
     SkeletonBarComponent,
     VerticalScrollComponent,
+    TypingIndicatorComponent,
     ConversationCoreComponent,
   ],
 })
