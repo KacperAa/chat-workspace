@@ -5,6 +5,7 @@
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       @for (message of messagesCollection; track message) {
         <ui-text-cloud>{{ message.text }}</ui-text-cloud>
+        {{ message.isCurrentUser }}
       }
     } @else {
       <div class="skeletons-wrapper">
