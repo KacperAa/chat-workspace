@@ -4,14 +4,12 @@ import { Database, child, get, ref } from '@angular/fire/database';
 import { UserResponse } from 'stream-chat';
 import { ChatClientService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { MappedUserFields } from '../../auth-repository/models/mapped-user-fields.model';
+import { MappedUserFields } from '../auth-repository/models/mapped-user-fields.model';
 
 import { Observable, from, map, of, switchMap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class FriendsService {
+@Injectable()
+export class FirendApiService {
   private _auth = inject(Auth);
   private _database = inject(Database);
   private _chat = inject(ChatClientService);
@@ -28,7 +26,7 @@ export class FriendsService {
     );
   }
 
-  private _getFriendsDatabase(): Observable<MappedUserFields[]> {
+  public _getFriendsDatabase(): Observable<MappedUserFields[]> {
     const uid = this._auth.currentUser?.uid!;
 
     const dbRef = ref(this._database);
@@ -51,22 +49,6 @@ export class FriendsService {
   private _queryFriends(friends: MappedUserFields[]): Observable<UserResponse<DefaultStreamChatGenerics>[]> {
     const uids = friends.map(friend => friend.uid);
 
-    return from(this._chat.chatClient.queryUsers({ id: { $in: uids } })).pipe(
-      map(response => response.users),
-      map(users => this._mapFriends(users, friends))
-    );
-  }
-
-  private _mapFriends(
-    users: UserResponse<DefaultStreamChatGenerics>[],
-    friends: MappedUserFields[]
-  ): UserResponse<DefaultStreamChatGenerics>[] {
-    return users.map(user => {
-      const friend = friends.find(friend => friend.uid === user.id);
-      return {
-        ...user,
-        photoURL: friend?.photoURL || user['photoURL'],
-      };
-    });
+    return from(this._chat.chatClient.queryUsers({ id: { $in: uids } })).pipe(map(response => response.users));
   }
 }

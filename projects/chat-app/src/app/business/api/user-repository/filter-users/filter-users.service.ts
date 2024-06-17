@@ -6,9 +6,7 @@ import { UserMergedResponse } from './models/user-merged-response.model';
 
 import { Observable, forkJoin, from, map, switchMap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class FilterUsersService {
   private _userApi = inject(UserApiService);
   private _chatService = inject(ChatClientService);

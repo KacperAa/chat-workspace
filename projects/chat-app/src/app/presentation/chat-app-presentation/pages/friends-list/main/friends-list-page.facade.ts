@@ -4,7 +4,7 @@ import { UserResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { CreateChannelService } from '../../../../../business/api/channel-repository/create-channel/create-channel.service';
-import { FriendsService } from '../../../../../business/api/friend-repository/friends/friends.service';
+import { FriendsListMapperService } from '../../../../../business/api/friend-repository/friends-list-mapper/friends-list-mapper.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -13,12 +13,12 @@ import { map } from 'rxjs';
 @Injectable()
 export class FriendsListPageFacade {
   private _router = inject(Router);
-  private _friends = inject(FriendsService);
+  private _friendsListMapper = inject(FriendsListMapperService);
   private _createChannel = inject(CreateChannelService);
   private _chatInitializer = inject(ChatInitializerService);
 
   public friendsList: Signal<[] | UserResponse<DefaultStreamChatGenerics>[]> = toSignal(
-    this._friends.getFriendsFromChat(),
+    this._friendsListMapper.mapToFriendsList(),
     { initialValue: [] }
   );
 

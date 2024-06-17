@@ -4,9 +4,7 @@ import { Database, ref, update } from '@angular/fire/database';
 
 import { Observable, from, switchMap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UpdateUserProfileApiService {
   private _firebaseAuth = inject(Auth);
   private _fireDatabase = inject(Database);

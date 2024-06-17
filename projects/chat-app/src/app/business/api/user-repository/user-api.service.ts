@@ -7,9 +7,7 @@ import { MappedUserFields } from '../auth-repository/models/mapped-user-fields.m
 
 import { Observable, from } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UserApiService {
   private _fireDatabase = inject(Database);
   private _chatService = inject(ChatClientService);

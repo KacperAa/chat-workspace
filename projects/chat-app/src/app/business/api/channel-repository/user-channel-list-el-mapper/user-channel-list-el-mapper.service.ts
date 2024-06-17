@@ -8,9 +8,7 @@ import { UserChannelConversationListEl } from './models/user-channel-conversatio
 
 import { Observable, map, switchMap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class UserChannelConversationMapperService {
   private _auth = inject(Auth);
   private _userApi = inject(UserApiService);

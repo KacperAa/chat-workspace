@@ -6,9 +6,7 @@ import { UserMergedResponse } from '../../user-repository/filter-users/models/us
 
 import { Observable, from } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AddFriendService {
   private _database = inject(Database);
 

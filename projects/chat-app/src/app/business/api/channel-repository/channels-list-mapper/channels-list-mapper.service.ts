@@ -7,9 +7,7 @@ import { ChannelsApiService } from '../channels-api.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, map } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ChannelsListMapperService {
   private _channelApi = inject(ChannelsApiService);
 
