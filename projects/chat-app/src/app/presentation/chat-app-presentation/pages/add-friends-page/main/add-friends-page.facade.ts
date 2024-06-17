@@ -3,8 +3,8 @@ import { Auth } from '@angular/fire/auth';
 import { FormControl } from '@angular/forms';
 
 import { AddFriendService } from '../../../../../business/api/friend-repository/add-friend/add-friend.service';
+import { FilterUsersService } from '../../../../../business/api/user-repository/user/filter-users/filter-users.service';
 import { UserMergedResponse } from '../../../../../business/api/user-repository/user/models/user-merged-response.model';
-import { UserApiService } from '../../../../../business/api/user-repository/user/user-api.service';
 import { ChatInitializerService } from '../../../../../business/chat-initializer/chat-initializer.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -13,8 +13,8 @@ import { Observable, debounceTime, finalize, startWith, switchMap, tap } from 'r
 @Injectable()
 export class AddFriendsPageFacade {
   private _auth = inject(Auth);
-  private _userApi = inject(UserApiService);
   private _addFriend = inject(AddFriendService);
+  private _filterUsers = inject(FilterUsersService);
   private _chatInitializer = inject(ChatInitializerService);
 
   public findFriendsControl = new FormControl('', { nonNullable: true });
@@ -39,7 +39,7 @@ export class AddFriendsPageFacade {
       }),
       startWith(''),
       switchMap(queryString => {
-        return this._userApi.getUsersByFilter(queryString).pipe(finalize(() => this.isListLoading.set(false)));
+        return this._filterUsers.getUsersByFilter(queryString).pipe(finalize(() => this.isListLoading.set(false)));
       })
     );
   }
