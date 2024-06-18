@@ -6,7 +6,7 @@
   <ui-vertical-scroll>
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       @for (message of messagesCollection; track message) {
-        <div [class]="!message.isCurrentUser ? 'messages-with-avatar' : null">
+        <div [class.messages-with-avatar]="!message.isCurrentUser">
           @if (!message.isCurrentUser) {
             <img ui-avatar [src]="message.user" size="small" />
           }
