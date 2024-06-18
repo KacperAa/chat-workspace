@@ -1,6 +1,4 @@
-import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { ChannelService } from 'stream-chat-angular';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { SkeletonBarComponent } from '../../../../../../../../../ui/src/lib/atoms';
@@ -19,8 +17,6 @@ import { CloudPositionPipe } from './pipes/cloud-position.pipe';
   styleUrl: './conversation-window.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    AsyncPipe,
-
     CloudColorPipe,
     CloudPositionPipe,
     TextCloudComponent,
@@ -30,14 +26,10 @@ import { CloudPositionPipe } from './pipes/cloud-position.pipe';
     ConversationCoreComponent,
   ],
 })
-export class ConversationWindowComponent implements OnInit {
-  channel = inject(ChannelService);
-
-  public activeChannel$ = this.channel.activeChannel$;
-
+export class ConversationWindowComponent {
   protected conversationWindowFacade = inject(ConversationWindowFacade);
 
   public ngOnInit(): void {
-    this.conversationWindowFacade.watchChannelTyping();
+    this.conversationWindowFacade.watchChannelTyping().subscribe();
   }
 }

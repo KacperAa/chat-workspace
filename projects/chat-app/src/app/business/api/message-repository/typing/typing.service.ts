@@ -1,4 +1,5 @@
 import { Injectable, inject, signal } from '@angular/core';
+import { Auth } from '@angular/fire/auth';
 import { Channel } from 'stream-chat';
 import { ChannelService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
@@ -9,6 +10,10 @@ import { filter, from, map } from 'rxjs';
 })
 export class TypingService {
   private _channel = inject(ChannelService);
+  private _auth = inject(Auth);
+
+  private _isTyping = signal<boolean>(false);
+  public isTyping = this._isTyping.asReadonly();
 
   public watchChannelTyping() {
     return this._channel.activeChannel$.pipe(
@@ -32,10 +37,15 @@ export class TypingService {
 
   private _initTypingEvents(channel: Channel<DefaultStreamChatGenerics>): void {
     channel.on('typing.start', event => {
-      console.log(`${event.user!.name} started typing`);
+      if (event.user!.id !== this._auth.currentUser?.uid) {
+        this._isTyping.set(true);
+      }
     });
+
     channel.on('typing.stop', event => {
-      console.log(`${event.user!.name} stopped typing`);
+      if (event.user!.id !== this._auth.currentUser?.uid) {
+        this._isTyping.set(false);
+      }
     });
   }
 }

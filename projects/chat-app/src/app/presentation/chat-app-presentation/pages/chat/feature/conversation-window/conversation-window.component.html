@@ -21,8 +21,6 @@
     }
 
     <ui-typing-indicator />
-    @if ((activeChannel$ | async)?.isTyping) {
-      dupa
-    }
+    {{ conversationWindowFacade.isTyping() }}
   </ui-vertical-scroll>
 </kaa-conversation-core>

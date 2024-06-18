@@ -19,6 +19,8 @@ export class ConversationWindowFacade {
   private _sendMessageApiService = inject(SendMessageApiService);
   private _conversationMapper = inject(UserConversationMapperService);
 
+  public isTyping: Signal<boolean> = this._typing.isTyping;
+
   private _channelData$: Observable<ConversationData> = this._initializeChannelData();
   private _messagesCollection$: Observable<MessageResponseMapper[]> = this._initializeMessages();
 
@@ -31,8 +33,8 @@ export class ConversationWindowFacade {
     this._sendMessageApiService.sendMessage(message);
   }
 
-  public watchChannelTyping(): void {
-    this._typing.watchChannelTyping().subscribe();
+  public watchChannelTyping(): Observable<void> {
+    return this._typing.watchChannelTyping();
   }
 
   public channelTyping(): void {
