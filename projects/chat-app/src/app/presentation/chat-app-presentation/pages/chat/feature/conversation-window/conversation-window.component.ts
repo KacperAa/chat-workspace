@@ -28,4 +28,8 @@ import { CloudPositionPipe } from './pipes/cloud-position.pipe';
 })
 export class ConversationWindowComponent {
   protected conversationWindowFacade = inject(ConversationWindowFacade);
+
+  public ngOnInit(): void {
+    this.conversationWindowFacade.watchChannelTyping().subscribe();
+  }
 }
