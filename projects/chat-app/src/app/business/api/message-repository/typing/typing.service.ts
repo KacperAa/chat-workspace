@@ -9,8 +9,8 @@ import { Observable, filter, from, map } from 'rxjs';
   providedIn: 'root',
 })
 export class TypingService {
-  private _channel = inject(ChannelService);
   private _auth = inject(Auth);
+  private _channel = inject(ChannelService);
 
   private _isTyping = signal<boolean>(false);
   public isTyping = this._isTyping.asReadonly();
