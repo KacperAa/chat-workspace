@@ -3,7 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { Channel } from 'stream-chat';
 import { ChannelService, DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { filter, from, map } from 'rxjs';
+import { Observable, filter, from, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +15,13 @@ export class TypingService {
   private _isTyping = signal<boolean>(false);
   public isTyping = this._isTyping.asReadonly();
 
-  public watchChannelTyping() {
+  public watchChannelTyping(): Observable<void> {
     return this._channel.activeChannel$.pipe(
       filter(channel => !!channel),
       map(channel => {
         if (channel) {
           channel.watch();
-          this._initTypingEvents(channel);
+          this._trackTypingState(channel);
         }
       })
     );
@@ -35,7 +35,7 @@ export class TypingService {
     from(this._channel.activeChannel!.stopTyping());
   }
 
-  private _initTypingEvents(channel: Channel<DefaultStreamChatGenerics>): void {
+  private _trackTypingState(channel: Channel<DefaultStreamChatGenerics>): void {
     channel.on('typing.start', event => {
       if (event.user!.id !== this._auth.currentUser?.uid) {
         this._isTyping.set(true);
