@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
+import { AvatarComponent, TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { SkeletonBarComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { TypingIndicatorComponent } from '../../../../../../../../../ui/src/lib/molecules';
 import { VerticalScrollComponent } from '../../../../../../../../../ui/src/lib/organisms';
@@ -18,6 +18,7 @@ import { CloudPositionPipe } from './pipes/cloud-position.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CloudColorPipe,
+    AvatarComponent,
     CloudPositionPipe,
     TextCloudComponent,
     SkeletonBarComponent,

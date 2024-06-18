@@ -17,3 +17,10 @@
     justify-self: end;
   }
 }
+
+.messages-with-avatar {
+  display: grid;
+  margin-left: 0.5rem;
+  align-items: center;
+  grid-template-columns: auto 1fr;
+}
