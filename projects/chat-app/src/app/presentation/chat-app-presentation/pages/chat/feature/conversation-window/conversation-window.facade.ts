@@ -29,12 +29,12 @@ export class ConversationWindowFacade {
     initialValue: null,
   });
 
-  public sendMessage(message: string): void {
-    this._sendMessageApiService.sendMessage(message);
-  }
-
   public watchChannelTyping(): Observable<void> {
     return this._typing.watchChannelTyping();
+  }
+
+  public sendMessage(message: string): void {
+    this._sendMessageApiService.sendMessage(message);
   }
 
   public channelTyping(): void {
