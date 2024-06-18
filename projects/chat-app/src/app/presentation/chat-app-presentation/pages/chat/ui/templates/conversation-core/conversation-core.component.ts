@@ -36,8 +36,9 @@ export class ConversationCoreComponent {
 
   public conversationPresentationData = input.required<ConversationData | null>();
 
-  public inputValueChanges = output<string | null>();
+  public onBlurInput = output<void>();
   public sendMessage = output<string>();
+  public inputValueChanges = output<string | null>();
 
   public messageFormControl = new FormControl<string | null>('', [
     Validators.required,

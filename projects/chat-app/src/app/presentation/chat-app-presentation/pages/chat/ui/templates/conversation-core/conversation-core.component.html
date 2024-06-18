@@ -41,7 +41,8 @@
     <kaa-message-input
       [messageFormControl]="messageFormControl"
       (inputValueChanges)="inputValueChanges.emit($event)"
-      (inputFocusMode)="isInputFocusMode = $event" />
+      (inputFocusMode)="isInputFocusMode = $event"
+      (onBlurInput)="onBlurInput.emit()" />
 
     @if (messageFormControl.valid) {
       <button mat-icon-button class="send-message-btn" (click)="onSendMessage()">

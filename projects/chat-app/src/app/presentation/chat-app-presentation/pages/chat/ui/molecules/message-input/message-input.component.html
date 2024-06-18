@@ -4,7 +4,8 @@
     placeholder="Aa"
     [formControl]="messageFormControl()"
     (input)="inputValueChanges.emit(messageFormControl().value)"
-    (focus)="onInputFocus()" />
+    (focus)="onInputFocus()"
+    (blur)="onBlurInput.emit()" />
   @if (!isInputFocusMode) {
     <button suffix mat-icon-button>
       <mat-icon suffix color="primary">mood</mat-icon>

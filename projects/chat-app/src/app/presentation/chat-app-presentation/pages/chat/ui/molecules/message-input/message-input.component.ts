@@ -22,8 +22,9 @@ import { inputCollapseAnimation } from './animations/collapse-input.animation';
 export class MessageInputComponent {
   public messageFormControl = input.required<FormControl<string | null>>();
 
-  public inputValueChanges = output<string | null>();
+  public onBlurInput = output<void>();
   public inputFocusMode = output<boolean>();
+  public inputValueChanges = output<string | null>();
 
   public isInputFocusMode: boolean = false;
 

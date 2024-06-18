@@ -1,7 +1,8 @@
 <kaa-conversation-core
   [conversationPresentationData]="conversationWindowFacade.channelData()!"
   (sendMessage)="conversationWindowFacade.sendMessage($event)"
-  (inputValueChanges)="conversationWindowFacade.channelTyping()">
+  (inputValueChanges)="conversationWindowFacade.channelTyping()"
+  (onBlurInput)="conversationWindowFacade.channelStopTyping()">
   <ui-vertical-scroll>
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       @for (message of messagesCollection; track message) {
@@ -20,7 +21,8 @@
       </div>
     }
 
-    <ui-typing-indicator />
-    {{ conversationWindowFacade.isTyping() }}
+    @if (conversationWindowFacade.isTyping()) {
+      <ui-typing-indicator />
+    }
   </ui-vertical-scroll>
 </kaa-conversation-core>
