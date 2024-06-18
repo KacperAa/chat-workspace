@@ -6,12 +6,14 @@ import { UserConversationMapperService } from '../../../../../../business/api/ch
 import { MessageMapperService } from '../../../../../../business/api/message-repository/message-mapper/message-mapper.service';
 import { MessageResponseMapper } from '../../../../../../business/api/message-repository/message-mapper/models/message-response-mapper.model';
 import { SendMessageApiService } from '../../../../../../business/api/message-repository/send-message/send-message-api.service';
+import { TypingService } from '../../../../../../business/api/message-repository/typing/typing.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Observable, switchMap } from 'rxjs';
 
 @Injectable()
 export class ConversationWindowFacade {
+  private _typing = inject(TypingService);
   private _activatedRoute = inject(ActivatedRoute);
   private _messageMapper = inject(MessageMapperService);
   private _sendMessageApiService = inject(SendMessageApiService);
@@ -27,6 +29,18 @@ export class ConversationWindowFacade {
 
   public sendMessage(message: string): void {
     this._sendMessageApiService.sendMessage(message);
+  }
+
+  public watchChannelTyping(): void {
+    this._typing.watchChannelTyping().subscribe();
+  }
+
+  public channelTyping(): void {
+    this._typing.channelTyping();
+  }
+
+  public channelStopTyping(): void {
+    this._typing.channelStopTyping();
   }
 
   private _initializeChannelData(): Observable<ConversationData> {

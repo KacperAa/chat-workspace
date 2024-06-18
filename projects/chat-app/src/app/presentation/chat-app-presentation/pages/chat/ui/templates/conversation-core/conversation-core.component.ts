@@ -36,7 +36,7 @@ export class ConversationCoreComponent {
 
   public conversationPresentationData = input.required<ConversationData | null>();
 
-  public onWrite = output<void>();
+  public inputValueChanges = output<string | null>();
   public sendMessage = output<string>();
 
   public messageFormControl = new FormControl<string | null>('', [

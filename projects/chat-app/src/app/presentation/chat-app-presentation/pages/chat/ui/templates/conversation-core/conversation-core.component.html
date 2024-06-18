@@ -1,6 +1,6 @@
 <section class="user-conversation-presentation">
   <mat-toolbar class="user-conversation-presentation__toolbar-top">
-    <button  mat-icon-button color="accent" (click)="navigateToChat()">
+    <button mat-icon-button color="accent" (click)="navigateToChat()">
       <mat-icon>arrow_back</mat-icon>
     </button>
 
@@ -40,7 +40,7 @@
 
     <kaa-message-input
       [messageFormControl]="messageFormControl"
-      (onWrite)="onWrite.emit()"
+      (inputValueChanges)="inputValueChanges.emit($event)"
       (inputFocusMode)="isInputFocusMode = $event" />
 
     @if (messageFormControl.valid) {
