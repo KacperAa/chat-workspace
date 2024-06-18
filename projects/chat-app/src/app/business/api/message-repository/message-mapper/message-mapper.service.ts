@@ -11,7 +11,7 @@ export class MessageMapperService {
   private _auth = inject(Auth);
   private _messageApi = inject(MessageApiService);
 
-  public mapMessages(channelId: string): Observable<MessageResponseMapper[]> {
+  public mapMessages(channelId: string): Observable<any[]> {
     const currentUser = this._auth.currentUser;
 
     if (!currentUser) {
@@ -22,7 +22,10 @@ export class MessageMapperService {
       map(messages =>
         messages.map(message => ({
           ...message,
-          isCurrentUser: message!.user!.id === currentUser.uid,
+          user: {
+            ...message.user,
+            isCurrentUser: message!.user!.id === currentUser.uid,
+          },
         }))
       )
     );

@@ -6,12 +6,14 @@
   <ui-vertical-scroll>
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       @for (message of messagesCollection; track message) {
-        <div [class.messages-with-avatar]="!message.isCurrentUser">
-          @if (!message.isCurrentUser) {
+        <div [class.messages-with-avatar]="!message.user!['isCurrentUser']">
+          @if (!message.user!['isCurrentUser']) {
             <img ui-avatar [src]="message.user" size="small" />
           }
 
-          <ui-text-cloud [color]="message.isCurrentUser | cloudColor" [position]="message.isCurrentUser | cloudPosition"
+          <ui-text-cloud
+            [color]="!!message.user!['isCurrentUser'] | cloudColor"
+            [position]="!!message.user!['isCurrentUser'] | cloudPosition"
             >{{ message.text }}
           </ui-text-cloud>
         </div>
