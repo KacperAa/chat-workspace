@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, viewChild } from '@angular/core';
 
 import { AvatarComponent, TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { SkeletonBarComponent } from '../../../../../../../../../ui/src/lib/atoms';
@@ -6,7 +7,6 @@ import {
   AvatarWithTextCloudComponent,
   TypingIndicatorComponent,
 } from '../../../../../../../../../ui/src/lib/molecules';
-import { VerticalScrollComponent } from '../../../../../../../../../ui/src/lib/organisms';
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';
 import { ConversationWindowFacade } from './conversation-window.facade';
 import { CloudColorPipe } from './pipes/cloud-color.pipe';
@@ -21,20 +21,21 @@ import { CloudPositionPipe } from './pipes/cloud-position.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CloudColorPipe,
+    ScrollingModule,
     AvatarComponent,
     CloudPositionPipe,
     TextCloudComponent,
     SkeletonBarComponent,
-    VerticalScrollComponent,
     TypingIndicatorComponent,
     ConversationCoreComponent,
     AvatarWithTextCloudComponent,
   ],
 })
-export class ConversationWindowComponent {
+export class ConversationWindowComponent implements AfterViewInit {
   protected conversationWindowFacade = inject(ConversationWindowFacade);
+  public virtualScrollRef = viewChild.required(CdkVirtualScrollViewport);
 
-  public ngOnInit(): void {
-    this.conversationWindowFacade.watchChannelTyping().subscribe();
+  public ngAfterViewInit(): void {
+    this.conversationWindowFacade.scrollMessagesContainerToBottom(this.virtualScrollRef()).subscribe();
   }
 }
