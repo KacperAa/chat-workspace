@@ -17,11 +17,12 @@ export class UserApiService {
   }
 
   public getFireUserFromDatabase(uid: string): Observable<MappedUserFields> {
-    const dbRef = ref(this._fireDatabase);
-    return from(
-      get(child(dbRef, `users/${uid}`)).then(snapshot => {
-        return snapshot.val();
-      })
-    );
+    const userRef = ref(this._fireDatabase, `users/${uid}`);
+    return from(get(userRef).then(snapshot => snapshot.val()));
+  }
+
+  public getFireUserPhotoFromDatabase(uid: string): Observable<string> {
+    const photoRef = ref(this._fireDatabase, `users/${uid}/photoURL`);
+    return from(get(photoRef).then(snapshot => snapshot.val()));
   }
 }
