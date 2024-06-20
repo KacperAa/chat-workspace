@@ -1,5 +1,10 @@
-<div
-  class="text-cloud text-cloud--{{ color() }}"
-  [ngClass]="position() === 'left' ? 'left-position' : 'right-position'">
-  <ng-content />
+<div class="text-cloud-container">
+  <div
+    class="text-cloud text-cloud--{{ color() }}"
+    [ngClass]="position() === 'left' ? 'left-position' : 'right-position'">
+    <ng-content />
+  </div>
+  @if (textCloudSendStatus()) {
+    <div class="message-status">&#x2713;</div>
+  }
 </div>

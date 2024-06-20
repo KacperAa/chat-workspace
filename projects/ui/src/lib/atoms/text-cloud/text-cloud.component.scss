@@ -1,24 +1,42 @@
-.text-cloud {
-  width: fit-content;
-  max-width: 25ch;
-  word-break: break-all;
-  padding: 0.7rem;
-  margin: 0.5rem;
-  border-radius: 10px;
+.text-cloud-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem;
 
-  &--green {
-    background-color: green;
+  .text-cloud {
+    width: fit-content;
+    max-width: 25ch;
+    word-break: break-all;
+    padding: 0.7rem;
+    border-radius: 10px;
+
+    &--green {
+      background-color: green;
+    }
+
+    &--darkgray {
+      background-color: rgb(40, 39, 39);
+    }
+
+    &.left-position {
+      margin-right: auto;
+    }
+
+    &.right-position {
+      margin-left: auto;
+    }
   }
 
-  &--darkgray {
-    background-color: rgb(40, 39, 39);
-  }
-
-  &.left-position {
-    margin-right: auto;
-  }
-
-  &.right-position {
-    margin-left: auto;
+  .message-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+    padding: 2px;
+    border-radius: 50%;
+    font-size: 0.5rem;
+    border: 1px solid gray;
   }
 }
