@@ -1,3 +1,4 @@
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Injectable, Signal, inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -9,7 +10,7 @@ import { SendMessageApiService } from '../../../../../../business/api/message-re
 import { TypingService } from '../../../../../../business/api/message-repository/typing/typing.service';
 
 import { toSignal } from '@angular/core/rxjs-interop';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 
 @Injectable()
 export class ConversationWindowFacade {
@@ -43,6 +44,16 @@ export class ConversationWindowFacade {
 
   public channelStopTyping(): void {
     this._typing.channelStopTyping();
+  }
+
+  public scrollMessagesContainerToBottom(virtualScrollRef: CdkVirtualScrollViewport) {
+    return this._messagesCollection$.pipe(
+      tap(messages => {
+        if (messages) {
+          virtualScrollRef.scrollTo({ bottom: 0 });
+        }
+      })
+    );
   }
 
   private _initializeChannelData(): Observable<ConversationData> {

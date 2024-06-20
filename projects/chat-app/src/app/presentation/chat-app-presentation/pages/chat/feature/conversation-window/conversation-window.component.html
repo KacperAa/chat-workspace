@@ -3,13 +3,25 @@
   (sendMessage)="conversationWindowFacade.sendMessage($event)"
   (inputValueChanges)="conversationWindowFacade.channelTyping()"
   (onBlurInput)="conversationWindowFacade.channelStopTyping()">
-  <ui-vertical-scroll>
+  <cdk-virtual-scroll-viewport appendOnly itemSize="30" class="example-viewport">
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
-      @for (message of messagesCollection; track message) {
-        <ui-text-cloud [color]="message.isCurrentUser | cloudColor" [position]="message.isCurrentUser | cloudPosition"
-          >{{ message.text }}
-        </ui-text-cloud>
-      }
+      <!-- If there is currentUser, print only the message - otherwise, the message with the avata of the user with whom the conversation is being held -->
+      <div *cdkVirtualFor="let message of messagesCollection" class="conversation-elements-container">
+        @if (message.user.isCurrentUser) {
+          <ui-text-cloud
+            [color]="message.user.isCurrentUser | cloudColor"
+            [position]="message.user.isCurrentUser | cloudPosition"
+            >{{ message.text }}
+          </ui-text-cloud>
+        } @else {
+          <ui-avatar-with-text-cloud
+            [color]="message.user.isCurrentUser | cloudColor"
+            [position]="message.user.isCurrentUser | cloudPosition">
+            <img ui-avatar [src]="message.user.photoURL" size="small" />
+            <span>{{ message.text }}</span>
+          </ui-avatar-with-text-cloud>
+        }
+      </div>
     } @else {
       <div class="skeletons-wrapper">
         @for (_ of [].constructor(8); track _) {
@@ -24,5 +36,5 @@
     @if (conversationWindowFacade.isTyping()) {
       <ui-typing-indicator />
     }
-  </ui-vertical-scroll>
+  </cdk-virtual-scroll-viewport>
 </kaa-conversation-core>

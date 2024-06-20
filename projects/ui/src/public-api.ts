@@ -17,5 +17,6 @@ export {
   AvatarWithIconButtonComponent,
   AvatarWithStatusComponent,
   TypingIndicatorComponent,
+  AvatarWithTextCloudComponent,
 } from './lib/molecules';
-export { HorizontalScrollComponent, VerticalScrollComponent } from './lib/organisms';
+export { HorizontalScrollComponent } from './lib/organisms';
