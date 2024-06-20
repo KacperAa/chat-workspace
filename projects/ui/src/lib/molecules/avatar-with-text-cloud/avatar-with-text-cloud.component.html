@@ -1,0 +1,7 @@
+<div class="avatar-with-text-cloud">
+  <ng-content select="img[ui-avatar]" />
+
+  <ui-text-cloud [color]="color()" [position]="position()">
+    <ng-content select="span" />
+  </ui-text-cloud>
+</div>

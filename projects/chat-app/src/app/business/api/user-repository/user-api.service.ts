@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { child, get } from '@angular/fire/database';
+import { get } from '@angular/fire/database';
 import { Database, ref } from '@angular/fire/database';
 import { ChatClientService } from 'stream-chat-angular';
 
