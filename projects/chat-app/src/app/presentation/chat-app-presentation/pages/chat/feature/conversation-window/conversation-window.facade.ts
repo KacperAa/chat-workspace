@@ -23,7 +23,7 @@ export class ConversationWindowFacade {
   public isTyping: Signal<boolean> = this._typing.isTyping;
 
   private _channelData$: Observable<ConversationData> = this._initializeChannelData();
-  public _messagesCollection$: Observable<MessageResponseMapper[]> = this._initializeMessages();
+  private _messagesCollection$: Observable<MessageResponseMapper[]> = this._initializeMessages();
 
   public channelData: Signal<ConversationData | null> = toSignal(this._channelData$, { initialValue: null });
   public messagesCollection: Signal<MessageResponseMapper[] | null> = toSignal(this._messagesCollection$, {
