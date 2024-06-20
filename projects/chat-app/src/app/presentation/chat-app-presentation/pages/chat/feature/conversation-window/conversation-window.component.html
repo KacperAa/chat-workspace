@@ -6,19 +6,20 @@
   <ui-vertical-scroll>
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       @for (message of messagesCollection; track message) {
-        @if (!message.user.isCurrentUser) {
+        <!-- If there is currentUser, print only the message - otherwise, the message with the avata of the user with whom the conversation is being held -->
+        @if (message.user.isCurrentUser) {
+          <ui-text-cloud
+            [color]="message.user.isCurrentUser | cloudColor"
+            [position]="message.user.isCurrentUser | cloudPosition"
+            >{{ message.text }}
+          </ui-text-cloud>
+        } @else {
           <ui-avatar-with-text-cloud
             [color]="message.user.isCurrentUser | cloudColor"
             [position]="message.user.isCurrentUser | cloudPosition">
             <img ui-avatar [src]="message.user.photoURL" size="small" />
             <span>{{ message.text }}</span>
           </ui-avatar-with-text-cloud>
-        } @else {
-          <ui-text-cloud
-            [color]="message.user.isCurrentUser | cloudColor"
-            [position]="message.user.isCurrentUser | cloudPosition"
-            >{{ message.text }}
-          </ui-text-cloud>
         }
       }
     } @else {
