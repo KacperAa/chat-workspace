@@ -36,13 +36,13 @@ export class AvatarWithTextCloudComponent implements AfterContentChecked {
     this._throwMissingImageError();
   }
 
-  private _throwMissingSpanError() {
+  private _throwMissingSpanError(): void {
     if (this._spanElementContainer().nativeElement.childNodes.length === 0) {
       throw getMissingSpanError();
     }
   }
 
-  private _throwMissingImageError() {
+  private _throwMissingImageError(): void {
     if (!this._avatarComponent()) {
       throw getMissingImageError();
     }

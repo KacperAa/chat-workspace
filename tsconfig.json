@@ -26,9 +26,6 @@
       "@validators/*": [
         "./projects/validators/src/public-api.ts"
       ],
-      "error-handlers": [
-        "./dist/error-handlers"
-      ],
     },
     "lib": ["ES2022", "dom"]
   },
