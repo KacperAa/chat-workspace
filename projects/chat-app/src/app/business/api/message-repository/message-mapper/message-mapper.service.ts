@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
+import { FormatMessageResponse } from 'stream-chat';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { UserApiService } from '../../user-repository/user-api.service';
 import { MessageApiService } from '../message-api.service';
@@ -28,6 +30,7 @@ export class MessageMapperService {
           map(photoURLs => {
             return messages.map((message, index) => ({
               ...message,
+              isLastCurrentUserMessage: this._checkIsLastCurrentUserMessage(messages, message),
               user: {
                 ...message.user,
                 id: message.user!.id!,
@@ -39,5 +42,15 @@ export class MessageMapperService {
         );
       })
     );
+  }
+
+  private _checkIsLastCurrentUserMessage(
+    messages: FormatMessageResponse<DefaultStreamChatGenerics>[],
+    message: FormatMessageResponse<DefaultStreamChatGenerics>
+  ): boolean {
+    const lastMessageIndex = messages.length - 1;
+    const lastMessage = messages[lastMessageIndex];
+
+    return message === lastMessage ? true : false;
   }
 }
