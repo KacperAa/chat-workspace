@@ -37,6 +37,12 @@
     padding: 2px;
     border-radius: 50%;
     font-size: 0.5rem;
-    border: 1px solid gray;
+
+    &--sent {
+      border: 1px solid gray;
+    }
+    &--delivered {
+      background-color: gray;
+    }
   }
 }

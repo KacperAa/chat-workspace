@@ -3,8 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { TextCloudColor } from './models/text-cloud-color.model';
 import { TextCloudPosition } from './models/text-cloud-position.model';
-
-type TextCloudSendStatus = 'sent' | 'delivered';
+import { TextCloudSendStatus } from './models/text-cloud-send.status.model';
 
 @Component({
   selector: 'ui-text-cloud',

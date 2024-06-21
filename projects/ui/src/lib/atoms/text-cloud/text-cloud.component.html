@@ -5,6 +5,6 @@
     <ng-content />
   </div>
   @if (textCloudSendStatus()) {
-    <div class="message-status">&#x2713;</div>
+    <div class="message-status message-status--{{ textCloudSendStatus() }}">&#x2713;</div>
   }
 </div>
