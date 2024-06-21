@@ -15,7 +15,6 @@ export class UserConversationMapperService {
   public mapChannelToConversation(id: string): Observable<ConversationData> {
     return this._channelsApi.getChannelApi(id).pipe(
       switchMap(channel => {
-        console.log(channel);
         return this._userChannelConversationMapper.mapUserChannelPresentation(channel).pipe(
           map(mappedChannel => {
             return {

@@ -17,5 +17,5 @@ export class TextCloudComponent {
   public color = input<TextCloudColor>('darkgray');
   public position = input<TextCloudPosition>('left');
 
-  public textCloudSendStatus = input<TextCloudSendStatus | undefined>('sent');
+  public textCloudSendStatus = input<TextCloudSendStatus | undefined>();
 }

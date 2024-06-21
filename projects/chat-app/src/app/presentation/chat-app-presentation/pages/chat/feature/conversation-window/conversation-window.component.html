@@ -12,7 +12,8 @@
           <ui-text-cloud
             [color]="message.user.isCurrentUser | cloudColor"
             [position]="message.user.isCurrentUser | cloudPosition"
-            >{{ message.text }} {{ message['isLastCurrentUserMessage'] }}
+            [textCloudSendStatus]="message['isLastCurrentUserMessage'] ? 'sent' : undefined"
+            >{{ message.text }}
           </ui-text-cloud>
         } @else {
           <ui-avatar-with-text-cloud
