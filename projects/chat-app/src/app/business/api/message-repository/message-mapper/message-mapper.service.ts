@@ -48,9 +48,17 @@ export class MessageMapperService {
     messages: FormatMessageResponse<DefaultStreamChatGenerics>[],
     message: FormatMessageResponse<DefaultStreamChatGenerics>
   ): boolean {
-    const lastMessageIndex = messages.length - 1;
-    const lastMessage = messages[lastMessageIndex];
+    const currentUser = this._auth.currentUser!;
 
-    return message === lastMessage ? true : false;
+    const lastMessageIndex = messages.length - 1;
+    const isLastMessage = messages[lastMessageIndex] === message;
+
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].user!.id === currentUser.uid) {
+        return messages[i] === message && isLastMessage;
+      }
+    }
+
+    return false;
   }
 }

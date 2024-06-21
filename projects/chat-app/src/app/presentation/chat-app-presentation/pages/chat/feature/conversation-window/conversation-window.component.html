@@ -12,7 +12,7 @@
           <ui-text-cloud
             [color]="message.user.isCurrentUser | cloudColor"
             [position]="message.user.isCurrentUser | cloudPosition"
-            >{{ message.text }}
+            >{{ message.text }} {{ message['isLastCurrentUserMessage'] }}
           </ui-text-cloud>
         } @else {
           <ui-avatar-with-text-cloud
