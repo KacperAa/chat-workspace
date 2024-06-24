@@ -45,17 +45,17 @@ export class MessageMapperService {
   }
 
   private _checkIsLastCurrentUserMessage(
-    messages: FormatMessageResponse<DefaultStreamChatGenerics>[],
-    message: FormatMessageResponse<DefaultStreamChatGenerics>
+    allMessagesList: FormatMessageResponse<DefaultStreamChatGenerics>[],
+    currentMessage: FormatMessageResponse<DefaultStreamChatGenerics>
   ): boolean {
     const currentUser = this._auth.currentUser!;
 
-    const lastMessageIndex = messages.length - 1;
-    const isLastMessage = messages[lastMessageIndex] === message;
+    const lastMessageIndex = allMessagesList.length - 1;
+    const isLastMessage = allMessagesList[lastMessageIndex] === currentMessage;
 
-    for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].user!.id === currentUser.uid) {
-        return messages[i] === message && isLastMessage;
+    for (const i = allMessagesList.length - 1; i >= 0; i--) {
+      if (allMessagesList[i].user!.id === currentUser.uid) {
+        return allMessagesList[i] === currentMessage && isLastMessage;
       }
     }
 
