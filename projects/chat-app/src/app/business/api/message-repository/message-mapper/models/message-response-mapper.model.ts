@@ -8,5 +8,6 @@ interface ExtendedUserResponse extends UserResponse<DefaultStreamChatGenerics> {
 }
 
 export interface MessageResponseMapper extends FormatMessageResponse<DefaultStreamChatGenerics> {
+  isLastCurrentUserMessage: boolean;
   user: ExtendedUserResponse;
 }
