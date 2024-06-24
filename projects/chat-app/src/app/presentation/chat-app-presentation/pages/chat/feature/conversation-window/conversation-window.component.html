@@ -10,9 +10,9 @@
       <div *cdkVirtualFor="let message of messagesCollection">
         @if (message.user.isCurrentUser) {
           <ui-text-cloud
+            [textCloudSendStatus]="message['isLastCurrentUserMessage']"
             [color]="message.user.isCurrentUser | cloudColor"
             [position]="message.user.isCurrentUser | cloudPosition"
-            [textCloudSendStatus]="message['isLastCurrentUserMessage'] ? 'sent' : undefined"
             >{{ message.text }}
           </ui-text-cloud>
         } @else {
