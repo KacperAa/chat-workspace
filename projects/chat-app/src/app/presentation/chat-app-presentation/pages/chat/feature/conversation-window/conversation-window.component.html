@@ -1,14 +1,16 @@
 <kaa-conversation-core
   [conversationPresentationData]="conversationWindowFacade.channelData()!"
   (sendMessage)="conversationWindowFacade.sendMessage($event)"
-  (inputValueChanges)="conversationWindowFacade.channelTyping()"
-  (onBlurInput)="conversationWindowFacade.channelStopTyping()">
-  <cdk-virtual-scroll-viewport appendOnly itemSize="30" class="example-viewport">
+  (onBlurInput)="conversationWindowFacade.channelStopTyping()"
+  (inputValueChanges)="conversationWindowFacade.channelTyping()">
+  <cdk-virtual-scroll-viewport appendOnly itemSize="30" class="virtual-scroller">
     @if (conversationWindowFacade.messagesCollection(); as messagesCollection) {
       <!-- If there is currentUser, print only the message - otherwise, the message with the avata of the user with whom the conversation is being held -->
-      <div *cdkVirtualFor="let message of messagesCollection" class="conversation-elements-container">
+
+      <div *cdkVirtualFor="let message of messagesCollection">
         @if (message.user.isCurrentUser) {
           <ui-text-cloud
+            [textCloudSendStatus]="message.isLastCurrentUserMessage"
             [color]="message.user.isCurrentUser | cloudColor"
             [position]="message.user.isCurrentUser | cloudPosition"
             >{{ message.text }}

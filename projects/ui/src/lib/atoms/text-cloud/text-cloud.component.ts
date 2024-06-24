@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { TextCloudColor } from './models/text-cloud-color.model';
 import { TextCloudPosition } from './models/text-cloud-position.model';
+import { TextCloudSendStatus } from './models/text-cloud-send.status.model';
 
 @Component({
   selector: 'ui-text-cloud',
@@ -15,4 +16,6 @@ import { TextCloudPosition } from './models/text-cloud-position.model';
 export class TextCloudComponent {
   public color = input<TextCloudColor>('darkgray');
   public position = input<TextCloudPosition>('left');
+
+  public textCloudSendStatus = input<TextCloudSendStatus | undefined>();
 }

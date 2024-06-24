@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
+import { FormatMessageResponse } from 'stream-chat';
+import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
 import { UserApiService } from '../../user-repository/user-api.service';
 import { MessageApiService } from '../message-api.service';
@@ -26,18 +28,48 @@ export class MessageMapperService {
 
         return forkJoin(photoRequests).pipe(
           map(photoURLs => {
-            return messages.map((message, index) => ({
-              ...message,
-              user: {
-                ...message.user,
-                id: message.user!.id!,
-                isCurrentUser: message!.user!.id === currentUser.uid,
-                photoURL: photoURLs[index],
-              },
-            }));
+            const lastCurrentUserMessageIndex = this._findLastCurrentUserMessageIndex(messages, currentUser.uid);
+
+            return messages.map((message, index) => {
+              const isLastCurrentUserMessage = index === lastCurrentUserMessageIndex;
+
+              console.log({
+                ...message,
+                ...(isLastCurrentUserMessage && { isLastCurrentUserMessage: true }),
+                user: {
+                  ...message.user,
+                  id: message.user!.id!,
+                  isCurrentUser: message!.user!.id === currentUser.uid,
+                  photoURL: photoURLs[index],
+                },
+              });
+
+              return {
+                ...message,
+                ...(isLastCurrentUserMessage && { isLastCurrentUserMessage: true }),
+                user: {
+                  ...message.user,
+                  id: message.user!.id!,
+                  isCurrentUser: message!.user!.id === currentUser.uid,
+                  photoURL: photoURLs[index],
+                },
+              };
+            });
           })
         );
       })
     );
+  }
+
+  private _findLastCurrentUserMessageIndex(
+    messages: FormatMessageResponse<DefaultStreamChatGenerics>[],
+    currentUserId: string
+  ): number | null {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].user!.id === currentUserId) {
+        return i;
+      }
+    }
+    return null;
   }
 }
