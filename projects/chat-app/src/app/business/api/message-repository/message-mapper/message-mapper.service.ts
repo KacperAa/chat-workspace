@@ -28,37 +28,48 @@ export class MessageMapperService {
 
         return forkJoin(photoRequests).pipe(
           map(photoURLs => {
-            return messages.map((message, index) => ({
-              ...message,
-              isLastCurrentUserMessage: this._checkIsLastCurrentUserMessage(messages, message),
-              user: {
-                ...message.user,
-                id: message.user!.id!,
-                isCurrentUser: message!.user!.id === currentUser.uid,
-                photoURL: photoURLs[index],
-              },
-            }));
+            const lastCurrentUserMessageIndex = this._findLastCurrentUserMessageIndex(messages, currentUser.uid);
+
+            return messages.map((message, index) => {
+              const isLastCurrentUserMessage = index === lastCurrentUserMessageIndex;
+
+              console.log({
+                ...message,
+                ...(isLastCurrentUserMessage && { isLastCurrentUserMessage: true }),
+                user: {
+                  ...message.user,
+                  id: message.user!.id!,
+                  isCurrentUser: message!.user!.id === currentUser.uid,
+                  photoURL: photoURLs[index],
+                },
+              });
+
+              return {
+                ...message,
+                ...(isLastCurrentUserMessage && { isLastCurrentUserMessage: true }),
+                user: {
+                  ...message.user,
+                  id: message.user!.id!,
+                  isCurrentUser: message!.user!.id === currentUser.uid,
+                  photoURL: photoURLs[index],
+                },
+              };
+            });
           })
         );
       })
     );
   }
 
-  private _checkIsLastCurrentUserMessage(
-    allMessagesList: FormatMessageResponse<DefaultStreamChatGenerics>[],
-    currentMessage: FormatMessageResponse<DefaultStreamChatGenerics>
-  ): boolean {
-    const currentUser = this._auth.currentUser!;
-
-    const lastMessageIndex = allMessagesList.length - 1;
-    const isLastMessage = allMessagesList[lastMessageIndex] === currentMessage;
-
-    for (const i = allMessagesList.length - 1; i >= 0; i--) {
-      if (allMessagesList[i].user!.id === currentUser.uid) {
-        return allMessagesList[i] === currentMessage && isLastMessage;
+  private _findLastCurrentUserMessageIndex(
+    messages: FormatMessageResponse<DefaultStreamChatGenerics>[],
+    currentUserId: string
+  ): number | null {
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].user!.id === currentUserId) {
+        return i;
       }
     }
-
-    return false;
+    return null;
   }
 }
