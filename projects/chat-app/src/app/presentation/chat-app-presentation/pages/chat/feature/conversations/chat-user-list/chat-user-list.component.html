@@ -3,7 +3,7 @@
     @if (!isChannelsFetching()) {
       @for (channel of channelsStore.messagingChannelsList(); track channel) {
         <li class="conversation-list__conversation-presentation">
-          <kaa-channel [channel]="channel" (onClickChannel)="navigateToChannel($event)"></kaa-channel>
+          <kaa-channel [channel]="channel" (onClickChannel)="navigateToChannel($event)" />
         </li>
       }
     } @else {
