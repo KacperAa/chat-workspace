@@ -2,7 +2,7 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { Injectable, Signal, inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { TextCloudSendStatus } from '../../../../../../../../../ui/src/lib/atoms/text-cloud/models/text-cloud-send.status.model';
+import { TextCloudSendStatus } from '../../../../../../../../../ui/src/lib/molecules/text-cloud/models/text-cloud-send.status.model';
 import { ConversationData } from '../../../../../../business/api/channel-repository/conversations/models/conversation-data.model';
 import { UserConversationMapperService } from '../../../../../../business/api/channel-repository/conversations/user-conversation-mapper/user-conversation-mapper.service';
 import { MessageMapperService } from '../../../../../../business/api/message-repository/message-mapper/message-mapper.service';

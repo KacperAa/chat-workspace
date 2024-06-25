@@ -8,7 +8,6 @@ export {
   SkeletonCircleLoaderComponent,
   SkeletonBarComponent,
   InputComponent,
-  TextCloudComponent,
   MessageInfoComponent,
 } from './lib/atoms';
 export {
@@ -19,5 +18,6 @@ export {
   AvatarWithStatusComponent,
   TypingIndicatorComponent,
   AvatarWithTextCloudComponent,
+  TextCloudComponent,
 } from './lib/molecules';
 export { HorizontalScrollComponent } from './lib/organisms';

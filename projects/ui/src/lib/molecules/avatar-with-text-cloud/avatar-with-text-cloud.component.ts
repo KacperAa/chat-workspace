@@ -11,9 +11,9 @@ import {
 import { CloudColorPipe } from '../../../../../chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/conversation-window/pipes/cloud-color.pipe';
 import { CloudPositionPipe } from '../../../../../chat-app/src/app/presentation/chat-app-presentation/pages/chat/feature/conversation-window/pipes/cloud-position.pipe';
 import { AvatarComponent } from '../../atoms/avatar/avatar.component';
-import { TextCloudColor } from '../../atoms/text-cloud/models/text-cloud-color.model';
-import { TextCloudPosition } from '../../atoms/text-cloud/models/text-cloud-position.model';
-import { TextCloudComponent } from '../../atoms/text-cloud/text-cloud.component';
+import { TextCloudColor } from '../text-cloud/models/text-cloud-color.model';
+import { TextCloudPosition } from '../text-cloud/models/text-cloud-position.model';
+import { TextCloudComponent } from '../text-cloud/text-cloud.component';
 import { getMissingImageError, getMissingSpanError } from './errors/avatar-with-text-cloud-errors';
 
 @Component({

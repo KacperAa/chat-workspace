@@ -1,4 +1,4 @@
-import { TextCloudSendStatus } from '../../../../../../../../ui/src/lib/atoms/text-cloud/models/text-cloud-send.status.model';
+import { TextCloudSendStatus } from '../../../../../../../../ui/src/lib/molecules/text-cloud/models/text-cloud-send.status.model';
 
 export interface UserChannelConversationListEl {
   isUserOnline: boolean;

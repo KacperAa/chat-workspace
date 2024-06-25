@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TextCloudComponent } from '../../atoms/text-cloud/text-cloud.component';
+import { TextCloudComponent } from '../text-cloud/text-cloud.component';
 
 @Component({
   selector: 'ui-typing-indicator',

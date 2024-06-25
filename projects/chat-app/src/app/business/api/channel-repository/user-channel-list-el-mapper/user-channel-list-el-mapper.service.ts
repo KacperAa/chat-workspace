@@ -3,7 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { Channel, FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { TextCloudSendStatus } from '../../../../../../../ui/src/lib/atoms/text-cloud/models/text-cloud-send.status.model';
+import { TextCloudSendStatus } from '../../../../../../../ui/src/lib/molecules/text-cloud/models/text-cloud-send.status.model';
 import { UserApiService } from '../../user-repository/user-api.service';
 import { UserChannelConversationListEl } from './models/user-channel-conversation-list-el.model';
 
