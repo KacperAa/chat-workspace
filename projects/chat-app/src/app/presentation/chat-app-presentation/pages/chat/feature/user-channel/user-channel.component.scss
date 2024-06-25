@@ -1,4 +1,7 @@
 .text-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
   color: gray;
 
   &__last-message-and-delivary-time {

@@ -1,10 +1,11 @@
 import { CdkVirtualScrollViewport, ScrollingModule } from '@angular/cdk/scrolling';
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject, viewChild } from '@angular/core';
 
-import { AvatarComponent, TextCloudComponent } from '../../../../../../../../../ui/src/lib/atoms';
+import { AvatarComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import { SkeletonBarComponent } from '../../../../../../../../../ui/src/lib/atoms';
 import {
   AvatarWithTextCloudComponent,
+  TextCloudComponent,
   TypingIndicatorComponent,
 } from '../../../../../../../../../ui/src/lib/molecules';
 import { ConversationCoreComponent } from '../../ui/templates/conversation-core/conversation-core.component';

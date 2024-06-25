@@ -19,7 +19,9 @@ export class ChannelsListMapperService {
   private _filterMessagingChannelsType(): Observable<Channel<DefaultStreamChatGenerics>[]> {
     return this._channelApi.getChannelsApi().pipe(
       map(channels => {
-        return channels.filter(channel => (channel.type = 'messaging'));
+        return channels.filter(channel => {
+          return channel.type === 'messaging';
+        });
       })
     );
   }

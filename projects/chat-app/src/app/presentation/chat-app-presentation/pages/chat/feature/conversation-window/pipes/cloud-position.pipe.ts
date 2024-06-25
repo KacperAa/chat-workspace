@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { TextCloudPosition } from '../../../../../../../../../../ui/src/lib/atoms/text-cloud/models/text-cloud-position.model';
+import { TextCloudPosition } from '../../../../../../../../../../ui/src/lib/molecules/text-cloud/models/text-cloud-position.model';
 
 @Pipe({
   name: 'cloudPosition',

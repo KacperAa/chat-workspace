@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
-import { Channel } from 'stream-chat';
+import { Channel, FormatMessageResponse } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
+import { TextCloudSendStatus } from '../../../../../../../ui/src/lib/molecules/text-cloud/models/text-cloud-send.status.model';
 import { UserApiService } from '../../user-repository/user-api.service';
 import { UserChannelConversationListEl } from './models/user-channel-conversation-list-el.model';
 
@@ -28,7 +29,8 @@ export class UserChannelConversationMapperService {
               channelImage: String(fireUser.photoURL),
               channelName: fireUser.displayName,
               last_message_at: String(channel.data?.last_message_at ?? ''),
-              last_message: this._getLastMessage(channel),
+              last_message: this._getLastMessage(channel)?.text!,
+              last_message_status: this._getLastMessage(channel)?.status as TextCloudSendStatus,
             };
           })
         );
@@ -53,8 +55,10 @@ export class UserChannelConversationMapperService {
     return otherUserMemberId?.user?.id!;
   }
 
-  private _getLastMessage(channel: Channel<DefaultStreamChatGenerics>): string | null {
+  private _getLastMessage(
+    channel: Channel<DefaultStreamChatGenerics>
+  ): FormatMessageResponse<DefaultStreamChatGenerics> | null {
     const latestMessages = channel.state.latestMessages;
-    return latestMessages.length > 0 ? latestMessages[latestMessages.length - 1].text! : null;
+    return latestMessages.length > 0 ? latestMessages[latestMessages.length - 1] : null;
   }
 }

@@ -1,0 +1,28 @@
+.message-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+  padding: 2px;
+  border-radius: 50%;
+  font-size: 0.5rem;
+  color: white;
+
+  &--sending {
+    border: 1px solid gray;
+  }
+  &--received {
+    background-color: gray;
+  }
+
+  &--failed {
+    background-color: red;
+  }
+
+  &--displayed {
+    padding: 0;
+    width: 18px;
+    height: 18px;
+  }
+}

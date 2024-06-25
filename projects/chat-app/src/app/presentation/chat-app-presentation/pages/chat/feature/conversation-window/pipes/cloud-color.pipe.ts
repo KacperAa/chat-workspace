@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { TextCloudColor } from '../../../../../../../../../../ui/src/lib/atoms/text-cloud/models/text-cloud-color.model';
+import { TextCloudColor } from '../../../../../../../../../../ui/src/lib/molecules/text-cloud/models/text-cloud-color.model';
 
 @Pipe({
   name: 'cloudColor',
