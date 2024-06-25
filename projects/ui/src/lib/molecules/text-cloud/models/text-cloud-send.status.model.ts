@@ -1,1 +1,1 @@
-export type TextCloudSendStatus = 'sending' | 'received' | 'failed';
+export type TextCloudSendStatus = 'sending' | 'received' | 'failed' | 'displayed';
