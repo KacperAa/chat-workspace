@@ -18,13 +18,13 @@ import { Observable } from 'rxjs';
   templateUrl: './user-channel.component.html',
   styleUrl: './user-channel.component.scss',
   imports: [
-    AvatarWithContentComponent,
-    AvatarComponent,
     DatePipe,
     AsyncPipe,
-    AvatarWithStatusComponent,
     StatusPipe,
+    AvatarComponent,
     MessageInfoComponent,
+    AvatarWithStatusComponent,
+    AvatarWithContentComponent,
   ],
 })
 export class ChannelComponent implements OnInit {
