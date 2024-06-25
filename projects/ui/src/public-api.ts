@@ -9,6 +9,7 @@ export {
   SkeletonBarComponent,
   InputComponent,
   TextCloudComponent,
+  MessageInfoComponent,
 } from './lib/atoms';
 export {
   AvatarWithContentComponent,
