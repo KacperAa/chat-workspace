@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+
+import { TextCloudSendStatus } from '../text-cloud/models/text-cloud-send.status.model';
 
 @Component({
   selector: 'ui-message-info',
@@ -8,4 +10,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './message-info.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MessageInfoComponent {}
+export class MessageInfoComponent {
+  public textCloudSendStatus = input<TextCloudSendStatus | undefined>();
+}
