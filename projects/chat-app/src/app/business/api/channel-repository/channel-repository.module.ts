@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ChannelReadStatusService } from './channel-read-status/channel-read-status.service';
+import { ChannelWatchStatusService } from './channel-watch-status/channel-watch-status.service';
 import { ChannelsApiService } from './channels-api.service';
 import { ChannelsListMapperService } from './channels-list-mapper/channels-list-mapper.service';
 import { UserConversationMapperService } from './conversations/user-conversation-mapper/user-conversation-mapper.service';
@@ -11,7 +11,7 @@ import { UserChannelConversationMapperService } from './user-channel-list-el-map
   providers: [
     ChannelsApiService,
     CreateChannelService,
-    ChannelReadStatusService,
+    ChannelWatchStatusService,
     ChannelsListMapperService,
     UserConversationMapperService,
     UserChannelConversationMapperService,
