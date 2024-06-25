@@ -11,5 +11,5 @@ import { TextCloudSendStatus } from '../../molecules/text-cloud/models/text-clou
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageInfoComponent {
-  public textCloudSendStatus = input<TextCloudSendStatus | undefined>();
+  public textCloudSendStatus = input.required<TextCloudSendStatus>();
 }
