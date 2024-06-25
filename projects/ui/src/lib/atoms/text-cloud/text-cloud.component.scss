@@ -38,11 +38,15 @@
     border-radius: 50%;
     font-size: 0.5rem;
 
-    &--sent {
+    &--sending {
       border: 1px solid gray;
     }
-    &--delivered {
+    &--received {
       background-color: gray;
+    }
+
+    &--failed {
+      background-color: red;
     }
   }
 }
