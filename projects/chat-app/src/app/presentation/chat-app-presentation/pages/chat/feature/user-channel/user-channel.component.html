@@ -6,11 +6,11 @@
 
     <div right-content class="text-wrapper">
       <span>{{ channelData.channelName }}</span>
+      <ui-message-info [textCloudSendStatus]="channelData.last_message_status" />
       <div class="text-wrapper__last-message-and-delivary-time">
         <p>{{ channelData.last_message }}</p>
         <span>{{ channelData.last_message_at | date: 'shortTime' }}</span>
       </div>
     </div>
   </ui-avatar-with-content>
-  <ui-message-info [textCloudSendStatus]="channelData.last_message_status" />
 }
