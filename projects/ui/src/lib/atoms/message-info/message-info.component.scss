@@ -1,4 +1,4 @@
-.message-status {
+.message-info {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,5 +18,11 @@
 
   &--failed {
     background-color: red;
+  }
+
+  &--displayed {
+    padding: 0;
+    width: 18px;
+    height: 18px;
   }
 }
