@@ -3,9 +3,8 @@ import { Component, OnInit, inject, input, output } from '@angular/core';
 import { Channel } from 'stream-chat';
 import { DefaultStreamChatGenerics } from 'stream-chat-angular';
 
-import { AvatarComponent } from '@ui/AvatarComponent';
-import { AvatarWithContentComponent } from '@ui/AvatarWithContentComponent';
-import { AvatarWithStatusComponent } from '@ui/AvatarWithStatusComponent';
+import { AvatarComponent, MessageInfoComponent } from '@ui/atoms';
+import { AvatarWithContentComponent, AvatarWithStatusComponent } from '@ui/molecules';
 
 import { UserChannelConversationListEl } from '../../../../../../business/api/channel-repository/user-channel-list-el-mapper/models/user-channel-conversation-list-el.model';
 import { UserChannelConversationMapperService } from '../../../../../../business/api/channel-repository/user-channel-list-el-mapper/user-channel-list-el-mapper.service';
@@ -18,7 +17,15 @@ import { Observable } from 'rxjs';
   standalone: true,
   templateUrl: './user-channel.component.html',
   styleUrl: './user-channel.component.scss',
-  imports: [AvatarWithContentComponent, AvatarComponent, DatePipe, AsyncPipe, AvatarWithStatusComponent, StatusPipe],
+  imports: [
+    AvatarWithContentComponent,
+    AvatarComponent,
+    DatePipe,
+    AsyncPipe,
+    AvatarWithStatusComponent,
+    StatusPipe,
+    MessageInfoComponent,
+  ],
 })
 export class ChannelComponent implements OnInit {
   private _userChannelMapper = inject(UserChannelConversationMapperService);
